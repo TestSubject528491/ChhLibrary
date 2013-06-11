@@ -1,4 +1,4 @@
-package chh.util;
+package chh-util;
 
 import java.util.ArrayList;
 
