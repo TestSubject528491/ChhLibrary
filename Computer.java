@@ -6,7 +6,8 @@ package chh.util;
  * @version 2010.06.21
  */
 public final class Computer {
-    /** Creates a new Computer object. */ private Computer() {}
+    /** Creates a new Computer object. */
+    private Computer() {}
     /**
      * Waits for {@code t} milliseconds before proceeding.
      * @param t the number of milliseconds for which execution pauses.
