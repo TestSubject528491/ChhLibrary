@@ -1,4 +1,4 @@
-package chh-util;
+package chh.util;
 
 /**
  * A utility class containing calculations on numbers.

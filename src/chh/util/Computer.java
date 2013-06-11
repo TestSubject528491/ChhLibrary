@@ -1,4 +1,4 @@
-package chh-util;
+package chh.util;
 
 /**
  * Utility class containing commonly used fields and methods used in many programs.
