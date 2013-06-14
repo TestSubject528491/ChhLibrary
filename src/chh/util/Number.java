@@ -1,9 +1,10 @@
 package chh.util;
+import java.util.ArrayList;
 
 /**
- * A utility class containing calculations on numbers.
+ * A utility class containing calculations on natural numbers (non-negative integers).
  * @author Christopher H. Harvey <chrisharvey2pi@gmail.com>
- * @version 2011.06.16
+ * @version 2013.06.14
  */
 public final class Number {
     /** Creates a new Number object. */ private Number() {}
@@ -33,12 +34,58 @@ public final class Number {
      * @return {@code true} if n is a power of r
      */
     public static boolean isPowerOf(int n, int r) {
-        boolean predicate = true;
+        boolean predicate;
         if (n == 1) predicate = true;
         else if (n % r == 0) predicate = isPowerOf(n / r, r);  // if n%r==0 then n/r will be an integer.
         else predicate = false;
         return predicate;
     }
+    
+    /**
+     * Returns an ArrayList of all of the prime factors of the given number.
+     * @param n the given number to be factored
+     * @return an ArrayList containing Integer objects, which are prime factors of {@code n}, in increasing order
+     */
+    public static ArrayList<Integer> factor(int n) {
+        ArrayList<Integer> array = new ArrayList<>();
+        int i = 2;
+        while (i <= n) {
+            if (n % i == 0) {
+                array.add(i);
+                n /= i;
+                i = 2;
+            } else {
+                i++;
+            }
+        }
+        return array;
+    }
+    /**
+     * Gives the greatest common factor of two numbers.
+     * @param n the first integer
+     * @param r the second integer
+     * @return the greatest integer factor that {@code n} and {@code r} have in common
+     */
+    public static int gcf(int n, int r) {
+        ArrayList<Integer> array_n = factor(n);
+        ArrayList<Integer> array_r = factor(r);
+        int gcf = 0;
+        for (int i = 0; i < array_n.size(); i++) {
+            if (array_r.contains(array_n.get(i))) {gcf = array_n.get(i);}
+        }
+        return gcf;
+    }
+    /**
+     * Gives the least common multiple of two numbers. DRAFT. Returns 0 for now.
+     * @param n the first integer
+     * @param r the second integer
+     * @return the least multiple that {@code n} and {@code r} have in common
+     */
+    public static int lcm(int n, int r) {
+        
+        return 0;
+    }
+    
     /**
      * Returns the arithmetic mean of two doubles.
      * The arithmetic mean of 'a' and 'b' is exactly half of the sum of 'a' and 'b'.

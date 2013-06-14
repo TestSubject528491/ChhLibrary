@@ -145,7 +145,8 @@ public final class Random {
      * @return  a normally distributed double-precision number
      */
     public static double randGaussian(double mean, double stdev) {
-        return (Random.randGaussian() * stdev) + mean; // correction for standard transformation
+		return Statistics.zScoreInv(Random.randGaussian(), mean, stdev); // correction for standard transformation
+        //return (Random.randGaussian() * stdev) + mean; // correction for standard transformation
     }
     /**
      * Randomly returns one of two given objects, with a 50% chance of each.
