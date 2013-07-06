@@ -67,13 +67,24 @@ public final class Number {
      * @return the greatest integer factor that {@code n} and {@code r} have in common
      */
     public static int gcf(int n, int r) {
-        ArrayList<Integer> array_n = factor(n);
-        ArrayList<Integer> array_r = factor(r);
-        int gcf = 0;
-        for (int i = 0; i < array_n.size(); i++) {
-            if (array_r.contains(array_n.get(i))) {gcf = array_n.get(i);}
-        }
-        return gcf;
+		n = Math.abs(n);
+		r = Math.abs(r);
+		if (n==r) {return n;}
+		else if (n > r) {
+			if (r==0) return n;
+			else return gcf(r, n % r);
+		}
+		else {
+			if (n==0) return r;
+			else return gcf(n, r % n);
+		}
+//        ArrayList<Integer> array_n = factor(n);
+//        ArrayList<Integer> array_r = factor(r);
+//        int gcf = 0;
+//        for (int i = 0; i < array_n.size(); i++) {
+//            if (array_r.contains(array_n.get(i))) {gcf = array_n.get(i);}
+//        }
+//        return gcf;
     }
     /**
      * Gives the least common multiple of two numbers. DRAFT. Returns 0 for now.
