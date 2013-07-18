@@ -10,31 +10,33 @@ public final class Number {
     /** Creates a new Number object. */ private Number() {}
     
 	/**
-	 * Sets a number so that it is bound in a given interval, then returns the number. If it is within the interval (inclusive), it will not be changed. If it is outside the interval, it will be set to the closest bound (either upper or lower). For example, {@code Number.bound(3.14, 0, 1)} will return {@code 1.0}. If an identifier pointed to 3.14, that identifier would be changed also.
-	 * @param n the number to be changed
+	 * Returns the number closest to the given parameter within a specified interval. If the parameter is in the interval (inclusive), the method returns the number. If the parameter is outside the interval, the method returns the closest bound (either upper or lower). For example, {@code Number.bound(3.14, 0, 1)} will return {@code 1.0}. This method does not change the value of the given parameter.
+	 * @param x the number to be tested
 	 * @param lower the lower bound, inclusive
-	 * @param upper the upper bound, inclusive. Must be higher than {@code lower}.
-	 * @return the number either changed or unchanged
+	 * @param upper the upper bound, inclusive. Must be >= {@code lower}.
+	 * @return the closest number to {@code x} within the interval {@code [lower, upper]}
 	 */
-	public static double bound(double n, double lower, double upper) {
-		if (lower < upper) {
-			if (n < lower) n = lower;
-			else if (n > upper) n = upper;
+	public static double bound(double x, double lower, double upper) {
+		double output = x;
+		if (lower <= upper) {
+			if (x < lower) output = lower;
+			else if (x > upper) output = upper;
 		}
-		return n;
+		return output;
 	}
 	/**
-	 * Bounds an array of numbers, comparing each entry in the array to a common set of bounds. Basically, performs {@code bound(int)} on each array entry.
-	 * @param nums The array of numbers to be changed
+	 * Performs {@code Number.bound()} on each entry of an array, using the same interval for comparison.
+	 * @param nums The array of numbers to be tested
 	 * @param lower the lower bound, inclusive
-	 * @param upper the upper bound, inclusive. Must be higher than {@code lower}.
-	 * @return the array of numbers, with each entry checked
+	 * @param upper the upper bound, inclusive. Must be >= {@code lower}.
+	 * @return an array of numbers containing {@code Number.bound(nums[i])}
 	 */
 	public static double[] bound(double[] nums, double lower, double upper) {
+		double[] output = new double[nums.length];
 		for (int i = 0; i < nums.length; i++) {
-			Number.bound(nums[i], lower, upper);
+			output[i] = Number.bound(nums[i], lower, upper);
 		}
-		return nums;
+		return output;
 	}
 	
     /**

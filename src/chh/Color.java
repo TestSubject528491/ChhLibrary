@@ -1,4 +1,6 @@
-package chh.util;
+package chh;
+
+import chh.util.Number;
 
 /**
  * A Color object represents any 256-bit color that can be displayed in a pixel.
@@ -14,7 +16,7 @@ public class Color {
 	private final int blue;
 	
     /**
-     * Constructs a new Color object, given three priamary color components.
+     * Constructs a new Color object, given three primary color components.
 	 * @param red  the red component of this color. Must be between 0 and 255.
 	 * @param green  the green component of this color. Must be between 0 and 255.
 	 * @param blue  the blue component of this color. Must be between 0 and 255.
