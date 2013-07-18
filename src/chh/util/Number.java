@@ -9,6 +9,34 @@ import java.util.ArrayList;
 public final class Number {
     /** Creates a new Number object. */ private Number() {}
     
+	/**
+	 * Sets a number so that it is bound in a given interval, then returns the number. If it is within the interval (inclusive), it will not be changed. If it is outside the interval, it will be set to the closest bound (either upper or lower). For example, {@code Number.bound(3.14, 0, 1)} will return {@code 1.0}. If an identifier pointed to 3.14, that identifier would be changed also.
+	 * @param n the number to be changed
+	 * @param lower the lower bound, inclusive
+	 * @param upper the upper bound, inclusive. Must be higher than {@code lower}.
+	 * @return the number either changed or unchanged
+	 */
+	public static double bound(double n, double lower, double upper) {
+		if (lower < upper) {
+			if (n < lower) n = lower;
+			else if (n > upper) n = upper;
+		}
+		return n;
+	}
+	/**
+	 * Bounds an array of numbers, comparing each entry in the array to a common set of bounds. Basically, performs {@code bound(int)} on each array entry.
+	 * @param nums The array of numbers to be changed
+	 * @param lower the lower bound, inclusive
+	 * @param upper the upper bound, inclusive. Must be higher than {@code lower}.
+	 * @return the array of numbers, with each entry checked
+	 */
+	public static double[] bound(double[] nums, double lower, double upper) {
+		for (int i = 0; i < nums.length; i++) {
+			Number.bound(nums[i], lower, upper);
+		}
+		return nums;
+	}
+	
     /**
      * Returns whether a given integer is prime.
      * An integer is mathematically prime if and only if its only integer divisors are itself and 1.
