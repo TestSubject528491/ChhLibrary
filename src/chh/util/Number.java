@@ -25,6 +25,16 @@ public final class Number {
 		return output;
 	}
 	/**
+	 * Performs {@code Number.bound()} on {@code int}s rather than {@code double}s.
+	 * @param x the number to be tested
+	 * @param lower the lower bound, inclusive
+	 * @param upper the upper bound, inclusive. Must be >= {@code lower}.
+	 * @return the closest number to {@code x} within the interval {@code [lower, upper]}
+	 */
+	public static int bound(int x, int lower, int upper) {
+		return (int) Number.bound((double) x, lower, upper);
+	}
+	/**
 	 * Performs {@code Number.bound()} on each entry of an array, using the same interval for comparison.
 	 * @param nums The array of numbers to be tested
 	 * @param lower the lower bound, inclusive
@@ -37,6 +47,33 @@ public final class Number {
 			output[i] = Number.bound(nums[i], lower, upper);
 		}
 		return output;
+	}
+	
+	/**
+	 * Gives the maximum value in an array of doubles.
+	 * @param nums the array to check. Must be non-empty and length != 0.
+	 * @return the maximum double in the array
+	 */
+	public static double max(double[] nums) {
+		if (nums.length == 0) return 0;
+		else {
+			double max = nums[0];
+			for (int i = 0; i < nums.length; i++) {
+				if (max < nums[i]) max = nums[i];
+			}
+			return max;
+		}
+	}
+	/**
+	 * Gives the minimum value in an array of doubles. 
+	 * @param nums the array to check. Must be non-empty and length != 0.
+	 * @return the minimum double in the array
+	 */
+	public static double min(double[] nums) {
+		for (int i = 0; i < nums.length; i++) {
+			nums[i] = -nums[i];
+		}
+		return -(Number.max(nums));
 	}
 	
     /**
@@ -126,27 +163,46 @@ public final class Number {
         
         return 0;
     }
-    
+    /**
+	 * Averages two numbers, with a given weight favoring the first number. For example, {@code Number.average(10, 20, 0.7)} will return {@code 13}, while {@code Number.average(20, 10, 0.7)} will return {@code 17}.
+	 * @param a The first number, to be weighted by {@code w}
+	 * @param b the second number
+	 * @param w the weight that favors {@code a}. Must be between 0.0 and 1.0
+	 * @return the weighted average of {@code a} and {@code b}
+	 */
+	public static double average(double a, double b, double w) {
+		w = Number.bound(w, 0.0, 1.0);
+		return (a * w) + (b * (1.0-w));
+	}
+	/**
+	 * Averages two numbers with even weight. Same result as {@code Number.aMean(a, b)}.
+	 * @param a the first number
+	 * @param b the second number
+	 * @return the average of {@code a} and {@code b} with even weight
+	 */
+	public static double average(double a, double b) {
+		return Number.average(a, b, 0.5);
+	}
     /**
      * Returns the arithmetic mean of two doubles.
-     * The arithmetic mean of 'a' and 'b' is exactly half of the sum of 'a' and 'b'.
+     * The arithmetic mean of {@code a} and {@code b} is exactly half of the sum of {@code a} and {@code b}.
      * @param a the first double
      * @param b the second double
-     * @return  the arithmetic mean of a and b
+     * @return  the arithmetic mean of {@code a} and {@code b}
      */
     public static double aMean(double a, double b) {
         return (a + b) / 2.0;
     }
     /**
      * Returns the arithmetic mean of an array of doubles.
-     * @param doubles   the array of doubles, with undetermined length
+     * @param nums   the array of doubles, with undetermined length
      * @return          the arithmetic mean of all the doubles in the array
      */
-    public static double aMean(double[] doubles) {
+    public static double aMean(double[] nums) {
         double sum = 0.0;
-        int n = doubles.length;
+        int n = nums.length;
         for (int i = 0; i < n; i++) {
-            sum += doubles[i];
+            sum += nums[i];
         }
         return sum / n;
     }
