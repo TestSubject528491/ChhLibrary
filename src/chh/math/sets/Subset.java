@@ -1,11 +1,12 @@
 package chh.math.sets;
-import chh.math.logic.*;
+import chh.math.logic.Proposition;
 /**
  *
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
  * @version 2013.07.26
  */
-public class Subset extends Set {
+public abstract class Subset extends Set {
+	/** */
 	private final Set superset;
 	/**
 	 * Constructs a new Subset object.
@@ -13,14 +14,15 @@ public class Subset extends Set {
 	 * @param p  
 	 */
 	public Subset(Set x, Proposition p) {
-		super();
 		this.superset = x;
+		// FIX THIS
 	}
 	/**
-     * {@inheritDoc}
-     */
-    @Override
-	public Proposition isSubsetOf(Set x) {
-		return new Disjunction(new Proposition(this.superset.equals(x)), super.isSubsetOf(x));
+	 *
+	 * @param x
+	 * @return
+	 */
+	public boolean isSubsetOf(Set x) {
+		return this.superset.equals(x) || x.contains(this);
 	}
 }
