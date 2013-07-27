@@ -1,6 +1,7 @@
 package chh.math.sets;
 /**
- *
+ * The Axiom of Power:
+ * 
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
  * @version 2013.07.26
  */
@@ -27,7 +28,7 @@ public class Powerset extends Set {
      * {@inheritDoc}
      */
 	@Override
-	protected boolean includes(Set x) {
+	public boolean includes(Set x) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	/**
@@ -37,5 +38,12 @@ public class Powerset extends Set {
 	@Override
 	public boolean isEmpty() {
 		return false;
+	}
+	/**
+     * {@inheritDoc}
+     */
+	@Override
+	public boolean isInductive() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }

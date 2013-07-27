@@ -1,5 +1,4 @@
 package chh.math.sets;
-import chh.math.logic.*;
 /**
  *
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
@@ -11,7 +10,7 @@ public class Intersection extends Subset {
 	 * @param x 
 	 */
 	public Intersection(Set x) {
-		super(new Union(x), new Proposition()); // FIX THIS
+		super(new Union(x), new chh.math.logic.Proposition()); // FIX THIS
 	}
 	/**
 	 *
@@ -20,5 +19,33 @@ public class Intersection extends Subset {
 	 */
 	public Intersection(Set x, Set y) {
 		this(new Pair(x, y));
+	}
+	/**
+     * {@inheritDoc}
+     */
+	@Override
+	public boolean contains(Set x) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	/**
+     * {@inheritDoc}
+     */
+	@Override
+	public boolean includes(Set x) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	/**
+     * {@inheritDoc}
+     */
+	@Override
+	public boolean isEmpty() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	/**
+     * {@inheritDoc}
+     */
+	@Override
+	public boolean isInductive() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }

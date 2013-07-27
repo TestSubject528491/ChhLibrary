@@ -1,6 +1,10 @@
 package chh.math.sets;
 /**
- *
+ * The Axiom of Existence:
+ * There exists a set {} that contains no elements; furthermore, this set is unique.
+ * <br />That is, there exists a set e such that:
+ * for all sets x, (for all sets t, {@code x.contains(t)==false} if and only if {@code e.equals(x)}).
+ * We symbolize the set e by {}.
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
  * @version 2013.07.26
  */
@@ -12,8 +16,8 @@ public class EmptySet extends Set {
 	
 	/**
      * {@inheritDoc}
-	 * This set does not contain any element x,
-	 * because all EmptySet objects are empty by definition.
+	 * All EmptySet objects are empty by definition.
+	 * @return false
      */
     @Override
 	public boolean contains(Set x) {
@@ -21,8 +25,8 @@ public class EmptySet extends Set {
 	}
 	/**
      * {@inheritDoc}
-	 * If x is empty, then all its elements are members in this set.
-	 * (In fact, if x is empty then it is a subset of every set.)
+	 * The only subsets of this set are empty sets.
+	 * @return true if x is empty
      */
     @Override
 	public boolean includes(Set x) {
@@ -31,6 +35,7 @@ public class EmptySet extends Set {
 	/**
      * {@inheritDoc}
 	 * If x is empty, it is equal to this object.
+	 * @return true if x is empty
      */
     @Override
 	public boolean equals(Set x) {
@@ -39,9 +44,19 @@ public class EmptySet extends Set {
 	/**
      * {@inheritDoc}
 	 * All EmptySet objects are empty.
+	 * @return true
      */
 	@Override
 	public boolean isEmpty() {
 		return true;
+	}
+	/**
+     * {@inheritDoc}
+	 * No EmptySet objects are inductive.
+	 * @return false
+	 */
+	@Override
+	public boolean isInductive() {
+		return false;
 	}
 }

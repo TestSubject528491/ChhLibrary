@@ -1,6 +1,7 @@
 package chh.math.sets;
 /**
- *
+ * The Axiom of Union:
+ * 
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
  * @version 2013.07.26
  */
@@ -33,7 +34,7 @@ public class Union extends Set {
      * {@inheritDoc}
      */
 	@Override
-	protected boolean includes(Set x) {
+	public boolean includes(Set x) {
 		/*
 		 * consider baseSet as the collection of sets A, B, C, and so on.
 		 * then A, B, C, etc. are elements of baseSet. The Union of baseSet, by dfn, is
@@ -47,17 +48,24 @@ public class Union extends Set {
 		 * A, B, C, or any other element of baseSet
 		 * this does NOT mean that x is a subset of either of A, B, C, etc,
 		 * because t1 could be in A and t2 could be in B.
-		 */
-		
-		boolean p = x.isEmpty();
-		boolean q = this.baseSet.contains(x);
-		return p || q;
+		 */		
+		return x.isEmpty() || this.baseSet.contains(x);
+	}
+	/**
+     * {@inheritDoc}
+	 * The only time a Union is empty is if it is the union of a collection of 
+	 * empty sets (meaning it's the union of a singleton of the empty set), or 
+	 * if it is the Union of an empty set itself.
+     */
+	@Override
+	public boolean isEmpty() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	/**
      * {@inheritDoc}
      */
 	@Override
-	public boolean isEmpty() {
+	public boolean isInductive() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }
