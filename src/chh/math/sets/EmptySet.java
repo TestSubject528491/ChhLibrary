@@ -26,19 +26,10 @@ public class EmptySet extends Set {
 	/**
      * {@inheritDoc}
 	 * The only subsets of this set are empty sets.
-	 * @return true if x is empty
+	 * @return 
      */
     @Override
 	public boolean includes(Set x) {
-		return x.isEmpty();
-	}
-	/**
-     * {@inheritDoc}
-	 * If x is empty, it is equal to this object.
-	 * @return true if x is empty
-     */
-    @Override
-	public boolean equals(Set x) {
 		return x.isEmpty();
 	}
 	/**
@@ -55,8 +46,16 @@ public class EmptySet extends Set {
 	 * No EmptySet objects are inductive.
 	 * @return false
 	 */
+//	@Override
+//	public boolean isInductive() {
+//		return false;
+//	}
+	/**
+     * {@inheritDoc}
+	 * @return {@code {}}
+	 */
 	@Override
-	public boolean isInductive() {
-		return false;
+	public String toString() {
+		return "{}";
 	}
 }

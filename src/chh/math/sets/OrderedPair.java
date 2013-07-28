@@ -1,6 +1,5 @@
 package chh.math.sets;
 /**
- * Ordered Pair definition:
  * For all sets a and b, define {@code OrderedPair(a,b)} as {@code new Pair(new Singleton(a), new Pair(a,b))}.
  * <br />An OrderedPair is a Pair in which the order of the elements is relevant.
  * The order of these elements <strong>is relevant</strong>; that is,
@@ -8,7 +7,7 @@ package chh.math.sets;
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
  * @version 2013.07.26
  */
-public class OrderedPair extends Pair {
+public class  extends Pair {
 	/** The first coordinate. */
 	private final Set abscissa;
 	/** The second coordinate. */
@@ -23,6 +22,12 @@ public class OrderedPair extends Pair {
 		super(new Singleton(abscissa), new Pair(abscissa,ordinate));
 		this.abscissa = abscissa;
 		this.ordinate = ordinate;
+	}
+	/**
+	 *
+	 */
+	public OrderedPair() {
+		this(new EmptySet(), new EmptySet());
 	}
 	/**
      * Returns whether the specified OrderedPair is equal to this OrderedPair.

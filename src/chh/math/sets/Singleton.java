@@ -10,15 +10,9 @@ package chh.math.sets;
 public class Singleton extends Pair {
 	/**
 	 * Constructs a new Singleton object containing a specified set.
-	 * @param x an (the only) element of this set
+	 * @param x the only element of this set
 	 */
 	public Singleton(Set x) {
-		super(x);
-	}
-	/**
-	 * Constructs a new Singleton object containing an {@see EmptySet}.
-	 */
-	public Singleton() {
-		super();
+		super(x,x);
 	}
 }

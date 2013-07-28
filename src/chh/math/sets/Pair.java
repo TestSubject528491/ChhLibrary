@@ -10,9 +10,9 @@ package chh.math.sets;
  */
 public class Pair extends Set {
 	/** One element of this set. */
-	private final Set element1;
+	public final Set element1;
 	/** Another element of this set. */
-	private final Set element2;
+	public final Set element2;
 	/**
      * Constructs a new Pair object.
 	 * 
@@ -25,21 +25,17 @@ public class Pair extends Set {
 		this.element2 = y;
 	}
 	/**
-	 * Constructs a new Pair object, as a {@see Singleton}.
-	 * @param x an (the only) element of this set
+	 * Constructs a new Pair object containing one set.
+	 * @param x the only element of this set
 	 */
-	Pair(Set x) {
-		this(x, x);
-	}
-	/**
-	 * Constructs a new Pair object, as a {@see Singleton} containing an {@see EmptySet}.
-	 */
-	Pair() {
-		this(new EmptySet());
+	private Pair(Set x) {
+		super();
+		this.element1 = x;
+		this.element2 = x;
 	}
 	/**
      * {@inheritDoc}
-	 * A Pair contains exactly its elements.
+	 * A pair contains exactly its elements.
      */
     @Override
 	public boolean contains(Set x) {
@@ -50,47 +46,18 @@ public class Pair extends Set {
      */
 	@Override
 	public boolean includes(Set x) {
-		return x.isEmpty() || x.equals(new Singleton(this.element1)) || x.equals(new Singleton(this.element2)) || x.equals(this);
+		boolean xIsempty = x.isEmpty();
+		return xIsempty; // or ? what about sets that aren't pairs?
 	}
 	/**
-	 * Returns whether this Pair {@see includes(Set) includes} the specified Pair.
-	 * An ordered pair (a,b) includes an ordered pair (c,d) 
-	 * The set x is a subset of a set y exactly when:
-	 * for all sets t, if t is an element of x then t is an element of y.
-	 * Although there is a class {@see Subset}, 
-	 * some sets may have the <em>property</em> of being a subset of this one without 
-	 * being an instance of the Subset class.
+	 * Returns whether this Pair contains both elements of the specified Pair.
 	 * @see includes(Set)
-	 * @param x
-	 * @return
-	 */
-	private boolean includes(Pair x) {
-		return this.contains(x.element1) && this.contains(x.element2);
-	}
-	/**
-     * Returns whether the specified Pair is equal to this Pair.
 	 * @param x the specified Pair
-	 * @return true if this set contains both elements of x
-	 * (it is implied that if this set contains both elements of x, then
-	 * it contains <em>only</em> elements of x,
-	 * because it cannot contain any other elements)
+	 * @return true if this contains both elements of x
 	 */
-	public boolean equals(Pair x) {
-		return this.includes(x) || this.equals((Set) x);
-		/*
-		 * Alternate version 1:
-		 * boolean p = this.element1.equals(x.element1);
-		 * boolean q = this.element2.equals(x.element2);
-		 * boolean r = this.element1.equals(x.element2);
-		 * boolean s = this.element2.equals(x.element1);
-		 * return (p && q) || (r && s) || this.equals((Set) x);
-		 * 
-		 * Alternate version 2:
-		 * boolean p = (new Pair(this.element1,this.element2)).equals(new Pair(x.element1,x.element2));
-		 * boolean q = (new Pair(this.element1,this.element2)).equals(new Pair(x.element2,x.element1));
-		 * return p || q || this.equals((Set) x);
-		 */
-	}
+//	public boolean includes(Pair x) {
+//		return this.contains(x.element1) && this.contains(x.element2);
+//	}
 	/**
      * {@inheritDoc}
 	 * A Pair is always nonempty.
@@ -105,8 +72,21 @@ public class Pair extends Set {
 	 * No Pair objects are inductive.
 	 * @return false
 	 */
+//	@Override
+//	public boolean isInductive() {
+//		return false;
+//	}
+	/**
+     * {@inheritDoc}
+	 * @return {@code {element1, element2}}
+	 */
 	@Override
-	public boolean isInductive() {
-		return false;
+	public String toString() {
+		String s = "{ " + this.element1;
+		if (!this.element1.equals(this.element2)) {
+			s += ",  " + this.element2;
+		}
+		s += " }";
+		return s;
 	}
 }
