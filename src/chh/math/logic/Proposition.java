@@ -2,7 +2,7 @@ package chh.math.logic;
 
 /**
  * A proposition represents a mathematical statement about sets.
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public class Proposition {
@@ -32,7 +32,7 @@ public class Proposition {
 	}
 	/**
 	 * Constructs a new Proposition object.
-	 * (a convenience method)
+	 * (a convenience constructor)
 	 */
 	public Proposition() {
 		this(Constant.TRUE);

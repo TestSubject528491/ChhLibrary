@@ -1,10 +1,8 @@
 package chh.math.sets;
 /**
  * Singleton Theorem:
- * For every set x, there exists a set that contains exactly x.
- * <br />Proof: by the Axiom of Pair, there exists a set {@code y = new Pair(x,x)} and {@code y.contains(x)==true}.
- * But if {@code z = new Set()} and {@code z.equals(x)==false}, then {@code y.contains(z)==false}.
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * For every set x, there exists a set that contains exactly x. {@code new Singleton(x)} is defined as {@code super(x,x)}.
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public class Singleton extends Pair {

@@ -1,7 +1,7 @@
 package chh.math.sets;
 /**
  *
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public class Intersection extends Subset {

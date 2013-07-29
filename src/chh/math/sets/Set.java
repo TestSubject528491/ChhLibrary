@@ -1,7 +1,7 @@
 package chh.math.sets;
 /**
  * A set is that which may contain elements; these elements, in turn, are also sets.
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public abstract class Set {
@@ -9,7 +9,7 @@ public abstract class Set {
 	 * Constructs a new Set object.
 	 * Abstract classes shouldn't have constructors.
 	 */
-	protected Set() {}
+//	private Set() {}
 	/**
 	 * Returns whether this set owns the specified set as an element.
 	 * @param x the specified set

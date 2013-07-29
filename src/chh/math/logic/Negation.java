@@ -2,7 +2,7 @@ package chh.math.logic;
 
 /**
  * The Negation of a proposition is a unary operator on that proposition's value.
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public class Negation extends Proposition {
@@ -15,7 +15,7 @@ public class Negation extends Proposition {
 	}
 	/**
 	 * Constructs a new Negation object.
-	 * (a convenience method)
+	 * (a convenience constructor)
 	 */
 	public Negation() {
 		this(new Proposition()); // 

@@ -1,11 +1,9 @@
 package chh.math.sets;
 /**
- * The Axiom of Existence:
- * There exists a set {} that contains no elements; furthermore, this set is unique.
- * <br />That is, there exists a set e such that:
- * for all sets x, (for all sets t, {@code x.contains(t)==false} if and only if {@code e.equals(x)}).
- * We symbolize the set e by {}.
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * <b>The Axiom of Existence:</b>
+ * There exists a set that contains no elements; furthermore, this set is unique.
+ * We symbolize this set by {}.
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public class EmptySet extends Set {
@@ -26,7 +24,7 @@ public class EmptySet extends Set {
 	/**
      * {@inheritDoc}
 	 * The only subsets of this set are empty sets.
-	 * @return 
+	 * @return true if x is empty
      */
     @Override
 	public boolean includes(Set x) {
@@ -56,6 +54,6 @@ public class EmptySet extends Set {
 	 */
 	@Override
 	public String toString() {
-		return "{}";
+		return "0";
 	}
 }

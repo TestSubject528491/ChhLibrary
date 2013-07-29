@@ -2,7 +2,7 @@ package chh.math.sets;
 /**
  * The Axiom of Union:
  * 
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
 public class Union extends Set {

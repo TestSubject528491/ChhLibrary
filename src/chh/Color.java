@@ -4,7 +4,7 @@ import chh.util.Number;
 
 /**
  * A Color object represents any 256-bit color that can be displayed in a pixel.
- * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.17
  */
 public class Color {
