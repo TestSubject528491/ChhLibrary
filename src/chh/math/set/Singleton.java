@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * Singleton Theorem:
  * For every set x, there exists a set that contains exactly x. {@code new Singleton(x)} is defined as {@code super(x,x)}.

@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * <b>The Axiom of Existence:</b>
  * There exists a set that contains no elements; furthermore, this set is unique.

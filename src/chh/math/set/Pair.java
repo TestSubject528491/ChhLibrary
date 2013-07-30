@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * The Axiom of Pair:
  * Given two sets, there exists a set that contains exactly them both.

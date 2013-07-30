@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 
 /**
  * An ordered triple is...

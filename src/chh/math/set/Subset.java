@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * The Axiom of Specification:
  * For every set x, and a proposition p, there exists a set y such that:

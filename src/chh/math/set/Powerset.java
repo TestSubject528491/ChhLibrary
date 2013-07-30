@@ -1,31 +1,28 @@
-package chh.math.sets;
+package chh.math.set;
 /**
- *
+ * The Axiom of Power:
+ * 
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.26
  */
-public class Intersection extends Subset {
+public class Powerset extends Set {
+	/** */
+	private final Set baseElement;
 	/**
-	 * Constructs a new Intersection object.
+	 * Constructs a new Powerset object.
 	 * @param x 
 	 */
-	public Intersection(Set x) {
-		super(new Union(x), new chh.math.logic.Proposition()); // FIX THIS
+	public Powerset(Set x) {
+		this.baseElement = x;
 	}
-	/**
-	 *
-	 * @param x
-	 * @param y
-	 */
-	public Intersection(Set x, Set y) {
-		this(new Pair(x, y));
-	}
+	
 	/**
      * {@inheritDoc}
+	 * If A is a set then the powerset P(A) will have as elements all subsets of A.
      */
-	@Override
+    @Override
 	public boolean contains(Set x) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return this.baseElement.includes(x);
 	}
 	/**
      * {@inheritDoc}
@@ -36,10 +33,11 @@ public class Intersection extends Subset {
 	}
 	/**
      * {@inheritDoc}
+	 * The powerset of any set is nonempty.
      */
 	@Override
 	public boolean isEmpty() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return false;
 	}
 	/**
      * {@inheritDoc}

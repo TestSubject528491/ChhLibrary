@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * The Axiom of Union:
  * 

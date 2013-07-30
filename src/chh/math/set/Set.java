@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * A set is that which may contain elements; these elements, in turn, are also sets.
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>

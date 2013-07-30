@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 
 /**
  * A Tuple (an ordered n-tuple) is the generalized concept of an ordered pair.

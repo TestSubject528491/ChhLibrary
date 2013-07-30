@@ -1,4 +1,4 @@
-package chh.math.sets;
+package chh.math.set;
 /**
  * An OrderedPairAlternate is a set that encodes the order of its two components.
  * <p>The order of these elements <strong>is relevant</strong>; that is,
