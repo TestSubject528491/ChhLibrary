@@ -20,11 +20,11 @@ public abstract class Set {
 	 * Returns whether this Set has the specified Set as a subset.
 	 * The set x is a subset of a set y exactly when "all the elements of x are in y", that is:
 	 * for all sets t, if t is an element of x then t is an element of y.
-	 * Although there is a {@see Subset} class,
+	 * <p>Although there is a {@see Subset} class,
 	 * some Set objects may have the <em>property</em> of being a subset of this one without 
-	 * being an instance of the Subset class.
+	 * being an instance of the Subset class.</p>
 	 * @see Subset
-	 * @param x the specified set
+	 * @param x the Set that this Set includes or not
 	 * @return true if this set contains all the elements of x
 	 */
 	public abstract boolean includes(Set x);
@@ -45,13 +45,31 @@ public abstract class Set {
 	 * Returns whether this Set has no elements.
 	 * A set y is empty exactly when:
 	 * for all sets t, t is not an element of y.
-	 * Although there is a {@see EmptySet} class,
+	 * <p>Although there is a {@see EmptySet} class,
 	 * some Set objects may have the <em>property</em> of being empty without 
-	 * being an instance of the EmptySet class.
+	 * being an instance of the EmptySet class.</p>
 	 * @see EmptySet
 	 * @return true if this set has no elements
 	 */
 	public abstract boolean isEmpty();
+	/**
+	 * Returns whether this Set is the successor of the specified Set.
+	 * The {@see Successor} of a set is constructed by taking the {@see Union} of:
+	 * <ol>
+	 * <li>that set, and</li>
+	 * <li>the {@see Singleton} of that set</li>
+	 * </ol>
+	 * Consequently, this set is the successor of a set x if and only if:
+	 * this set contains x, and this set includes x.
+	 * <p>Although there is a {@see Successor} class,
+	 * some Set objects may have the <em>property</em> of being a successor without 
+	 * being an instance of the Successor class.</p>
+	 * @param x the Set of which this Set is the successor or not
+	 * @return true if this set is the successor of x
+	 */
+	public boolean isSuccessorOf(Set x) {
+		return (this.contains(x) && this.includes(x));
+	}
 	/**
 	 * Returns whether this set is inductive.
 	 * A set y is inductive iff:
@@ -66,7 +84,7 @@ public abstract class Set {
 	 * @see SuccessorSet
 	 * @return true if this set is inductive
 	 */
-//	public abstract boolean isInductive();
+	public abstract boolean isInductive();
 	
 	/**
      * {@inheritDoc}

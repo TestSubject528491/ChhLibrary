@@ -8,10 +8,10 @@ package chh.math.set;
  * @version 2013.07.26
  */
 public class Pair extends Set {
-	/** One element of this set. */
-	public final Set element1;
-	/** Another element of this set. */
-	public final Set element2;
+	/** One element of this Pair. */
+	private final Set element1;
+	/** Another element of this Pair. */
+	private final Set element2;
 	/**
      * Constructs a new Pair object.
 	 * 

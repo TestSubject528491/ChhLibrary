@@ -9,7 +9,8 @@ package chh.math.set;
  * {@code (new Pair(a,b)).equals(new Pair(b,a))==true}.</p>
  * <p>{@code new Tuple(a,b,c,d,...,y,z)} is defined <b>recursively</b> by {@code super(new Tuple(a,b,c,d,...,y), z)},
  * where the <b>basis</b> {@code new Tuple()} is defined by {@code super(new EmptySet())}.</p>
- * <p>Only Tuples of arity 4 and lower have been defined (have constructors). For higher-arity Tuples, must create new constructors, coordinates, and insert them into {@see equals(Tuple)} method.</p>
+ * <p>Only Tuples of arity 4 and lower have been defined (have constructors).
+ * For higher-arity Tuples, must create new constructors, coordinates, and insert them into {@see equals(Tuple)} method.</p>
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
  * @version 2013.07.27
  */
@@ -53,7 +54,7 @@ public class Tuple extends Pair {
 	/**
 	 * Constructs a new Tuple object with two coordinates (an ordered 2-tuple).
 	 * The ordered 2-tuple &lang;a,b&rang; is defined by the pair {&lang;a&rang;,b}, which is equal to {{{{}},a},b}.
-	 * Note that this is <em>not</em> equal to the {@see OrderedPairAlternate} (a,b).
+	 * Note that this is <em>not</em> equal to the {@see OrderedPair} (a,b).
 	 * The union of &lang;a,b&rang; is the set that contains the tuple &lang;&rang;, the set a, and elements of b.
 	 * @param a the x-coordinate (the abscissa)
 	 * @param b the y-coordinate (the ordinate)
@@ -70,9 +71,9 @@ public class Tuple extends Pair {
 	 * The ordered 3-tuple &lang;a,b,c&rang; is defined by the pair {&lang;a,b&rang;,c}, which is equal to  {{{{{}},a},b},c}.
 	 * Note that this is <em>not</em> equal to the {@see OrderedTriple} (a,b,c).
 	 * The union of &lang;a,b,c&rang; is the set that contains the tuple &lang;a&rang;, the set b, and elements of c.
-	 * @param a the x-coordinate
-	 * @param b the y-coordinate
-	 * @param c the z-coordinate
+	 * @param a the x-coordinate (the abscissa)
+	 * @param b the y-coordinate (the ordinate)
+	 * @param c the z-coordinate (the applicate)
 	 */
 	public Tuple(Set a, Set b, Set c) {
 		super(new Tuple(a,b), c);

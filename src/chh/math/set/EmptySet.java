@@ -41,13 +41,22 @@ public class EmptySet extends Set {
 	}
 	/**
      * {@inheritDoc}
+	 * No EmptySet objects contain other Sets.
+	 * @return false
+     */
+	@Override
+	public boolean isSuccessorOf(Set x) {
+		return false;
+	}
+	/**
+     * {@inheritDoc}
 	 * No EmptySet objects are inductive.
 	 * @return false
 	 */
-//	@Override
-//	public boolean isInductive() {
-//		return false;
-//	}
+	@Override
+	public boolean isInductive() {
+		return false;
+	}
 	/**
      * {@inheritDoc}
 	 * @return {@code {}}

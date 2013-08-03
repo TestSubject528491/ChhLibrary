@@ -9,20 +9,28 @@ public class Union extends Set {
 	/** */
 	private final Set baseSet;
 	/**
-	 * Constructs a new Union object.
+	 * Constructs a new Union object from one set.
 	 * @param x 
 	 */
 	public Union(Set x) {
 		this.baseSet = x;
 	}
 	/**
-	 *
+	 * Constructs a new Union object from two sets.
 	 * @param x
 	 * @param y
 	 */
 	public Union(Set x, Set y) {
 		this(new Pair(x, y));
 	}
+	/**
+	 * Constructs a new Union object from an EmptySet.
+	 * The union of an empty set is empty.
+	 */
+	public Union() {
+		this(new EmptySet());
+	}
+	
 	/**
      * {@inheritDoc}
      */
@@ -66,6 +74,11 @@ public class Union extends Set {
      */
 	@Override
 	public boolean isInductive() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public String toString() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }
