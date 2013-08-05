@@ -6,7 +6,7 @@ package chh.math.set;
  * @version 2013.08.03
  */
 public class NaturalNumber extends Successor {
-	/** */
+	/** The previous natural number, if it exists. */
 	private NaturalNumber predecessor;
 	/**
 	 * Constructs a new NaturalNumber object 0 (the empty set).
@@ -25,37 +25,50 @@ public class NaturalNumber extends Successor {
 	}
 	
 	/**
-	 * Adds a natural number to this one and returns the sum.
-	 * @param a a natural number to add
-	 * @return the sum of {@code this} and {@code a}
-	 */
-//	public NaturalNumber addto(NaturalNumber a) {
-//		return (a.isEmpty()) ? this : new NaturalNumber(this.addto(a.predecessor));
-//	}
-	/**
 	 * Adds two natural numbers and returns the sum.
-	 * @param a the first natural number
-	 * @param b the second natural number
-	 * @return the sum of {@code a} and {@code b}
+	 * For two natural numbers x and y, the sum is defined:
+	 * x + S(y) = S(x+y), and x + 0 = x , where
+	 * S(y) is the successor of y and 0 is the empty set
+	 * @param x the first natural number
+	 * @param y the second natural number
+	 * @return the sum of {@code x} and {@code y}
 	 */
-	public static NaturalNumber add(NaturalNumber a, NaturalNumber b) {
-		boolean aEmpty = a.isEmpty();
-		boolean bEmpty = b.isEmpty();
-		return aEmpty ? b : (bEmpty ? a :
-				new NaturalNumber(NaturalNumber.add(a, b.predecessor)));
+	public static NaturalNumber add(NaturalNumber x, NaturalNumber y) {
+		boolean xEmpty = x.isEmpty();
+		boolean yEmpty = y.isEmpty();
+		return xEmpty ? y : (yEmpty ? x :
+				new NaturalNumber(NaturalNumber.add(x, y.predecessor)));
 	}
 	/**
 	 * Multiplies two natural numbers and returns the product.
-	 * @param a the first natural number
-	 * @param b the second natural number
-	 * @return the product of {@code a} and {@code b}
+	 * For two natural numbers x and y, the product is defined:
+	 * x * S(y) = x*y + x, and x * 0 = 0 , where
+	 * S(y) is the successor of y and 0 is the empty set
+	 * @param x the first natural number
+	 * @param y the second natural number
+	 * @return the product of {@code x} and {@code y}
 	 */
-	public static NaturalNumber multiply(NaturalNumber a, NaturalNumber b) {
-		boolean aEmpty = a.isEmpty();
-		boolean bEmpty = b.isEmpty();
-//		return aEmpty ? new NaturalNumber() : (bEmpty ? new NaturalNumber() :
-//				NaturalNumber.add(NaturalNumber.multiply(a, b.predecessor), b.predecessor));
-		return (aEmpty || bEmpty) ? new NaturalNumber() :
-				NaturalNumber.add(NaturalNumber.multiply(a, b.predecessor), b.predecessor);
+	public static NaturalNumber multiply(NaturalNumber x, NaturalNumber y) {
+		boolean xEmpty = x.isEmpty();
+		boolean yEmpty = y.isEmpty();
+		NaturalNumber product = xEmpty ? new NaturalNumber() : (yEmpty ? new NaturalNumber() :
+				NaturalNumber.add(NaturalNumber.multiply(x, y.predecessor), x));
+		return (xEmpty || yEmpty) ? new NaturalNumber() :
+				NaturalNumber.add(NaturalNumber.multiply(x, y.predecessor), x);
+	}
+	/**
+	 * Raises one natural number to the power of the other and returns the power.
+	 * For two natural numbers x and y, the power is defined:
+	 * x ^ S(y) = x^y * x, and x ^ 0 = S(0) , where
+	 * S(y) is the successor of y and 0 is the empty set
+	 * @param x the first natural number
+	 * @param y the second natural number
+	 * @return {@code x} raised to the {@code y} power
+	 */
+	public static NaturalNumber power(NaturalNumber x, NaturalNumber y) {
+		boolean xEmpty = x.isEmpty();
+		boolean yEmpty = y.isEmpty();
+		return xEmpty ? new NaturalNumber() : (yEmpty ? new NaturalNumber(new NaturalNumber()) :
+				NaturalNumber.multiply(NaturalNumber.power(x, y.predecessor), x));
 	}
 }

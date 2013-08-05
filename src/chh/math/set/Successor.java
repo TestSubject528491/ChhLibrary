@@ -18,14 +18,14 @@ public class Successor extends Union {
 	/**
 	 * Constructs a new EmptySet.
 	 */
-	public Successor() {
+	Successor() {
 		super();
 	}
 	/**
 	 * Returns the Set of which this object is the Successor.
 	 * @return the Set of which this object is the Successor
 	 */
-	public Set getPredecessor() {
-		return this.predecessor;
-	}
+//	public Set getPredecessor() {
+//		return this.predecessor;
+//	}
 }
