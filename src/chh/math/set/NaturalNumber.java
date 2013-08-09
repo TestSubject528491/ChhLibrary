@@ -16,12 +16,12 @@ public class NaturalNumber extends Successor {
 	}
 	/**
 	 * Constructs a new NaturalNumber object from the previous one.
-	 * Given a natural number {@code n}, this constructor returns the {@see Successor} of {@code n}.
-	 * @param n the previous natural number
+	 * Given a natural number {@code x}, this constructor constructs the {@see Successor} of {@code x}.
+	 * @param x the previous natural number
 	 */
-	public NaturalNumber(NaturalNumber n) {
-		super(n);
-		this.predecessor = n;
+	public NaturalNumber(NaturalNumber x) {
+		super(x);
+		this.predecessor = x;
 	}
 	
 	/**
