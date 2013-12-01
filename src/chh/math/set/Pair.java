@@ -77,10 +77,10 @@ public class Pair extends Set {
 	 * No Pair objects are inductive.
 	 * @return false
 	 */
-//	@Override
-//	public boolean isInductive() {
-//		return false;
-//	}
+	@Override
+	public boolean isInductive() {
+		return false;
+	}
 	/**
      * {@inheritDoc}
 	 * @return {@code {element1, element2}}
