@@ -5,7 +5,7 @@ package chh.math.set;
  * <p>The order of these elements is <strong>not relevant</strong>; that is,
  * {@code (new Pair(a,b)).equals(new Pair(b,a))==true}.</p>
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
- * @version 2013.07.26
+ * @version 2013.12.08
  */
 public class Pair extends Set {
 	/** One element of this Pair. */
@@ -32,9 +32,15 @@ public class Pair extends Set {
 	public Pair(Set x) {
 		this(x,x);
 	}
-//	public Pair() {
-//		this(new EmptySet()); // delete this constructor soon
-//	}
+	/**
+	 * Constructs a new Pair object containing two empty sets.
+	 * (a convenience constructor)
+	 * @see Singleton
+	 * @see EmptySet
+	 */
+	public Pair() {
+		this(new EmptySet());
+	}
 	/**
      * {@inheritDoc}
 	 * A pair contains exactly its elements.
@@ -48,20 +54,7 @@ public class Pair extends Set {
      */
 	@Override
 	public boolean includes(Set x) {
-//		boolean xIsempty = x.isEmpty();
-//		boolean xOwnsAnElement = x.contains(this.element1) || x.contains(this.element2);
-//		boolean xOwnsNoOtherElements = false; // what to do here?
-//		return xIsempty || xOwnsAnElement || xOwnsNoOtherElements; // or ? what about sets that aren't pairs?
-	}
-	/**
-	 * Returns whether this Pair contains both elements of the specified Pair.
-	 * (a convenience method to speed computation)
-	 * @see includes(Set)
-	 * @param x the specified Pair
-	 * @return true if this contains both elements of x
-	 */
-	public boolean includes(Pair x) {
-		return this.contains(x.element1) && this.contains(x.element2);
+		return x.isEmpty() || x.isSingletonOf(this.element1) || x.isSingletonOf(this.element2) || x.equals(this);
 	}
 	/**
      * {@inheritDoc}
@@ -73,22 +66,58 @@ public class Pair extends Set {
 		return false;
 	}
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean containsEmpty() {
+		return this.element1.isEmpty() || this.element2.isEmpty();
+	}
+	/**
+     * {@inheritDoc}
+	 * @return true if this Pair's elements are equal
+	 */
+	@Override
+	public boolean isSingleton() {
+		return this.element1.equals(this.element2);
+	}
+	/**
+     * {@inheritDoc}
+	 * All Pair objects are pairs.
+	 * @return true
+	 */
+	@Override
+	public boolean isPair() {
+		return true;
+	}
+	/**
+     * {@inheritDoc}
+	 * The power set of x is a pair if x is a singleton or if x is empty.
+	 * If so, this pair contains the empty set and x.
+	 * @return true if x is a singleton or is empty, and this set contains x and the empty set
+	 */
+	@Override
+	public boolean isPowerSetOf(Set x) {
+		boolean p = this.containsEmpty() && this.contains(x); // a fact about all power sets
+		boolean e = x.isSingleton() || x.isEmpty();
+		return p && e;
+	}
+	/**
      * {@inheritDoc}
 	 * No Pair objects are inductive.
 	 * @return false
 	 */
-//	@Override
-//	public boolean isInductive() {
-//		return false;
-//	}
+	@Override
+	public boolean isInductive() {
+		return false;
+	}
 	/**
      * {@inheritDoc}
-	 * @return {@code {element1, element2}}
+	 * @return {@code { element1, element2 }}
 	 */
 	@Override
 	public String toString() {
 		String s = "{ " + this.element1;
-		if (!this.element1.equals(this.element2)) {
+		if (!this.isSingleton()) {
 			s += ",  " + this.element2;
 		}
 		s += " }";

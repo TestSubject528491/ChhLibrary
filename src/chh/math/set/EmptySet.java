@@ -4,7 +4,7 @@ package chh.math.set;
  * There exists a set that contains no elements; furthermore, this set is unique.
  * We symbolize this set by {}.
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
- * @version 2013.07.26
+ * @version 2013.12.08
  */
 public class EmptySet extends Set {
 	/**
@@ -23,7 +23,7 @@ public class EmptySet extends Set {
 	}
 	/**
      * {@inheritDoc}
-	 * The only subsets of this set are empty sets.
+	 * The only possible subset of the empty set is itself.
 	 * @return true if x is empty
      */
     @Override
@@ -40,8 +40,43 @@ public class EmptySet extends Set {
 		return true;
 	}
 	/**
+	 * {@inheritDoc}
+	 * @return false
+	 */
+	@Override
+	public boolean containsEmpty() {
+		return false;
+	}
+	/**
      * {@inheritDoc}
-	 * No EmptySet objects contain other Sets.
+	 * All EmptySet objects are empty.
+	 * @return false
+	 */
+	@Override
+	public boolean isSingleton() {
+		return false;
+	}
+	/**
+     * {@inheritDoc}
+	 * All EmptySet objects are empty.
+	 * @return false
+	 */
+	@Override
+	public boolean isPair() {
+		return false;
+	}
+	/**
+     * {@inheritDoc}
+	 * All EmptySet objects are empty.
+	 * @return false
+	 */
+	@Override
+	public boolean isPowerSetOf(Set x) {
+		return false;
+	}
+	/**
+     * {@inheritDoc}
+	 * All EmptySet objects are empty.
 	 * @return false
      */
 	@Override
@@ -59,10 +94,12 @@ public class EmptySet extends Set {
 	}
 	/**
      * {@inheritDoc}
-	 * @return {@code {}}
+	 * @return {@code {}} or {@code 0}
 	 */
 	@Override
 	public String toString() {
+		//return "{}";
 		return "0";
 	}
+	
 }

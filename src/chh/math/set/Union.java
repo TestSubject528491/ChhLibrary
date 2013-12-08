@@ -3,17 +3,17 @@ package chh.math.set;
  * The Axiom of Union:
  * 
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
- * @version 2013.07.26
+ * @version 2013.12.08
  */
 public class Union extends Set {
 	/** */
-	private final Set baseSet;
+	private final Set baseset;
 	/**
 	 * Constructs a new Union object from one set.
 	 * @param x 
 	 */
 	public Union(Set x) {
-		this.baseSet = x;
+		this.baseset = x;
 	}
 	/**
 	 * Constructs a new Union object from two sets.
@@ -57,16 +57,32 @@ public class Union extends Set {
 		 * this does NOT mean that x is a subset of either of A, B, C, etc,
 		 * because t1 could be in A and t2 could be in B.
 		 */		
-		return x.isEmpty() || this.baseSet.contains(x);
+		return x.isEmpty() || this.baseset.contains(x);
 	}
 	/**
      * {@inheritDoc}
-	 * The only time a Union is empty is if it is the union of a collection of 
-	 * empty sets (meaning it's the union of a singleton of the empty set), or 
-	 * if it is the Union of an empty set itself.
+	 * A Union is empty if and only if:
+	 * its base set is a singleton of the empty set, or
+	 * its base set is the empty set itself.
      */
 	@Override
 	public boolean isEmpty() {
+		return this.baseset.isEmpty() || this.baseset.isSingletonOf(new EmptySet());
+	}
+	/**
+     * {@inheritDoc}
+	 * A Union is a singleton if and only if:
+	 * its base set contains only a singleton, or
+	 * its base set is a pair containing the empty set and another singleton.
+     */
+	@Override
+	public boolean isSingleton() {
+		boolean a = this.baseset.isSingleton() && this.baseset.containsSingleton();
+		boolean b = this.baseset.isPair() && this.baseset.containsEmpty() && this.baseset.containsSingleton();
+		return a || b;
+	}
+	@Override
+	public boolean isPair() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	/**
@@ -81,4 +97,10 @@ public class Union extends Set {
 	public String toString() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
+
+	
+
+	
+
+	
 }

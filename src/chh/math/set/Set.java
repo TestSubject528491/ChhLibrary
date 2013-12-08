@@ -2,7 +2,7 @@ package chh.math.set;
 /**
  * A set is that which may contain elements; these elements, in turn, are also sets.
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
- * @version 2013.07.26
+ * @version 2013.12.08
  */
 public abstract class Set {
 	/**
@@ -38,8 +38,10 @@ public abstract class Set {
 	 * @return true if x and this set are both empty, or this set and x include each other
 	 */
 	public boolean equals(Set x) {
+		boolean sameObject = (this == x); // a convenience statement: equal Java objects are equal sets (but not vice versa)
 		boolean bothEmpty = x.isEmpty() && this.isEmpty(); // a convenience statement to speed computation
-		return bothEmpty || (this.includes(x) && x.includes(this));
+		boolean containEachOther = this.includes(x) && x.includes(this); // definition of set equality
+		return sameObject || bothEmpty || containEachOther;
 	}
 	/**
 	 * Returns whether this Set has no elements.
@@ -53,6 +55,60 @@ public abstract class Set {
 	 */
 	public abstract boolean isEmpty();
 	/**
+	 * Returns whether this Set contains the empty set.
+	 * @see EmptySet
+	 * @return true if the empty set is an element of this set
+	 */
+	public boolean containsEmpty() {
+		return this.contains(new EmptySet());
+	}
+	/**
+	 * Returns whether this Set contains one unique element.
+	 * A set y contains one unique element x exactly when:
+	 * x is an element of y, and for all sets a and b that are elements of y, a.equals(b).
+	 * <p>Although there is a {@see Singleton} class,
+	 * some Set objects may have the <em>property</em> of being a singleton without 
+	 * being an instance of the Singleton class.</p>
+	 * @see Singleton
+	 * @return true if this set contains exactly one element
+	 */
+	public abstract boolean isSingleton();
+	/**
+	 * Returns whether this Set contains one unique element specified as a parameter.
+	 * @see Singleton
+	 * @see isSingleton()
+	 * @param x the Set of which this set may or may not contain
+	 * @return true if this set contains x and no other elements
+	 */
+	public boolean isSingletonOf(Set x) {
+		return this.isSingleton() && this.contains(x);
+	}
+	/**
+	 * Returns whether this set contains exactly two elements (which may be equal).
+	 * A set x is a pair if and only if there exists a set a in x, and a set b in x, and for all sets y in x, y=a or y=b.
+	 * <p>Although there is a {@see Pair} class,
+	 * some Set objects may have the <em>property</em> of being a pair without
+	 * being an instance of the Pair class.</p>
+	 * <p>If both elements of this set are equal, then {@code this.isSingleton()==true}.
+	 * If {@code this.isSingleton()==true} then {@code this.isPair()==true}
+	 * (but the converse is not necessarily the case).</p>
+	 * @see Pair
+	 * @see isSingleton()
+	 * @return true if this set contains exactly two elements (which may be equal).
+	 */
+	public abstract boolean isPair();
+	/**
+	 * Returns whether this Set contains two elements specified as parameters.
+	 * @see Pair
+	 * @see isPair()
+	 * @param x a Set of which this set may or may not contain
+	 * @param y a Set of which this set may or may not contain
+	 * @return true if this contains x and y and no other elements
+	 */
+	public boolean isPairOf(Set x, Set y) {
+		return this.isPair() && this.contains(x) && this.contains(y);
+	}
+	/**
 	 * Returns whether this Set is the successor of the specified Set.
 	 * The {@see Successor} of a set is constructed by taking the {@see Union} of:
 	 * <ol>
@@ -64,12 +120,22 @@ public abstract class Set {
 	 * <p>Although there is a {@see Successor} class,
 	 * some Set objects may have the <em>property</em> of being a successor without 
 	 * being an instance of the Successor class.</p>
-	 * @param x the Set of which this Set is the successor or not
+	 * @param x the Set of which this Set is or is not the successor
 	 * @return true if this set is the successor of x
 	 */
 	public boolean isSuccessorOf(Set x) {
 		return (this.contains(x) && this.includes(x));
 	}
+	/**
+	 * Returns whether this set is a powerset of the specified parameter.
+	 * For a set x, the power set of x is the set that only contains all subsets of x.
+	 * <p>Although there is a {@see PowerSet} class,
+	 * some Set objects may have the <em>property</em> of being a power set without 
+	 * being an instance of the PowerSet class.</p>
+	 * @param x the set of which this set may be a power set
+	 * @return true if this set is a power set of x
+	 */
+	public abstract boolean isPowerSetOf(Set x);
 	/**
 	 * Returns whether this set is inductive.
 	 * A set y is inductive iff:
