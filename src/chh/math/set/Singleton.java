@@ -41,12 +41,19 @@ public class Singleton extends Pair {
 		return x.isEmpty() || x.equals(this);
 	}
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean containsEmpty() {
+		return this.element.isEmpty();
+	}
+	/**
      * {@inheritDoc}
 	 * All Singleton objects are singletons.
 	 * @return true
 	 */
 	@Override
-	public boolean isSingleton() {
+	public final boolean isSingleton() {
 		return true;
 	}
 	/**

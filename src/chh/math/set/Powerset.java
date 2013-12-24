@@ -1,9 +1,12 @@
 package chh.math.set;
 /**
  * The Axiom of Power:
- * 
+ * Given a set x, there exists a set that contains exactly all subsets of x.
+ * <p>Given a set x, the power set P(x) contains, as elements,
+ * the empty set (a subset of x), x itself (another subset of x), and possibly 
+ * other elements iff they are subsets of x.</p>
  * @author  <a href="mailto:chrisharvey2pi@gmail.com">Christopher H. Harvey</a>
- * @version 2013.12.08
+ * @version 2013.12.23
  */
 public class PowerSet extends Set {
 	/** The set of which this object is a PowerSet. */
@@ -25,7 +28,7 @@ public class PowerSet extends Set {
 	}
 	/**
      * {@inheritDoc}
-	 * If a is a set then the powerset P(a) will, by definition, contain all subsets of a.
+	 * If a is a set then the power set P(a) will, by definition, contain all subsets of a.
      */
     @Override
 	public boolean contains(Set x) {
@@ -92,11 +95,13 @@ public class PowerSet extends Set {
 	
 	/**
      * {@inheritDoc}
-	 * @return {@code { 0, ..., `baseset` }}
+//	 * @return {@code { 0, ..., `baseset` }}
+	 * @return {@code P(`baseset`)}
      */
 	@Override
 	public String toString() {
-		return "{ 0, ..., " + this.baseset.toString() + " }";
+//		return "{ 0, ..., " + this.baseset.toString() + " }";
+		return "P(" + this.baseset.toString() + ")";
 	}
 
 }

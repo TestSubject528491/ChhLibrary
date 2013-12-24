@@ -6,7 +6,7 @@ package chh.math.set;
  */
 public class Successor extends Union {
 	/** The set of which this object is a successor. */
-	private Set predecessor;
+	private final Set predecessor;
 	/**
 	 * Constructs a new Successor object from a set.
 	 * @param x the set of which to construct this successor

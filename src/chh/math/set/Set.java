@@ -39,15 +39,15 @@ public abstract class Set {
 	 */
 	public boolean equals(Set x) {
 		boolean sameObject = (this == x); // a convenience statement: equal Java objects are equal sets (but not vice versa)
-		boolean bothEmpty = x.isEmpty() && this.isEmpty(); // a convenience statement to speed computation
-		boolean containEachOther = this.includes(x) && x.includes(this); // definition of set equality
-		return sameObject || bothEmpty || containEachOther;
+		boolean bothEmpty = x.isEmpty() && this.isEmpty(); // a convenience statement: all empty sets are equal
+		boolean includeEachOther = this.includes(x) && x.includes(this); // definition of set equality
+		return sameObject || bothEmpty || includeEachOther;
 	}
 	/**
 	 * Returns whether this Set has no elements.
 	 * A set y is empty exactly when:
 	 * for all sets t, t is not an element of y.
-	 * <p>Although there is a {@see EmptySet} class,
+	 * <p>Although there is an {@see EmptySet} class,
 	 * some Set objects may have the <em>property</em> of being empty without 
 	 * being an instance of the EmptySet class.</p>
 	 * @see EmptySet
@@ -80,7 +80,7 @@ public abstract class Set {
 	 * @param x the Set of which this set may or may not contain
 	 * @return true if this set contains x and no other elements
 	 */
-	public boolean isSingletonOf(Set x) {
+	public final boolean isSingletonOf(Set x) {
 		return this.isSingleton() && this.contains(x);
 	}
 	/**
@@ -105,9 +105,19 @@ public abstract class Set {
 	 * @param y a Set of which this set may or may not contain
 	 * @return true if this contains x and y and no other elements
 	 */
-	public boolean isPairOf(Set x, Set y) {
+	public final boolean isPairOf(Set x, Set y) {
 		return this.isPair() && this.contains(x) && this.contains(y);
 	}
+	/**
+	 * Returns whether this set is a powerset of the specified parameter.
+	 * For a set x, the power set of x is the set that only contains all subsets of x.
+	 * <p>Although there is a {@see PowerSet} class,
+	 * some Set objects may have the <em>property</em> of being a power set without 
+	 * being an instance of the PowerSet class.</p>
+	 * @param x the set of which this set may be a power set
+	 * @return true if this set is a power set of x
+	 */
+	public abstract boolean isPowerSetOf(Set x);
 	/**
 	 * Returns whether this Set is the successor of the specified Set.
 	 * The {@see Successor} of a set is constructed by taking the {@see Union} of:
@@ -127,16 +137,6 @@ public abstract class Set {
 		return (this.contains(x) && this.includes(x));
 	}
 	/**
-	 * Returns whether this set is a powerset of the specified parameter.
-	 * For a set x, the power set of x is the set that only contains all subsets of x.
-	 * <p>Although there is a {@see PowerSet} class,
-	 * some Set objects may have the <em>property</em> of being a power set without 
-	 * being an instance of the PowerSet class.</p>
-	 * @param x the set of which this set may be a power set
-	 * @return true if this set is a power set of x
-	 */
-	public abstract boolean isPowerSetOf(Set x);
-	/**
 	 * Returns whether this set is inductive.
 	 * A set y is inductive iff:
 	 * <ol>
@@ -147,11 +147,10 @@ public abstract class Set {
 	 * some Set objects may have the <em>property</em> of being inductive without 
 	 * being an instance of the InductiveSet class.
 	 * @see EmptySet
-	 * @see SuccessorSet
+	 * @see Successor
 	 * @return true if this set is inductive
 	 */
 	public abstract boolean isInductive();
-	
 	/**
      * {@inheritDoc}
 	 * @return the set-theoretic representation of this object
@@ -159,4 +158,3 @@ public abstract class Set {
     @Override
 	public abstract String toString();
 }
-

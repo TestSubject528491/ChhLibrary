@@ -18,7 +18,7 @@ public class EmptySet extends Set {
 	 * @return false
      */
     @Override
-	public boolean contains(Set x) {
+	public final boolean contains(Set x) {
 		return false;
 	}
 	/**
@@ -27,7 +27,7 @@ public class EmptySet extends Set {
 	 * @return true if x is empty
      */
     @Override
-	public boolean includes(Set x) {
+	public final boolean includes(Set x) {
 		return x.isEmpty();
 	}
 	/**
@@ -36,7 +36,7 @@ public class EmptySet extends Set {
 	 * @return true
      */
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 		return true;
 	}
 	/**
@@ -44,7 +44,7 @@ public class EmptySet extends Set {
 	 * @return false
 	 */
 	@Override
-	public boolean containsEmpty() {
+	public final boolean containsEmpty() {
 		return false;
 	}
 	/**
@@ -53,7 +53,7 @@ public class EmptySet extends Set {
 	 * @return false
 	 */
 	@Override
-	public boolean isSingleton() {
+	public final boolean isSingleton() {
 		return false;
 	}
 	/**
@@ -62,7 +62,7 @@ public class EmptySet extends Set {
 	 * @return false
 	 */
 	@Override
-	public boolean isPair() {
+	public final boolean isPair() {
 		return false;
 	}
 	/**
@@ -71,25 +71,25 @@ public class EmptySet extends Set {
 	 * @return false
 	 */
 	@Override
-	public boolean isPowerSetOf(Set x) {
+	public final boolean isPowerSetOf(Set x) {
 		return false;
 	}
-	/**
-     * {@inheritDoc}
-	 * All EmptySet objects are empty.
-	 * @return false
-     */
-	@Override
-	public boolean isSuccessorOf(Set x) {
-		return false;
-	}
+//	/**
+//	 * {@inheritDoc}
+//	 * All EmptySet objects are empty.
+//	 * @return false
+//	 */
+//	@Override
+//	public final boolean isSuccessorOf(Set x) {
+//		return false;
+//	}
 	/**
      * {@inheritDoc}
 	 * No EmptySet objects are inductive.
 	 * @return false
 	 */
 	@Override
-	public boolean isInductive() {
+	public final boolean isInductive() {
 		return false;
 	}
 	/**

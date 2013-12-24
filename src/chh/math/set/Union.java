@@ -24,15 +24,15 @@ public class Union extends Set {
 		this(new Pair(x, y));
 	}
 	/**
-	 * Constructs a new Union object from an EmptySet.
-	 * The union of an empty set is empty.
+	 * Constructs a new Union object from a singleton containing an EmptySet.
 	 */
 	public Union() {
-		this(new EmptySet());
+		this(new Singleton(new EmptySet()));
 	}
 	
 	/**
      * {@inheritDoc}
+	 * {@code this.contains(x)} if and only if there exists an element of {@code this.baseset} of which x is a member.
      */
 	@Override
 	public boolean contains(Set x) {
@@ -71,9 +71,9 @@ public class Union extends Set {
 	}
 	/**
      * {@inheritDoc}
-	 * A Union is a singleton if and only if:
-	 * its base set contains only a singleton, or
-	 * its base set is a pair containing the empty set and another singleton.
+	 * <p>A Union is a singleton if and only if:
+	 * its base set is a singleton containing a singleton, or
+	 * its base set is a pair containing the empty set and another singleton.</p>
      */
 	@Override
 	public boolean isSingleton() {
@@ -81,8 +81,24 @@ public class Union extends Set {
 		boolean b = this.baseset.isPair() && this.baseset.containsEmpty() && this.baseset.containsSingleton();
 		return a || b;
 	}
+	/**
+     * {@inheritDoc}
+	 * <p>A Union is a pair if and only if:
+	 * this Union is a singleton, or
+	 * its base set is a singleton containing a pair, or
+	 * its base set is a pair containing two unequal singletons, or
+	 * its base set is a pair containing an empty set and a pair (with unequal elements),
+	 * its base set has exactly three unequal elements, containing an empty set and two unequal singletons.</p>
+     */
 	@Override
 	public boolean isPair() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	/**
+     * {@inheritDoc}
+     */
+	@Override
+	public boolean isPowerSetOf(Set x) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	/**
@@ -92,15 +108,12 @@ public class Union extends Set {
 	public boolean isInductive() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-
+	/**
+     * {@inheritDoc}
+	 * @return {@code U(`baseset`)}
+     */
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return "U(" + this.baseset.toString() + ")";
 	}
-
-	
-
-	
-
-	
 }

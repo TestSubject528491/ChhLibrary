@@ -62,7 +62,7 @@ public class Pair extends Set {
 	 * @return false
      */
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 		return false;
 	}
 	/**
@@ -86,7 +86,7 @@ public class Pair extends Set {
 	 * @return true
 	 */
 	@Override
-	public boolean isPair() {
+	public final boolean isPair() {
 		return true;
 	}
 	/**
