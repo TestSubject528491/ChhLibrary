@@ -10,7 +10,7 @@ public final class Number {
     /** Creates a new Number object. */ private Number() {}
     
 	/**
-	 * Returns the number closest to the given parameter within a specified interval. If the parameter is in the interval (inclusive), the method returns the number. If the parameter is outside the interval, the method returns the closest bound (either upper or lower). For example, {@code Number.bound(3.14, 0, 1)} will return {@code 1.0}. This method does not change the value of the given parameter.
+	 * Returns the number closest to the given parameter within a specified inclusive interval. If the parameter is in the interval, the method returns the number. If the parameter is outside the interval, the method returns the closest bound (either upper or lower). For example, {@code Number.bound(3.14, 0, 1)} will return {@code 1.0}. This method does not change the value of the given parameter.
 	 * @param x the number to be tested
 	 * @param lower the lower bound, inclusive
 	 * @param upper the upper bound, inclusive. Must be >= {@code lower}.
