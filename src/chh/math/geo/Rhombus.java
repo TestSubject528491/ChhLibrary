@@ -9,8 +9,8 @@ package chh.math.geo;
 public class Rhombus extends Parallelogram {
 	/** 
 	 * Creates a new Rhombus object.
-	 * @param a the getSide of this rhombus
-	 * @param ang the angle, in degrees, between getSide a and b
+	 * @param a the side of this rhombus
+	 * @param ang the angle, in degrees, between sides a and b
 	 */
 	public Rhombus(double a, double ang) {
 		super(a, a, ang);
