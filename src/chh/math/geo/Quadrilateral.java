@@ -34,6 +34,6 @@ public class Quadrilateral extends Polygon {
 	 * @return the perimeter of this quadrilateral.
 	 */
 	public final Length getPerimeter() {
-		return Geometry.add(new Length[]{this.a, this.b, this.c, this.d});
+		return Length.add(new Length[]{this.a, this.b, this.c, this.d});
 	}
 }

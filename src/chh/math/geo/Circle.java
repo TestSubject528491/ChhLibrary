@@ -30,13 +30,13 @@ public class Circle {
 	 * @return the circumference of this circle.
 	 */
 	public final Length getCircumference() {
-		return Geometry.scale(this.radius, 2 * Math.PI);
+		return Length.scale(this.radius, 2 * Math.PI);
 	}
 	/**
 	 * Returns the area of this circle.
 	 * @return the area of this circle
 	 */
 	public final Area getArea() {
-		return Geometry.scale(Geometry.multiply(radius, radius), Math.PI);
+		return Area.scale(Length.multiply(radius, radius), Math.PI);
 	}
 }

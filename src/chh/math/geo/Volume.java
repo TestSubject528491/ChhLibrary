@@ -20,7 +20,27 @@ public class Volume {
 	 * Returns the value of this volume.
 	 * @return the value of this volume.
 	 */
-	public final double getValue() {
-		return this.value;
+//	public final double getValue() {
+//		return this.value;
+//	}
+	
+	/**
+	 * Multiplies a length by an area and returns a volume.
+	 * @param a the length
+	 * @param b the area
+	 * @return a volume equal to the product of both lengths
+	 */	
+	public static final Volume multiply(Length a, Area b) {
+		return new Volume(a.value * b.value);
+	}
+	/**
+	 * Multiplies an area by a length and returns a volume.
+	 * Equivalent to {@see multiply(Length, Area)}.
+	 * @param a the area
+	 * @param b the length
+	 * @return a volume equal to the product of a and b
+	 */	
+	public static final Volume multiply(Area a, Length b) {
+		return Volume.multiply(b, a);
 	}
 }

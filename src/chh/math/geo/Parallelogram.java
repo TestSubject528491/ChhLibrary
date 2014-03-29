@@ -61,13 +61,13 @@ public class Parallelogram extends Quadrilateral {
 	 * @return the height of this parallelogram
 	 */
 	public Length getHeight() {
-		return new Length(Math.sin(this.getAngle1()) * this.getSide().getValue());
+		return Length.scale(this.side, Math.sin(this.getAngle1()));
 	}
 	/**
 	 * Returns the area of this parallelogram.
 	 * @return the area of this parallelogram
 	 */
 	public final Area getArea() {
-		return Geometry.multiply(this.getBase(), this.getHeight());
+		return Length.multiply(this.getBase(), this.getHeight());
 	}
 }

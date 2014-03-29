@@ -16,7 +16,9 @@ public class RectPrism {
 	
 	/** The base face of this prism. */
 	private final Rectangle base = new Rectangle(this.length, this.width);
+	/** The front face of this prism. */
 	private final Rectangle front = new Rectangle(this.length, this.height);
+	/** The side face of this prism. */
 	private final Rectangle side = new Rectangle(this.width, this.height);
 	
 	/** 
@@ -58,14 +60,14 @@ public class RectPrism {
 	 * @return the volume of this prism
 	 */
 	public final Volume getVolume() {
-		return Geometry.multiply(this.base.getArea(), this.height);
+		return Volume.multiply(this.base.getArea(), this.height);
 	}
 	/**
 	 * Returns the surface area of this prism.
 	 * @return the surface area of this prism
 	 */
 	public final Area getSurfaceArea() {
-		Area sum = Geometry.add(new Area[]{this.base.getArea(), this.front.getArea(), this.side.getArea()});
-		return Geometry.scale(sum, 2);
+		Area sum = Area.add(new Area[]{this.base.getArea(), this.front.getArea(), this.side.getArea()});
+		return Area.scale(sum, 2);
 	}
 }

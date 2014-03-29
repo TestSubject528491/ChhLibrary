@@ -13,6 +13,7 @@ public class Cylinder {
 	
 	/** The base face of this cylinder. */
 	private final Circle base = new Circle(this.radius);
+	/** The side face of this cylinder. */
 	private final Rectangle side = new Rectangle(this.base.getCircumference(), this.height);
 	
 	/** 
@@ -45,13 +46,13 @@ public class Cylinder {
 	 * @return the volume of this cylinder
 	 */
 	public final Volume getVolume() {
-		return Geometry.multiply(this.base.getArea(), this.height);
+		return Volume.multiply(this.base.getArea(), this.height);
 	}
 	/**
 	 * Returns the surface area of this cylinder.
 	 * @return the surface area of this cylinder
 	 */
 	public final Area getSurfaceArea() {
-		return Geometry.add(new Area[]{this.base.getArea(), this.base.getArea(), this.side.getArea()});
+		return Area.add(new Area[]{this.base.getArea(), this.base.getArea(), this.side.getArea()});
 	}
 }
