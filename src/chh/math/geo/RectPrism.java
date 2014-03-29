@@ -8,14 +8,16 @@ package chh.math.geo;
  */
 public class RectPrism {
     /** The length of this prism. */
-	private final double length;
+	private final Length length;
     /** The width of this prism. */
-	private final double width;
+	private final Length width;
     /** The height of this prism. */
-	private final double height;
+	private final Length height;
 	
 	/** The base face of this prism. */
-	private final Rectangle base = new Rectangle(this.getLength(), this.getWidth());
+	private final Rectangle base = new Rectangle(this.length, this.width);
+	private final Rectangle front = new Rectangle(this.length, this.height);
+	private final Rectangle side = new Rectangle(this.width, this.height);
 	
 	/** 
 	 * Creates a new RectPrism object.
@@ -23,7 +25,7 @@ public class RectPrism {
 	 * @param width the width of this prism
 	 * @param height the height of this prism
 	 */
-	public RectPrism(double length, double width, double height) {
+	public RectPrism(Length length, Length width, Length height) {
 		this.length = length;
 		this.width = width;
 		this.height = height;
@@ -33,21 +35,21 @@ public class RectPrism {
 	 * Returns the length of this prism.
 	 * @return the length of this prism
 	 */
-	public final double getLength() {
+	public final Length getLength() {
 		return this.length;
 	}
 	/**
 	 * Returns the width of this prism.
 	 * @return the width of this prism
 	 */
-	public final double getWidth() {
+	public final Length getWidth() {
 		return this.width;
 	}
 	/**
 	 * Returns the height of this prism.
 	 * @return the height of this prism
 	 */
-	public final double getHeight() {
+	public final Length getHeight() {
 		return this.height;
 	}
 
@@ -55,17 +57,15 @@ public class RectPrism {
 	 * Returns the volume of this prism.
 	 * @return the volume of this prism
 	 */
-	public final double getVolume() {
-		return this.base.getArea() * this.getHeight();
+	public final Volume getVolume() {
+		return Geometry.multiply(this.base.getArea(), this.height);
 	}
 	/**
 	 * Returns the surface area of this prism.
 	 * @return the surface area of this prism
 	 */
-	public final double getSurfaceArea() {
-		double lw = this.base.getArea();
-		double lh = new Rectangle(this.getLength(), this.getHeight()).getArea();
-		double wh = new Rectangle(this.getWidth(), this.getHeight()).getArea();
-		return 2 * (lw + lh + wh);
+	public final Area getSurfaceArea() {
+		Area sum = Geometry.add(new Area[]{this.base.getArea(), this.front.getArea(), this.side.getArea()});
+		return Geometry.scale(sum, 2);
 	}
 }

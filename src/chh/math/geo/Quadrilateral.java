@@ -7,13 +7,13 @@ package chh.math.geo;
  */
 public class Quadrilateral extends Polygon {
 	/** One of the four sides lengths of this quadrilateral. */
-	private final double a;
+	private final Length a;
 	/** One of the four sides lengths of this quadrilateral. */
-	private final double b;
+	private final Length b;
 	/** One of the four sides lengths of this quadrilateral. */
-	private final double c;
+	private final Length c;
 	/** One of the four sides lengths of this quadrilateral. */
-	private final double d;
+	private final Length d;
 	/** 
 	 * Creates a new Quadrilateral object.
 	 * @param a one of the four side lengths of this quadrilateral
@@ -21,7 +21,7 @@ public class Quadrilateral extends Polygon {
 	 * @param c one of the four side lengths of this quadrilateral
 	 * @param d one of the four side lengths of this quadrilateral
 	 */
-	public Quadrilateral(double a, double b, double c, double d) {
+	public Quadrilateral(Length a, Length b, Length c, Length d) {
 		super(4);
 		this.a = a;
 		this.b = b;
@@ -33,7 +33,7 @@ public class Quadrilateral extends Polygon {
 	 * Returns the perimeter of this quadrilateral.
 	 * @return the perimeter of this quadrilateral.
 	 */
-	public final double getPerimeter() {
-		return this.a + this.b + this.c + this.d;
+	public final Length getPerimeter() {
+		return Geometry.add(new Length[]{this.a, this.b, this.c, this.d});
 	}
 }

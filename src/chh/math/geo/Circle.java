@@ -7,13 +7,13 @@ package chh.math.geo;
  */
 public class Circle {
 	/** The radius of this circle. */
-	private final double radius;
+	private final Length radius;
 
 	/** 
 	 * Creates a new Circle object.
 	 * @param r the radius of this circle
 	 */
-	public Circle(double r) {
+	public Circle(Length r) {
 		this.radius = r;
 	}
 	
@@ -21,7 +21,7 @@ public class Circle {
 	 * Returns the radius of this circle.
 	 * @return the radius of this circle
 	 */
-	public final double getRadius() {
+	public final Length getRadius() {
 		return this.radius;
 	}
 	
@@ -29,14 +29,14 @@ public class Circle {
 	 * Returns the circumference of this circle.
 	 * @return the circumference of this circle.
 	 */
-	public final double getCircumference() {
-		return 2 * Math.PI * this.getRadius();
+	public final Length getCircumference() {
+		return Geometry.scale(this.radius, 2 * Math.PI);
 	}
 	/**
 	 * Returns the area of this circle.
 	 * @return the area of this circle
 	 */
-	public final double getArea() {
-		return Math.PI * this.getRadius() * this.getRadius();
+	public final Area getArea() {
+		return Geometry.scale(Geometry.multiply(radius, radius), Math.PI);
 	}
 }

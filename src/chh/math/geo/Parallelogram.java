@@ -8,9 +8,9 @@ package chh.math.geo;
  */
 public class Parallelogram extends Quadrilateral {
 	/** The base of this parallelogram. */
-	private final double base;
+	private final Length base;
 	/** The side of this parallelogram. */
-	private final double side;
+	private final Length side;
 	/** The angle between the base and the left side. */
 	private final double angle;
 
@@ -20,7 +20,7 @@ public class Parallelogram extends Quadrilateral {
 	 * @param b the left side of this parallelogram
 	 * @param ang the angle, in degrees, between the base and the left side
 	 */
-	public Parallelogram(double a, double b, double ang) {
+	public Parallelogram(Length a, Length b, double ang) {
 		super(a, b, a, b);
 		this.base = a;
 		this.side = b;
@@ -31,14 +31,14 @@ public class Parallelogram extends Quadrilateral {
 	 * Returns the base of this parallelogram.
 	 * @return the base of this parallelogram
 	 */
-	public final double getBase() {
+	public final Length getBase() {
 		return this.base;
 	}
 	/**
 	 * Returns the side of this parallelogram.
 	 * @return the side of this parallelogram
 	 */
-	public final double getSide() {
+	public final Length getSide() {
 		return this.side;
 	}
 	/**
@@ -60,14 +60,14 @@ public class Parallelogram extends Quadrilateral {
 	 * Returns the height of this parallelogram.
 	 * @return the height of this parallelogram
 	 */
-	public double getHeight() {
-		return Math.sin(this.getAngle1()) * this.getSide();
+	public Length getHeight() {
+		return new Length(Math.sin(this.getAngle1()) * this.getSide().getValue());
 	}
 	/**
 	 * Returns the area of this parallelogram.
 	 * @return the area of this parallelogram
 	 */
-	public final double getArea() {
-		return this.getBase() * this.getHeight();
+	public final Area getArea() {
+		return Geometry.multiply(this.getBase(), this.getHeight());
 	}
 }

@@ -12,7 +12,7 @@ public class Rhombus extends Parallelogram {
 	 * @param a the side of this rhombus
 	 * @param ang the angle, in degrees, between sides a and b
 	 */
-	public Rhombus(double a, double ang) {
+	public Rhombus(Length a, double ang) {
 		super(a, a, ang);
 	}	
 }

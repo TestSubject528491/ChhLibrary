@@ -7,19 +7,20 @@ package chh.math.geo;
  */
 public class Cylinder {
     /** The radius of this cylinder. */
-	private final double radius;
+	private final Length radius;
     /** The height of this cylinder. */
-	private final double height;
+	private final Length height;
 	
 	/** The base face of this cylinder. */
-	private final Circle base = new Circle(this.getRadius());
+	private final Circle base = new Circle(this.radius);
+	private final Rectangle side = new Rectangle(this.base.getCircumference(), this.height);
 	
 	/** 
 	 * Creates a new Cylinder object.
 	 * @param radius the radius of this cylinder
 	 * @param height the height of this cylinder
 	 */
-	public Cylinder(double radius, double height) {
+	public Cylinder(Length radius, Length height) {
 		this.radius = radius;
 		this.height = height;
 	}
@@ -28,14 +29,14 @@ public class Cylinder {
 	 * Returns the radius of this cylinder.
 	 * @return the radius of this cylinder
 	 */
-	public final double getRadius() {
+	public final Length getRadius() {
 		return this.radius;
 	}
 	/**
 	 * Returns the height of this cylinder.
 	 * @return the height of this cylinder
 	 */
-	public final double getHeight() {
+	public final Length getHeight() {
 		return this.height;
 	}
 
@@ -43,16 +44,14 @@ public class Cylinder {
 	 * Returns the volume of this cylinder.
 	 * @return the volume of this cylinder
 	 */
-	public final double getVolume() {
-		return this.base.getArea() * this.getHeight();
+	public final Volume getVolume() {
+		return Geometry.multiply(this.base.getArea(), this.height);
 	}
 	/**
 	 * Returns the surface area of this cylinder.
 	 * @return the surface area of this cylinder
 	 */
-	public final double getSurfaceArea() {
-		double bottom = this.base.getArea();
-		double side = new Rectangle(this.base.getCircumference(), this.getHeight()).getArea();
-		return 2 * bottom + side;
+	public final Area getSurfaceArea() {
+		return Geometry.add(new Area[]{this.base.getArea(), this.base.getArea(), this.side.getArea()});
 	}
 }

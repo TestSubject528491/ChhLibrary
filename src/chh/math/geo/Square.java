@@ -10,7 +10,7 @@ public class Square extends Rectangle {
 	 * Creates a new Square object.
 	 * @param a the side of this square
 	 */
-	public Square(double a) {
+	public Square(Length a) {
 		super(a, a);
 	}	
 }

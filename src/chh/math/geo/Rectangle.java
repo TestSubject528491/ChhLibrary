@@ -9,14 +9,14 @@ package chh.math.geo;
  */
 public class Rectangle extends Parallelogram {
 	/** The height of this rectangle. */
-	private final double height;
+	private final Length height;
 
 	/** 
 	 * Creates a new Rectangle object.
 	 * @param a the base of this rectangle
 	 * @param b the height of this rectangle
 	 */
-	public Rectangle(double a, double b) {
+	public Rectangle(Length a, Length b) {
 		super(a, b, 90);
 		this.height = b;
 	}
@@ -26,7 +26,7 @@ public class Rectangle extends Parallelogram {
 	 * An efficiency class.
 	 * @return the height of this rectangle
 	 */
-	public double getHeight() {
+	public Length getHeight() {
 		return this.height;
 	}
 }
