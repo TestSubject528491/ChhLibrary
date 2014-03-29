@@ -15,7 +15,7 @@ public class RectPrism {
 	private final double height;
 	
 	/** The base face of this prism. */
-	private final Rectangle Base = new Rectangle(this.getLength(), this.getWidth());
+	private final Rectangle base = new Rectangle(this.getLength(), this.getWidth());
 	
 	/** 
 	 * Creates a new RectPrism object.
@@ -56,16 +56,16 @@ public class RectPrism {
 	 * @return the volume of this prism
 	 */
 	public final double getVolume() {
-		return this.Base.getArea() * this.getHeight();
+		return this.base.getArea() * this.getHeight();
 	}
 	/**
 	 * Returns the surface area of this prism.
 	 * @return the surface area of this prism
 	 */
 	public final double getSurfaceArea() {
-		Rectangle lw = new Rectangle(this.getLength(), this.getWidth());
-		Rectangle lh = new Rectangle(this.getLength(), this.getHeight());
-		Rectangle wh = new Rectangle(this.getWidth(), this.getHeight());
-		return 2 * (lw.getArea() + lh.getArea() + wh.getArea());
+		double lw = this.base.getArea();
+		double lh = new Rectangle(this.getLength(), this.getHeight()).getArea();
+		double wh = new Rectangle(this.getWidth(), this.getHeight()).getArea();
+		return 2 * (lw + lh + wh);
 	}
 }
