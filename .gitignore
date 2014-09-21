@@ -8,7 +8,7 @@ build
 
 dist
 
-# Herebelow are the default .gitignore commands given by GitHub
+# Herebelow are GitHub's default .gitignore commands for Java projects
 
 *.class
 
