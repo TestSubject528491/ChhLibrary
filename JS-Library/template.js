@@ -1,67 +1,93 @@
-// to create a Class's constructor:
-function Person(fname, lname, age) {
+// to create a Class constructor:
+function Person(fname, lname, age, lotterynumber) {
   // to create private instance fields (only accessible to constructor)
-  var birth_year = 2014 - age;
-
-  // to create public instance fields (accessible to outside):
-  this.whole_name = fname + ' ' + lname;
+  var winner = 777;
 
   // to create private instance methods:
   // (must be inner functions inside constructor, only accessible to constructor)
-  function agePlusTwo() { return age + 2;}
+  function isLucky() { return lotterynumber == winner; }
+
+  // to create public instance fields (accessible to outside):
+  this.firstname = fname;
+  this.lastname = lname;
+  this.age = age;
 
   // to create "privelaged" instance methods
   // (has access to private fields and methods but is itself accessible to the outside)
-  // better than public instance methods but takes up more space
-  this.setBirthYear = function (changed) { birth_year = changed; return true;}
+  // more access than public instance methods but takes up more space
+  // (a new method is created for each instance)
+  this.setBirthYear = function (changed) { return birth_year = changed; }
 }
 
 // to create public instance methods:
-Person.prototype.getWholeName = function () { return ???.whole_name; } ????????????????????????????
+// less access than "privelaged" instance methods but takes up more space
+// (one method is created and shared for all instances)
+Person.prototype.sayHello = function (greeting) {
+  return greeting + '!  I’m ' + this.firstname + this.lastname + '.'; // may use `this` inside prototype method
+};
 
-// to create public STATIC fields:
-var Person.IS_HUMAN = true;
+// to create public CLASS fields:
+Person.IS_HUMAN = true;
 
-// to create public STATIC methods:
-Person.SPECIES = function(language) {
-  switch(language) {
-    case 'Latin':
-      return 'sapien';
-    case 'English':
-      return 'human';
-    default:
-      return null;
-  }
+// to create public CLASS methods:
+Person.species = function(language) {
+  var returned = null;
+  if (language === 'Latin') returned = 'sapien';
+  else if (language == 'English') returned = 'human';
+  return returned;
+  // switch(language) {
+  //   case 'Latin':
+  //     return 'sapien';
+  //   case 'English':
+  //     return 'human';
+  //   default:
+  //     return null;
+  // }
 }
 
-// to create Global (STATIC) fields:
-var pi = 3.14;
+// to create Global fields:
+var e = 2.718281828;
 
-// to create Global (STATIC) methods:
+// to create Global methods:
 function add(x, y) { return x + y; }
 
 
+var x;
 
 // to create a new object:
 var me = new Person('Chris', 'Harvey', 26);
 
 // to get public instance fields:
-console.log(me.whole_name);
+x = me.firstname;
 
 // to call privelaged instance methods:
-console.log(me.setBirthYear(1987));
+x = me.setBirthYear(1987);
 
 // to call public instance methods:
-console.log(Person.prototype.getWholeName()); ?????????????????????????????????????????????????????
+x = Person.prototype.sayHello('Hey there');
 
-// to call public STATIC fields:
-console.log(Person.IS_HUMAN);
+// to call public CLASS fields:
+x = Person.IS_HUMAN;
 
-// to call public STATIC methods:
-console.log(Person.SPECIES('Latin'));
+// to call public CLASS methods:
+x = Person.species('Latin');
 
 // to call Global fields:
-console.log(pi);
+x = e;
 
 // to call Global methods:
-console.log(add(2, 3));
+x = add(2, 3);
+
+
+
+// to create a subclass:
+function Student(fname, lname, age, studentnumber, major) {
+  Person.call(this, fname, lname, age, lotterynumber);
+
+  this.major = major;
+}
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+Student.prototype.sayHello = function (greeting) {
+  console.log(greeting + '! I’m ' + this.firstName + '. I’m studying ' + this.major + '!');
+};
