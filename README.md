@@ -1,4 +1,4 @@
-chh-util
-========
+ChhLib
+======
 
-A set of Java utility classes for performing basic computational functions.
+A Library used for hosting things that can be used in other projects.
