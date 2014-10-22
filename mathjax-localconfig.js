@@ -33,4 +33,4 @@ MathJax.Hub.Config({
 	}
 });
 
-MathJax.Ajax.loadComplete('http://chharvey.github.io/hosting/mathjax-localconfig.js');
+MathJax.Ajax.loadComplete('http://chharvey.github.io/chhlib/mathjax-localconfig.js');
