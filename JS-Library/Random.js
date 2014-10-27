@@ -18,9 +18,8 @@ Random.randTo(number) {
 
 /**
   * Selects a uniformly distributed random non-negative integer less than the given parameter.
-  * In other words, selects an integer within [0, number).
   * @param number a positive integer, the exclusive least upper bound of the interval
-  * @return       a randomly selected nonnegative integer less than the param
+  * @return       a randomly selected integer within [0, number)
   */
 Random.randToInt(number) {
   return Math.floor(randTo(number));
@@ -48,6 +47,5 @@ Random.randBetween(low, high) {
   */
 Random.randBoolean(p) {
   if (p == null) p = 0.5;
-  if (Math.rand() < p) return true;
-  else                   return false;
+  return (Math.rand() < p);
 }
