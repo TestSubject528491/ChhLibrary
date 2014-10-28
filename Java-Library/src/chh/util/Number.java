@@ -17,12 +17,12 @@ public final class Number {
       * @return the closest number to {@code x} within the interval {@code [lower, upper]}
       */
     public static double bound(double x, double lower, double upper) {
-        double output = x;
+        double returned = x;
         if (lower <= upper) {
-            if      (x < lower) output = lower;
-            else if (x > upper) output = upper;
+            if      (x < lower) returned = lower;
+            else if (x > upper) returned = upper;
         }
-        return output;
+        return returned;
     }
 
     /**
