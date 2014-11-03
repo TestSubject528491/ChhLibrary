@@ -1,6 +1,10 @@
 function Util() {
 }
 
+Util.PHI = (1 + Math.sqrt(5)) / 2;
+Util.PSI = (1 - Math.sqrt(5)) / 2;
+Util.PHI_INV = 1 / Util.PHI;
+
 
 /**
   * Returns the number closest to the given parameter within a specified closed interval [lower, upper].
@@ -93,6 +97,24 @@ Util.triangularRecursive = function (integer) {
   else if (integer == 0) sum = 0;
   else sum = -1;
   return sum;
+}
+
+/**
+  * Returns the `n`th term of the Fibonacci sequence, where `n` is a parameter.
+  * A Fibonacci sequence is constructed with the first two terms specified, and each subsequent
+  * term in the sequence is the sum of the previous two terms. The "smallest" Fibonacci sequence
+  * starts with 1, 1, 2, 3, 5, 8, ... and this function returns a term in that sequence.
+  * @param `n` the position of the term returned. must be an integer
+  * @return    the `n`th term of the sequence
+  */
+Util.fibonacci = function (n) {
+  n++;
+  return (1 / Math.sqrt(5)) * (Math.pow(Util.PHI, n) - Math.pow(Util.PSI, n));
+}
+Util.fibonacciRecursive = function (n) {
+  if (n === 0 || n === 1) return 1;
+  else if (n > 1)         return (Util.fibonacci(n-1) + Util.fibonacci(n-2));
+  else return NaN;
 }
 
 /**
@@ -215,7 +237,7 @@ Util.randGaussian = function(mean, stdev) {
   return stnormal * stdev + mean; // transforms from standard normal to adjuste mean and stdev
 }
 
-function uniformLoop(times, min, max) {
+function uniformTest(times, min, max) {
   var successes = 0;
   var  failures = 0;
   for (var i = 0; i < times && times <= 10000; i++) {
@@ -228,7 +250,7 @@ function uniformLoop(times, min, max) {
   console.log('random sample: ' + x);
 }
 
-function normalLoop(times, min, max, mean, stdev) {
+function normalTest(times, min, max, mean, stdev) {
   if (mean === undefined) mean = 0;
   if (stdev === undefined) stdev = 1;
   var successes = 0;
