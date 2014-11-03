@@ -40,25 +40,6 @@ public class Successor extends Union {
 	public Successor() {
 		this(new EmptySet());
 	}
-    /**
-     * A singleton is a set that owns exactly one element.
-     * This class is not to be confused with a "singleton" class,
-     *  which is a class that can only be instantiated once.
-     * @author Christopher H. Harvey <chrisharvey2pi@gmail.com>
-     * @version 2011.06.15
-     */
-    static class Singleton extends Set {
-        /** The cardinality of all singletons. */
-        //private static final int CARDINALITY = 1;
-        
-        /**
-         * Constructs a new singleton from a given element.
-         * @param s 
-         */
-        public Singleton(Set e) {
-            super(new Set[] {e});
-        }
-    }
 	/**
 	 * Returns the Set of which this object is the Successor.
 	 * @return the Set of which this object is the Successor
