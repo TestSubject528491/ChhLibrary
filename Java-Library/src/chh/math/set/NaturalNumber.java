@@ -1,13 +1,40 @@
 package chh.math.set;
 
 /**
- *
+ * A natural number is an element of every inductive set.
+ * More concretely, a natural number is a non-negative integer, otherwise known as a "counting number."
  * @author  Christopher H. Harvey <chrisharvey2pi@gmail.com>
+ * @version 2011.06.14
  * @version 2013.08.03
  */
 public class NaturalNumber extends Successor {
+    /** The value (and set size) of this object. */
+    private final int value;
 	/** The previous natural number, if it exists. */
 	private NaturalNumber predecessor;
+    
+    /**
+     * Constructs a new Natural object corresponding to the given integer.
+     * @param n a non-negative integer used to identify this object.
+     */
+    public Natural(int n) {
+        /*
+         * algorithm:
+         * if (n == 0) super(); // empty set = 0
+         * if (n == 1) return new Successor(super());         //=1
+         * if (n == 2) return new Successor(new Natural(1));  //=2
+         * if (n == 3) return new Successor(new Natural(2));  //=3
+         * for any n, return new Successor(new Natural(n-1));
+         */
+        //Successor(new Natural(n-1));
+        this.value = java.lang.Math.abs(n);
+    }
+	/**
+     * Constructs the Natural number zero, an empty set.
+     */
+    public Natural() {
+        this(0);
+    }
 	/**
 	 * Constructs a new NaturalNumber object 0 (the empty set).
 	 */
@@ -24,6 +51,30 @@ public class NaturalNumber extends Successor {
 		this.predecessor = x;
 	}
 	
+    /**
+     * Returns the value associated with this object.
+     * @return  an int describing the value of this object.
+     */
+    public final int getValue() {
+        return this.value;
+    }
+
+    /**
+     * Adds a natural number to this one and returns the sum.
+     * @param n The natural number to be added
+     * @return  The sum of this and {@code n}
+     */
+    public Natural add(Natural n) {
+        return new Natural(this.value + n.value);
+    }
+    /**
+     * Multiplies a natural number with this one and returns the product.
+     * @param n The natural number to be multiplied
+     * @return  The product of this and {@code n}
+     */
+    public Natural multiply(Natural n) {
+        return new Natural(this.value * n.value);
+    }
 	/**
 	 * Adds two natural numbers and returns the sum.
 	 * For two natural numbers x and y, the sum is defined:
