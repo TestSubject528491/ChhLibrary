@@ -177,7 +177,6 @@ Util.permute = function (n, r) {
   // The ratio will always be an integer because factorial(n) will always be an integer multiple of factorial(n-r).
 }
 
-
 /**
   * Calculates the number of combinations of n objects taken r at a time.
   * @param n the number of total objects
@@ -189,6 +188,67 @@ Util.combine = function (n, r) {
     var denominator = Util.factorial(r);
     return num / den;
     // The ratio will always be an integer because permute(n, r) will always be an integer multiple of factorial(r).
+}
+
+/**
+  * Returns the output of the Gaussian probability distribution function with given mean and
+  * standard deviation (a normal distribution).
+  * If parameters are not specified, mean = 0 and standard deviation = 1
+  * (the standard normal distribution).
+  * @param `mean` the statistical average of all the data
+  * @param `stdev` the variation in all the data
+  * @return the y-value of a normal distribution
+  */
+Util.gaussianPDF = function (x, mean, stdev) {
+  if (mean === undefined) mean = 0;
+  if (stdev === undefined) stdev = 1;
+  var t = (x - mean) / stdev;
+  return (1 / (stdev * Math.sqrt(2 * Math.PI))) * Math.exp(-t*t / 2);
+}
+
+/**
+  * Returns an *approximation* of the Gaussian cumulative distribution function with given mean and
+  * standard deviation (a normal cumulative distribution).
+  * If parameters are not specified, mean = 0 and standard deviation = 1
+  * (the standard normal distribution).
+  * IMPORTANT: This function is an *approximation*. For large values of |x| (larger than ±10),
+  * this function will return an incorrect value.
+  * @param `mean` the statistical average of all the data
+  * @param `stdev` the variation in all the data
+  * @return the y-value of a normal cumulative distribution
+  */
+Util.gaussianCDF = function (x, mean, stdev) {
+  if (mean === undefined) mean = 0;
+  if (stdev === undefined) stdev = 1;
+  function series(y) {
+    var sum = 0;
+    for (var i = 0; i < 100; i++) {
+      var a = 2*i+1;
+      sum += Math.pow(y, a)/Util.doubleFactorial(a);
+    }
+    return sum;
+  }
+  return 0.5 + (Util.gaussianPDF(x, mean, stdev) * series(x));
+}
+
+/**
+  * Returns the area under a normal curve from `min` to `max`, with given mean and standard deviation.
+  * If parameters are not specified, mean = 0 and standard deviation = 1
+  * (the standard normal distribution).
+  * The area under a normal curve can be interpreted as the probability of obtaining a data value
+  * between `min` and `max`.
+  * The Empirical Rule states the following approximations (where m = mean and s = stdev):
+  * - the probability of obtaining a value within (-1s + m, 1s + m) or (-1, 1): about 68.27%
+  * - the probability of obtaining a value within (-2s + m, 2s + m) or (-2, 2): about 95.45%
+  * - the probability of obtaining a value within (-3s + m, 3s + m) or (-3, 3): about 99.73%
+  * @param `mean` the statistical average of all the data
+  * @param `stdev` the variation in all the data
+  * @return the y-value of a normal cumulative distribution
+  */
+Util.gaussianArea = function (min, max, mean, stdev) {
+  if (mean === undefined) mean = 0;
+  if (stdev === undefined) stdev = 1;
+  return Util.gaussianCDF(max, mean, stdev) - Util.gaussianCDF(min, mean, stdev);
 }
 
 /**
@@ -247,7 +307,7 @@ Util.randBoolean = function (p) {
   * If parameters are not specified, mean = 0 and standard deviation = 1
   * (the standard normal distribution).
   * Note that the range of the output is technically (-infinity, infinity), however
-  * the following probabilities hold (where s = stdev and m = mean):
+  * the following probabilities hold (where m = mean and s = stdev):
   * - the output will be within (-1s + m, 1s + m) or (-1, 1): about 68.27%
   * - the output will be within (-2s + m, 2s + m) or (-2, 2): about 95.45%
   * - the output will be within (-3s + m, 3s + m) or (-3, 3): about 99.73%
@@ -255,7 +315,7 @@ Util.randBoolean = function (p) {
   * [the polar form of the Box-Muller Transformation](http://en.wikipedia.org/wiki/Box-Muller_transform).
   * @param `mean` the statistical average of all the outputs
   * @param `stdev` the variation in all the outputs
-  * @return a *standard* normally-distributed decimal.
+  * @return a normally-distributed decimal.
   */
 Util.randGaussian = function(mean, stdev) {
   if (mean === undefined) mean = 0;
