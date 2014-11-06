@@ -200,8 +200,8 @@ Util.combine = function (n, r) {
   * @return the y-value of a normal distribution
   */
 Util.gaussianPDF = function (x, mean, stdev) {
-  if (mean === undefined) mean = 0;
-  if (stdev === undefined) stdev = 1;
+  mean  = (mean  === undefined) ? 0 : mean;
+  stdev = (stdev === undefined) ? 1 : stdev;
   var t = (x - mean) / stdev;
   return (1 / (stdev * Math.sqrt(2 * Math.PI))) * Math.exp(-t*t / 2);
 }
@@ -218,8 +218,8 @@ Util.gaussianPDF = function (x, mean, stdev) {
   * @return the y-value of a normal cumulative distribution
   */
 Util.gaussianCDF = function (x, mean, stdev) {
-  if (mean === undefined) mean = 0;
-  if (stdev === undefined) stdev = 1;
+  mean  = (mean  === undefined) ? 0 : mean;
+  stdev = (stdev === undefined) ? 1 : stdev;
   function series(y) {
     var sum = 0;
     for (var i = 0; i < 100; i++) {
@@ -246,8 +246,8 @@ Util.gaussianCDF = function (x, mean, stdev) {
   * @return the y-value of a normal cumulative distribution
   */
 Util.gaussianArea = function (min, max, mean, stdev) {
-  if (mean === undefined) mean = 0;
-  if (stdev === undefined) stdev = 1;
+  mean  = (mean  === undefined) ? 0 : mean;
+  stdev = (stdev === undefined) ? 1 : stdev;
   return Util.gaussianCDF(max, mean, stdev) - Util.gaussianCDF(min, mean, stdev);
 }
 
@@ -297,7 +297,7 @@ Util.randBetween = function (low, high) {
   * @return    `true` if a randomly selected number between 0 and 1 is less than `p`
   */
 Util.randBoolean = function (p) {
-  if (p === undefined) p = 0.5;
+  p = (p === undefined) ? 0.5 : p;
   return (Math.random() < p);
 }
 
@@ -318,8 +318,8 @@ Util.randBoolean = function (p) {
   * @return a normally-distributed decimal.
   */
 Util.randGaussian = function(mean, stdev) {
-  if (mean === undefined) mean = 0;
-  if (stdev === undefined) stdev = 1;
+  mean  = (mean  === undefined) ? 0 : mean;
+  stdev = (stdev === undefined) ? 1 : stdev;
   var x, y;
   var s = 0;
   do {
@@ -354,8 +354,8 @@ function uniformTest(times, min, max) {
 }
 
 function normalTest(times, min, max, mean, stdev) {
-  if (mean === undefined) mean = 0;
-  if (stdev === undefined) stdev = 1;
+  mean  = (mean  === undefined) ? 0 : mean;
+  stdev = (stdev === undefined) ? 1 : stdev;
   var successes = 0;
   var  failures = 0;
   for (var i = 0; i < times && times <= 10000; i++) {
