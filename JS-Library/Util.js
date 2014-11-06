@@ -47,31 +47,74 @@ Util.isPrime = function (integer) {
 
 
 /**
-  * Computes the factorial of the given non-negative integer parameter.
-  * The factorial of a positive integer is the product of all the positive integers less than
-  * or equal to that integer. The factorial of 0 is defined to be 1. The factorial of a negative
-  * number is undefined (this method will return NaN).
+  * Computes the factorial of a given non-negative integer.
+  * The factorial of a positive integer `n`, written in mathematical notation as `n!`, is the product
+  * of all the positive integers less than or equal to `n`.
+  * The factorial of 0 is defined to be 1. The factorial of a negative number is undefined
+  * (in that case this method will return NaN).
+  * The recursive form of this function defines `n! { return n * (n-1)! }`
   * @param `integer` a positive integer
   * @return          the product of all the positive integers less than or equal to the parameter
   */
 Util.factorial = function (integer) {
   var product = 1;
   if (integer > 0) {
-    for (var i = 1; i <= integer; i++) {
+    for (var i = integer; i > 0; i--) {
       product *= i;
     }
   }
-  else if (integer == 0) product = 1;
+  else if (integer === 0) product = 1;
   else product = NaN;
   return product;
 }
 Util.factorialRecursive = function (integer) {
   var product = 1;
-  if (integer > 0) product = integer * Util.factorial(integer - 1);
-  else if (integer == 0) product = 1;
-  else product = 0;
+  if (integer > 0) product = integer * Util.factorialRecursive(integer - 1);
+  else if (integer === 0) product = 1;
+  else product = NaN;
   return product;
 }
+
+/**
+  * Computes the double-factorial of a given non-negative integer.
+  * The double-factorial of `n`, written in mathematical notation as `n!!`, is *not* the factorial
+  * of `n!`, but rather the product of every *other* positive integer leading up to `n`.
+  * For example, `7!! == 7 * 5 * 3 * 1` and `6!! == 6 * 4 * 2`
+  * The double-factorial of 0 is defined to be 1. The double-factorial of a negative number is
+  * undefined (in that case this method will return NaN).
+  * The recursive form of this function defines `n!! { return n! / (n-1)!! }`
+  * @param `integer` a positive integer
+  * @return          the product of every other positive integer less than or equal to the parameter
+  */
+Util.doubleFactorial = function (integer) {
+  var product = 1;
+  if (integer > 0) {
+    for (var i = integer; i > 0; i--) {
+      product *= i;
+      i--; // again
+    }
+  }
+  else if (integer === 0) product = 1;
+  else product = NaN;
+  return product;
+}
+Util.doubleFactorialRecursive = function (integer) {
+  var product = 1;
+  if (integer > 0) product = Util.factorial(integer) / Util.doubleFactorialRecursive(integer - 1);
+  else if (integer === 0) product = 1;
+  else product = NaN;
+  return product;
+}
+// function factorialtest(times) {
+//   for (i = 0; i <= times; i++) {
+//     console.log(i + '! = ' + Util.factorial(i) + ' or ' + Util.factorialRecursive(i));
+//   }
+// }
+// function doublefactorialtest(times) {
+//   for (i = 0; i <= times; i++) {
+//     console.log(i + '!! = ' + Util.doubleFactorial(i) + ' or ' + Util.doubleFactorialRecursive(i));
+//   }
+// }
 
 /**
   * Computes the triangular number of the given non-negative integer parameter.
