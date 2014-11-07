@@ -4,6 +4,7 @@ function Util() {
 Util.PHI = (1 + Math.sqrt(5)) / 2;
 Util.PSI = (1 - Math.sqrt(5)) / 2;
 Util.PHI_INV = 1 / Util.PHI;
+Util.TAU = 2 * Math.PI;
 
 
 /**
@@ -15,7 +16,7 @@ Util.PHI_INV = 1 / Util.PHI;
   * @param x the number to be tested
   * @param lower the lower bound, inclusive
   * @param upper the upper bound, inclusive. Must be >= `lower`.
-  * @return the closest number to `x` within the interval [lower, upper]
+  * @return      the closest number to `x` within the interval [lower, upper]
   */
 Util.bound = function (x, lower, upper) {
   var returned = x;
@@ -30,21 +31,18 @@ Util.bound = function (x, lower, upper) {
   * Returns whether a given integer is prime.
   * An integer is mathematically prime if and only if its only positive integer divisors are itself and 1.
   * @param integer the given integer
-  * @return `true` if `integer` is prime
+  * @return        `true` if `integer` is prime
   */
 Util.isPrime = function (integer) {
   var returned = true;
   if (integer <= 1) returned = false;
   else {
-    for (var i = 2; i < integer; i++) {
+    for (var i = 2; i < Math.sqrt(integer); i++) {
       if (integer % i == 0) returned = false;
     }
   }
   return returned;
 }
-
-
-
 
 /**
   * Computes the factorial of a given non-negative integer.
@@ -105,16 +103,6 @@ Util.doubleFactorialRecursive = function (integer) {
   else product = NaN;
   return product;
 }
-// function factorialtest(times) {
-//   for (i = 0; i <= times; i++) {
-//     console.log(i + '! = ' + Util.factorial(i) + ' or ' + Util.factorialRecursive(i));
-//   }
-// }
-// function doublefactorialtest(times) {
-//   for (i = 0; i <= times; i++) {
-//     console.log(i + '!! = ' + Util.doubleFactorial(i) + ' or ' + Util.doubleFactorialRecursive(i));
-//   }
-// }
 
 /**
   * Computes the triangular number of the given non-negative integer parameter.
@@ -197,32 +185,35 @@ Util.combine = function (n, r) {
   * (the standard normal distribution).
   * @param `mean` the statistical average of all the data
   * @param `stdev` the variation in all the data
-  * @return the y-value of a normal distribution
+  * @return the y-value of a normal probability distribution function
   */
 Util.gaussianPDF = function (x, mean, stdev) {
   mean  = (mean  === undefined) ? 0 : mean;
   stdev = (stdev === undefined) ? 1 : stdev;
   var t = (x - mean) / stdev;
-  return (1 / (stdev * Math.sqrt(2 * Math.PI))) * Math.exp(-t*t / 2);
+  return (1 / (stdev * Math.sqrt(Util.TAU))) * Math.exp(-t*t / 2);
 }
 
 /**
   * Returns an *approximation* of the Gaussian cumulative distribution function with given mean and
   * standard deviation (a normal cumulative distribution).
+  * The cumulative distribution function is the integral of the probability distribution function.
   * If parameters are not specified, mean = 0 and standard deviation = 1
   * (the standard normal distribution).
   * IMPORTANT: This function is an *approximation*. For large values of |x| (larger than ±10),
-  * this function will return an incorrect value.
+  * this function will return an incorrect value; thus specify the `accuracy` parameter.
+  * The `accuracy` parameter is 100 by default. Specify a larger value for increased accuracy.
   * @param `mean` the statistical average of all the data
   * @param `stdev` the variation in all the data
   * @return the y-value of a normal cumulative distribution
   */
-Util.gaussianCDF = function (x, mean, stdev) {
+Util.gaussianCDF = function (x, mean, stdev, accuracy) {
   mean  = (mean  === undefined) ? 0 : mean;
   stdev = (stdev === undefined) ? 1 : stdev;
+  accuracy = (accuracy === undefined) ? 100 : accuracy;
   function series(y) {
     var sum = 0;
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < accuracy; i++) {
       var a = 2*i+1;
       sum += Math.pow(y, a)/Util.doubleFactorial(a);
     }
@@ -243,7 +234,7 @@ Util.gaussianCDF = function (x, mean, stdev) {
   * - the probability of obtaining a value within (-3s + m, 3s + m) or (-3, 3): about 99.73%
   * @param `mean` the statistical average of all the data
   * @param `stdev` the variation in all the data
-  * @return the y-value of a normal cumulative distribution
+  * @return gaussianCDF(max) - gaussianCDF(min)
   */
 Util.gaussianArea = function (min, max, mean, stdev) {
   mean  = (mean  === undefined) ? 0 : mean;
@@ -255,8 +246,7 @@ Util.gaussianArea = function (min, max, mean, stdev) {
   * Selects a uniformly distributed random decimal within the interval [0, 1).
   * @return Math.random();
   */
-Util.rand = Math.random;
-// Util.rand = function () { return Math.random(); }
+Util.rand = Math.random; // = function () { return Math.random(); }
 
 /**
   * Selects a uniformly distributed random non-negative decimal less than the given parameter.
@@ -269,10 +259,10 @@ Util.randTo = function (number) {
 
 /**
   * Selects a uniformly distributed random non-negative integer less than the given parameter.
-  * @param number a positive integer, the exclusive least upper bound of the interval
-  * @return       a randomly selected integer within [0, number)
+  * @param integer a positive integer, the exclusive least upper bound of the interval
+  * @return        a randomly selected integer within [0, integer)
   */
-Util.randToInt = function (number) {
+Util.randToInt = function (integer) {
   return Math.floor(Util.randTo(number));
 }
 
@@ -332,12 +322,12 @@ Util.randGaussian = function(mean, stdev) {
     = sqrt( -ln(s^2)    / s )
     = sqrt( -2ln(s)     / s )
   */
-  var m = Math.sqrt(Math.log(1/(s * s)) / s);
-      m = Math.sqrt(-2 * Math.log(s) / s);
+  // var m = Math.sqrt(Math.log(1/(s * s)) / s);
+  var m = Math.sqrt(-2 * Math.log(s) / s);
   x *= m;
   y *= m;
   var stnormal = (Util.randBoolean()) ? x : y; // returns either x or y, chosen randomly
-  return stnormal * stdev + mean; // transforms from standard normal to adjuste mean and stdev
+  return stnormal * stdev + mean; // transforms from standard normal to adjusted mean and stdev
 }
 
 function uniformTest(times, min, max) {
@@ -366,4 +356,16 @@ function normalTest(times, min, max, mean, stdev) {
   console.log('successes: ' + successes);
   console.log('failures:  ' +  failures);
   console.log('random sample: ' + x);
+}
+
+function factorialtest(times) {
+  for (i = 0; i <= times; i++) {
+    console.log(i + '! = ' + Util.factorial(i) + ' or ' + Util.factorialRecursive(i));
+  }
+}
+
+function doublefactorialtest(times) {
+  for (i = 0; i <= times; i++) {
+    console.log(i + '!! = ' + Util.doubleFactorial(i) + ' or ' + Util.doubleFactorialRecursive(i));
+  }
 }
