@@ -1,10 +1,11 @@
 /**
-  * Creates a discrete uniform (constant) distribution with a given number of outcomes.
-  * If parameter is not specified, the default paramater is
-  * outcomes = 1 (the standard uniform distribution).
+  * Creates a general discrete probability distribution with a given number of outcomes.
+  * If parameter is not specified, the default paramater is outcomes = 1.
+  * Assumes the domain is the closed interval [0, outcomes - 1].
+  * For example, if `outcomes = 6`, then the inputs consist of {0, 1, 2, 3, 4, 5}.
   * @param `outcomes` the number of total outcomes
   */
-function DiscreteUniformDistribution(outcomes) {
+function DiscreteDistribution(outcomes) {
   this.outcomes = (outcomes > 0) ? outcomes : 1;
 }
 
@@ -14,8 +15,7 @@ function DiscreteUniformDistribution(outcomes) {
   * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
-DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  return 1 / this.outcomes;
+DiscreteDistribution.prototype.evalPDF = function (x) {
 }
 
 /**
@@ -25,8 +25,12 @@ DiscreteUniformDistribution.prototype.evalPDF = function (x) {
   * @param `x` the input of the CDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
-DiscreteUniformDistribution.prototype.evalCDF = function (x) {
-  return this.evalPDF(0) * (x + 1);
+DiscreteDistribution.prototype.evalCDF = function (x) {
+  var sum = 0;
+  for (var i = 0; i <= x; i++) {
+    sum += this.evalPDF(i);
+  }
+  return sum;
 }
 
 /**
@@ -37,20 +41,24 @@ DiscreteUniformDistribution.prototype.evalCDF = function (x) {
   * @param `max` the upper bound of the input
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
-DiscreteUniformDistribution.prototype.area = function (min, max) {
+DiscreteDistribution.prototype.area = function (min, max) {
   return this.evalCDF(max) - this.evalCDF(min);
 }
 
 /** Returns the mean (statistical average) of this distribution. */
-DiscreteUniformDistribution.prototype.getMean = function () {
-  return (this.outcomes - 1) / 2; // (1 / this.outcomes) * Util.triangular(this.outcomes - 1);
+DiscreteDistribution.prototype.getMean = function () {
+  var sum = 0;
+  for (var i = 0; i < this.outcomes; i++) {
+    sum += i * this.evalPDF(i);
+  }
+  return sum;
 }
 
 /** Returns the standard deviation (statistical spread) of this distribution. */
-DiscreteUniformDistribution.prototype.getStdev = function () {
+DiscreteDistribution.prototype.getStdev = function () {
   var sum = 0;
   for (var i = 0; i < this.outcomes; i++) {
-    sum += Math.pow(i - this.getMean(), 2);
+    sum += Math.pow(i - this.getMean(), 2) * this.evalPDF(i);
   }
-  return this.evalPDF(i) * sum;
+  return sum;
 }

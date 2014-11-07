@@ -6,8 +6,8 @@
   * @param `stdev` the variation in all the data
   */
 function NormalDistribution(mean, stdev) {
-  this.mean  = (mean  === undefined) ? 0 : mean;
-  this.stdev = (stdev === undefined) ? 1 : stdev;
+  this.mean  = (typeof mean  === 'number') ? mean  : 0;
+  this.stdev = (typeof stdev === 'number') ? stdev : 1;
 }
 
 /**
