@@ -11,7 +11,7 @@ function NormalDistribution(mean, stdev) {
 }
 
 /**
-  * Returns the output of the probability density function of this object.
+  * Returns the output of the probability density function of this distribution.
   * This value is not statistically relevant.
   * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
@@ -48,14 +48,14 @@ NormalDistribution.prototype.evalCDF = function (x, accuracy) {
 /**
   * Returns the area under the PDF from `min` to `max`.
   * The area under the PDF can be interpreted as the probability of obtaining a datum
-  * within the open interval `(min, max)`.
+  * within the closed interval `[min, max]`.
   * The Empirical Rule states the following approximations (where m = mean and s = stdev):
-  * - the probability of obtaining a value within (-1s + m, 1s + m) or (-1, 1): about 68.27%
-  * - the probability of obtaining a value within (-2s + m, 2s + m) or (-2, 2): about 95.45%
-  * - the probability of obtaining a value within (-3s + m, 3s + m) or (-3, 3): about 99.73%
+  * - the probability of obtaining a value within [-1s + m, 1s + m] or [-1, 1]: about 68.27%
+  * - the probability of obtaining a value within [-2s + m, 2s + m] or [-2, 2]: about 95.45%
+  * - the probability of obtaining a value within [-3s + m, 3s + m] or [-3, 3]: about 99.73%
   * @param `min` the lower bound of the input
   * @param `max` the upper bound of the input
-  * @return self.evalCDF(max) - self.evalCDF(min)
+  * @return this.evalCDF(max) - this.evalCDF(min)
   */
 NormalDistribution.prototype.area = function (min, max) {
   return this.evalCDF(max) - this.evalCDF(min);

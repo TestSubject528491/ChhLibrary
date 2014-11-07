@@ -107,7 +107,7 @@ Util.doubleFactorialRecursive = function (integer) {
 /**
   * Computes the triangular number of the given non-negative integer parameter.
   * The triangular of a non-negative integer is the sum of all the non-negative integers less than
-  * or equal to that integer. The triangular of a negative number is undefined (this method will return -1).
+  * or equal to that integer. The triangular of a negative number is undefined (this method will return NaN).
   * @param `integer` a positive integer
   * @return          the sum of all the non-negative integers less than or equal to the parameter
   */
@@ -118,15 +118,15 @@ Util.triangular = function (integer) {
       sum += i;
     }
   }
-  else if (integer == 0) sum = 0;
-  else sum = -1;
+  else if (integer == 0) sum += 0;
+  else sum = NaN;
   return sum;
 }
 Util.triangularRecursive = function (integer) {
-  var sum = 1;
+  var sum = 0;
   if (integer > 0) sum = integer + Util.triangular(integer - 1);
-  else if (integer == 0) sum = 0;
-  else sum = -1;
+  else if (integer == 0) sum += 0;
+  else sum = NaN;
   return sum;
 }
 
