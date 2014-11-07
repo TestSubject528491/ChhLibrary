@@ -11,10 +11,12 @@ function DiscreteDistribution(outcomes) {
 /**
   * Returns the output of the probability density function of this distribution.
   * This value is the probability of obtaining any one outcome.
-  * @param `x` the input of the PDF to evaluate
+  * @param `x` the input of the PDF to evaluate; defaults to 0
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteDistribution.prototype.evalPDF = function (x) {
+  if (x === -Infinity || x === Infinity) return 0;
+  x = (x === undefined) ? 0 : x;
 }
 
 /**
@@ -25,6 +27,8 @@ DiscreteDistribution.prototype.evalPDF = function (x) {
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteDistribution.prototype.evalCDF = function (x) {
+  if      (x === -Infinity) return 0;
+  else if (x ===  Infinity) return 1;
   x = (typeof x === 'number') ? x : 0;
   var sum = 0;
   for (var i = 0; i <= x; i++) {

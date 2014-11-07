@@ -1,9 +1,7 @@
 /**
   * Creates a normal (Gaussian) distribution with a given mean and standard deviation.
-  * If parameters are not specified, the default paramaters are
-  * mean = 0 and standard deviation = 1 (the standard normal distribution).
-  * @param `mean` the statistical average of all the data
-  * @param `stdev` the variation in all the data
+  * @param `mean` the statistical average of all the data; defaults to 0
+  * @param `stdev` the variation in all the data; defaults to 1
   */
 function NormalDistribution(mean, stdev) {
   this.mean  = (typeof mean  === 'number') ? mean  : 0;
@@ -13,10 +11,11 @@ function NormalDistribution(mean, stdev) {
 /**
   * Returns the output of the probability density function of this distribution.
   * In a continuous distribution, this value is not statistically relevant.
-  * @param `x` the input of the PDF to evaluate
+  * @param `x` the input of the PDF to evaluate; defaults to 0
   * @return    the y-value of the PDF evaluated at `x`
   */
 NormalDistribution.prototype.evalPDF = function (x) {
+  x = (x === undefined) ? 0 : x;
   var t = (x - this.mean) / this.stdev;
   return (1 / (this.stdev * Math.sqrt(Util.TAU))) * Math.exp(-t*t / 2);
 }
@@ -28,11 +27,12 @@ NormalDistribution.prototype.evalPDF = function (x) {
   * IMPORTANT: This function is an *approximation*. For large values of |x| (larger than ±10),
   * this function will return an incorrect value; thus specify the `accuracy` parameter.
   * The `accuracy` parameter is 100 by default. Specify a larger value for increased accuracy.
-  * @param `x`        the input of the CDF to evaluate
-  * @param `accuracy` the number of terms in the series in the calculation of this function
+  * @param `x`        the input of the CDF to evaluate; defaults to 0
+  * @param `accuracy` the number of terms in the series in the calculation of this function; defaults to 100
   * @return           the y-value of the PDF evaluated at `x`
   */
 NormalDistribution.prototype.evalCDF = function (x, accuracy) {
+  x = (typeof x === 'number') ? x : 0;
   accuracy = (accuracy === undefined) ? 100 : accuracy;
   function series(y) {
     var sum = 0;

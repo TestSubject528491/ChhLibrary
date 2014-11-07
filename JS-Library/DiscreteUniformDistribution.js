@@ -1,6 +1,6 @@
 /**
   * Creates a discrete uniform (constant) distribution with a given number of outcomes.
-  * @param `outcomes` the number of total outcomes; defaults to 1 (the standard uniform distribution)
+  * @param `outcomes` the number of total outcomes; defaults to 1
   */
 function DiscreteUniformDistribution(outcomes) {
   this.outcomes = (outcomes > 0) ? outcomes : 1;
@@ -9,11 +9,13 @@ function DiscreteUniformDistribution(outcomes) {
 /**
   * Returns the output of the probability density function of this distribution.
   * This value is the probability of obtaining any one outcome.
-  * @param `x` the input of the PDF to evaluate
+  * @param `x` the input of the PDF to evaluate; defulats to 0
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  return 1 / this.outcomes;
+  if (x === -Infinity || x === Infinity) return 0;
+  if ((0 < x || 0 === x) && x < this.outcomes) return 1 / this.outcomes;
+  if (isaNumber(x)) return 0;
 }
 
 /**
@@ -24,6 +26,8 @@ DiscreteUniformDistribution.prototype.evalPDF = function (x) {
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalCDF = function (x) {
+  if      (x === -Infinity) return 0;
+  else if (x ===  Infinity) return 1;
   x = (typeof x === 'number') ? x : 0;
   return this.evalPDF(0) * (x + 1);
 }
