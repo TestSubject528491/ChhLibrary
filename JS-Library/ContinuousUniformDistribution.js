@@ -1,57 +1,61 @@
 /**
-  * Creates a discrete uniform (constant) distribution with a given number of outcomes.
-  * @param `outcomes` the number of total outcomes; defaults to 1 (the standard uniform distribution)
+  * Creates a continuous uniform (constant) distribution over a given domain.
+  * If the domain is not specified, it defaults to [0,1] (the standard uniform distribution).
+  * @param `low`  the minimum of the domain [low, high]
+  * @param `high` the maximum of the domain [low, high]
   */
-function DiscreteUniformDistribution(outcomes) {
-  this.outcomes = (outcomes > 0) ? outcomes : 1;
+function DiscreteUniformDistribution(low, high) {
+  this.low  = (typeof low  === 'number') ? low  : 0;
+  this.high = (typeof high === 'number') ? high : 1;
 }
 
 /**
   * Returns the output of the probability density function of this distribution.
-  * This value is the probability of obtaining any one outcome.
+  * In a continuous distribution, this value is not statistically relevant.
   * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  return 1 / this.outcomes;
+  var returned = 0;
+  if (this.low <= x && x <= this.high) returned = 1 / (this.high - this.low);
+  return returned;
 }
 
 /**
   * Returns the cumulative distribution function of this distribution.
   * The CDF is the integral of the PDF. It can be statistically interpreted as the probability
   * of obtaining an outcome less than or equal to the input.
-  * @param `x` the input of the CDF to evaluate; defaults to 0
+  * @param `x` the input of the CDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalCDF = function (x) {
-  x = (typeof x === 'number') ? x : 0;
-  return this.evalPDF(0) * (x + 1);
+  var returned;
+  if (x < this.low)                         returned = 0;
+  else if (this.low <= x && x <= this.high) returned = (x - this.low) * this.evalPDF(x);
+  else if (this.high < x)                   returned = 1;
+  return returned;
 }
 
 /**
   * Returns the area under the PDF from `min` to `max`.
   * The area under the PDF can be interpreted as the probability of obtaining a datum
   * within the closed interval `[min, max]`.
-  * @param `min` the lower bound of the input; defaults to 0
-  * @param `max` the upper bound of the input; defaults to `this.outcomes - 1`
+  * @param `min` the lower bound of the input; defaults to `-Infinity`
+  * @param `max` the upper bound of the input; defaults to `Infinity`
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
 DiscreteUniformDistribution.prototype.area = function (min, max) {
-  min = (typeof min === 'number') ? min : 0;
-  max = (typeof max === 'number') ? max : this.outcomes - 1;
+  min = (typeof min === 'number') ? min : -Infinity;
+  max = (typeof max === 'number') ? max :  Infinity;
   return this.evalCDF(max) - this.evalCDF(min);
 }
 
 /** Returns the mean (statistical average) of this distribution. */
 DiscreteUniformDistribution.prototype.getMean = function () {
-  return (this.outcomes - 1) / 2; // (1 / this.outcomes) * Util.triangular(this.outcomes - 1);
+  return (this.low + this.high) / 2;
 }
 
 /** Returns the standard deviation (statistical spread) of this distribution. */
 DiscreteUniformDistribution.prototype.getStdev = function () {
-  var sum = 0;
-  for (var i = 0; i < this.outcomes; i++) {
-    sum += Math.pow(i - this.getMean(), 2);
-  }
-  return this.evalPDF(i) * sum;
+  return Math.pow(this.high - this.low, 2) / 12;
 }

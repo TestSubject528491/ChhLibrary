@@ -12,7 +12,7 @@ function NormalDistribution(mean, stdev) {
 
 /**
   * Returns the output of the probability density function of this distribution.
-  * This value is not statistically relevant.
+  * In a continuous distribution, this value is not statistically relevant.
   * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
@@ -53,11 +53,13 @@ NormalDistribution.prototype.evalCDF = function (x, accuracy) {
   * - the probability of obtaining a value within [-1s + m, 1s + m] or [-1, 1]: about 68.27%
   * - the probability of obtaining a value within [-2s + m, 2s + m] or [-2, 2]: about 95.45%
   * - the probability of obtaining a value within [-3s + m, 3s + m] or [-3, 3]: about 99.73%
-  * @param `min` the lower bound of the input
-  * @param `max` the upper bound of the input
+  * @param `min` the lower bound of the input; defaults to `-Infinity`
+  * @param `max` the upper bound of the input; defaults to `Infinity`
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
 NormalDistribution.prototype.area = function (min, max) {
+  min = (typeof min === 'number') ? min : -Infinity;
+  max = (typeof max === 'number') ? max :  Infinity;
   return this.evalCDF(max) - this.evalCDF(min);
 }
 
