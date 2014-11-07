@@ -11,24 +11,21 @@ function DiscreteUniformDistribution(low, high) {
 /**
   * Returns the output of the probability density function of this distribution.
   * In a continuous distribution, this value is not statistically relevant.
-  * @param `x` the input of the PDF to evaluate; defaults to 0
+  * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  x = (x === undefined) ? 0 : x;
-  if (this.low <= x && x <= this.high) return 1 / (this.high - this.low);
-  else return = 0;
+  return (this.low <= x && x <= this.high) ? 1 / (this.high - this.low) : 0;
 }
 
 /**
   * Returns the cumulative distribution function of this distribution.
   * The CDF is the integral of the PDF. It can be statistically interpreted as the probability
   * of obtaining an outcome less than or equal to the input.
-  * @param `x` the input of the CDF to evaluate; defaults to 0
+  * @param `x` the input of the CDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalCDF = function (x) {
-  x = (typeof x === 'number') ? x : 0;
   if (x < this.low)                         return 0;
   else if (this.low <= x && x <= this.high) return (x - this.low) * this.evalPDF(x);
   else if (this.high < x)                   return 1;
@@ -39,13 +36,11 @@ DiscreteUniformDistribution.prototype.evalCDF = function (x) {
   * Returns the area under the PDF from `min` to `max`.
   * The area under the PDF can be interpreted as the probability of obtaining a datum
   * within the closed interval `[min, max]`.
-  * @param `min` the lower bound of the input; defaults to `-Infinity`
-  * @param `max` the upper bound of the input; defaults to `Infinity`
+  * @param `min` the lower bound of the input
+  * @param `max` the upper bound of the input
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
 DiscreteUniformDistribution.prototype.area = function (min, max) {
-  min = (typeof min === 'number') ? min : -Infinity;
-  max = (typeof max === 'number') ? max :  Infinity;
   return this.evalCDF(max) - this.evalCDF(min);
 }
 

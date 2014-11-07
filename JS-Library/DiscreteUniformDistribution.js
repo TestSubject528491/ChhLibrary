@@ -9,40 +9,36 @@ function DiscreteUniformDistribution(outcomes) {
 /**
   * Returns the output of the probability density function of this distribution.
   * This value is the probability of obtaining any one outcome.
-  * @param `x` the input of the PDF to evaluate; defulats to 0
+  * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  if (x === -Infinity || x === Infinity) return 0;
-  if ((0 < x || 0 === x) && x < this.outcomes) return 1 / this.outcomes;
-  if (isaNumber(x)) return 0;
+  return (0 <= x && x < this.outcomes) ? 1 / this.outcomes : 0;
 }
 
 /**
   * Returns the cumulative distribution function of this distribution.
   * The CDF is the integral of the PDF. It can be statistically interpreted as the probability
   * of obtaining an outcome less than or equal to the input.
-  * @param `x` the input of the CDF to evaluate; defaults to 0
+  * @param `x` the input of the CDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalCDF = function (x) {
-  if      (x === -Infinity) return 0;
-  else if (x ===  Infinity) return 1;
-  x = (typeof x === 'number') ? x : 0;
-  return this.evalPDF(0) * (x + 1);
+  if (x < 0)                            return 0;
+  else if (0 <= x && x < this.outcomes) return (1 / this.outcomes) * (x + 1);
+  else if (this.outcomes <= x)          return 1;
+  else return NaN;
 }
 
 /**
   * Returns the area under the PDF from `min` to `max`.
   * The area under the PDF can be interpreted as the probability of obtaining a datum
   * within the closed interval `[min, max]`.
-  * @param `min` the lower bound of the input; defaults to 0
-  * @param `max` the upper bound of the input; defaults to `this.outcomes - 1`
+  * @param `min` the lower bound of the input
+  * @param `max` the upper bound of the input
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
 DiscreteUniformDistribution.prototype.area = function (min, max) {
-  min = (typeof min === 'number') ? min : 0;
-  max = (typeof max === 'number') ? max : this.outcomes - 1;
   return this.evalCDF(max) - this.evalCDF(min);
 }
 
