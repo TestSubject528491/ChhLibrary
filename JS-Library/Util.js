@@ -203,7 +203,7 @@ Util.randTo = function (number) {
   * @return        a randomly selected integer within [0, integer)
   */
 Util.randToInt = function (integer) {
-  return Math.floor(Util.randTo(number));
+  return Math.floor(Util.randTo(integer));
 }
 
 /**
