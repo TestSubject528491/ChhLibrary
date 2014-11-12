@@ -1,7 +1,3 @@
-function isaNumber(x) {
-  return typeof x === 'number' && x != NaN;
-}
-
 function Util() {
 }
 

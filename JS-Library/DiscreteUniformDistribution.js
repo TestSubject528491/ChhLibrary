@@ -13,7 +13,7 @@ function DiscreteUniformDistribution(outcomes) {
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  return (0 <= x && x < this.outcomes) ? 1 / this.outcomes : 0;
+  return (0 <= x && x < this.outcomes) ? 1/this.outcomes : 0;
 }
 
 /**
