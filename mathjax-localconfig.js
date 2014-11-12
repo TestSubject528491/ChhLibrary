@@ -25,7 +25,8 @@ MathJax.Hub.Config({
 			NN: '{\\mathbb N}', // natural numbers
 			ZZ: '{\\mathbb Z}', // integers
 			QQ: '{\\mathbb Q}', // rational numbers
-			RR: '{\\mathbb R}'  // real numbers
+			RR: '{\\mathbb R}', // real numbers
+			CC: '{\\mathbb C}'  // complex numbers
 		}
 	},
 	'HTML-CSS': {
