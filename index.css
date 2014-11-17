@@ -27,24 +27,10 @@
 /*##############*\
     index.less
 \*##############*/
-h1 code {
-  font-size: inherit;
+main {
+  width: 90%;
+  margin: 0 5%;
+}
+.MethodHeading code {
   font-style: normal;
-}
-section {
-  display: table;
-  width: 100%;
-}
-.MethodHeading {
-  min-height: 24px;
-  min-height: 1.5rem;
-  display: block;
-  font-family: 'Avenir', 'Calibri', 'Century Gothic', sans-serif;
-  letter-spacing: 1px;
-  text-align: left;
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 1.33333333;
-  font-style: italic;
-  color: #3d6166;
 }
