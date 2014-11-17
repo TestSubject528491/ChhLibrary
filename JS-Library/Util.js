@@ -8,7 +8,7 @@ Util.TAU = 2 * Math.PI;
 
 
 /**
-  * Returns the number closest to the given parameter within a specified closed interval [lower, upper].
+  * Returns the number closest to the given parameter within the closed interval [lower, upper].
   * If the parameter is in the interval, the method returns the number. If the parameter is outside,
   * the method returns the closest bound (either upper or lower).
   * If lower >= upper, then this method will return NaN.
@@ -19,12 +19,11 @@ Util.TAU = 2 * Math.PI;
   * @return      the closest number to `x` within the interval [lower, upper]
   */
 Util.bound = function (x, lower, upper) {
-  var returned = x;
   if (lower <= upper) {
-    if      (x < lower) returned = lower;
-    else if (x > upper) returned = upper;
-  } else returned = NaN;
-  return returned;
+    if      (x < lower) return lower;
+    else if (x > upper) return upper;
+    else                return x;
+  } else return NaN;
 }
 
 /**
@@ -38,7 +37,7 @@ Util.isPrime = function (integer) {
   if (integer <= 1) returned = false;
   else {
     for (var i = 2; i < Math.sqrt(integer); i++) {
-      if (integer % i == 0) returned = false;
+      if (integer % i == 0) returned = returned && false;
     }
   }
   return returned;
@@ -51,7 +50,7 @@ Util.isPrime = function (integer) {
   * The factorial of 0 is defined to be 1. The factorial of a negative number is undefined
   * (in that case this method will return NaN).
   * The recursive form of this function defines `n! { return n * (n-1)! }`
-  * @param `integer` a positive integer
+  * @param `integer` a non-negative integer
   * @return          the product of all the positive integers less than or equal to the parameter
   */
 Util.factorial = function (integer) {
