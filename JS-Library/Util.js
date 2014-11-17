@@ -156,7 +156,7 @@ Util.fibonacciRecursive = function (n) {
 Util.permute = function (n, r) {
   var numerator = 0;
   var denominator = 1;
-  if (n >= r && r >= 1) {
+  if (1 <= r && r <= n) {
     numerator   = Util.factorial(n);
     denominator = Util.factorial(n - r);
   }
