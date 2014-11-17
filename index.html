@@ -4,10 +4,13 @@
 <title>Chris Harvey&rsquo;s Library</title>
 <meta charset="UTF-8"/>
 <meta name="author" content="Christopher H. Harvey"/>
-<link rel="stylesheet" href="http://chharvey.github.io/core/styles/all.css"/>
+<!-- <link rel="stylesheet" href="http://chharvey.github.io/core/styles/all.css"/> -->
 <link rel="stylesheet" href="../chharvey.github.io/core/styles/all.css"/>
 <style>
-h1 code {font-size: inherit;}
+h1 code {
+  font-size: inherit;
+  font-style: normal;
+}
 </style>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://chharvey.github.io/chhlib/mathjax-localconfig.js"></script>
@@ -83,7 +86,7 @@ h1 code {font-size: inherit;}
         <dt class="Term">Param <var>lower</var></dt>
         <dd class="Desc">the minimum of the interval</dd>
         <dt class="Term">Param <var>upper</var></dt>
-        <dd class="Desc">the maximum of the interval (if less than <var>lower</var>,
+        <dd class="Desc">the maximum of the interval (if &lt; <var>lower</var>,
           <code>NaN</code> is returned.</dd>
       </dl>
     </section>
@@ -102,7 +105,7 @@ h1 code {font-size: inherit;}
         <dt class="Term">Description</dt>
         <dd class="Desc">Computes the <a class="Link">factorial</a> of <var>n</var>.</dd>
         <dt class="Term">Param <var>n</var></dt>
-        <dd class="Desc">a non-negative integer to be tested</dd>
+        <dd class="Desc">a non-negative integer</dd>
       </dl>
       <h1 class="H--Del"><code>Util.factorialRecursive(<var>n</var>)</code></h1>
       <dl class="Map Horiz">
@@ -117,13 +120,70 @@ h1 code {font-size: inherit;}
         <dt class="Term">Description</dt>
         <dd class="Desc">Computes the <a class="Link">double-factorial</a> of <var>n</var>.</dd>
         <dt class="Term">Param <var>n</var></dt>
-        <dd class="Desc">a non-negative integer to be tested</dd>
+        <dd class="Desc">a non-negative integer</dd>
       </dl>
       <h1 class="H--Del"><code>Util.doubleFactorialRecursive(<var>n</var>)</code></h1>
       <dl class="Map Horiz">
         <dt class="Term">Description</dt>
         <dd class="Desc">Gives the same result as <code>Util.doubleFactorial(<var>n</var>)</code>,
           but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
+      </dl>
+    </section>
+    <section>
+      <h1 class="H--Del"><code>Util.triangular(<var>n</var>)</code></h1>
+      <dl class="Map Horiz">
+        <dt class="Term">Description</dt>
+        <dd class="Desc">Computes the <a class="Link">triangular</a> of <var>n</var>.</dd>
+        <dt class="Term">Param <var>n</var></dt>
+        <dd class="Desc">a non-negative integer</dd>
+      </dl>
+      <h1 class="H--Del"><code>Util.triangularRecursive(<var>n</var>)</code></h1>
+      <dl class="Map Horiz">
+        <dt class="Term">Description</dt>
+        <dd class="Desc">Gives the same result as <code>Util.triangular(<var>n</var>)</code>,
+          but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
+      </dl>
+    </section>
+    <section>
+      <h1 class="H--Del"><code>Util.fibonacci(<var>n</var>)</code></h1>
+      <dl class="Map Horiz">
+        <dt class="Term">Description</dt>
+        <dd class="Desc">Returns the <var>n</var>th term of the <a class="Link">smallest fibonacci
+          sequence</a>.</dd>
+        <dt class="Term">Param <var>n</var></dt>
+        <dd class="Desc">a non-negative integer</dd>
+      </dl>
+      <h1 class="H--Del"><code>Util.fibonacciRecursive(<var>n</var>)</code></h1>
+      <dl class="Map Horiz">
+        <dt class="Term">Description</dt>
+        <dd class="Desc">Gives the same result as <code>Util.fibonacci(<var>n</var>)</code>,
+          but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
+      </dl>
+    </section>
+    <section>
+      <h1 class="H--Del"><code>Util.permute(<var>n</var>, <var>r</var>)</code></h1>
+      <dl class="Map Horiz">
+        <dt class="Term">Description</dt>
+        <dd class="Desc">Calculates the number of <a class="Link">permutations</a> of
+          <var>n</var> objects taken <var>r</var> at a time.</dd>
+        <dt class="Term">Param <var>n</var></dt>
+        <dd class="Desc">a positive integer &ge; 1: the number of total objects</dd>
+        <dt class="Term">Param <var>r</var></dt>
+        <dd class="Desc">a positive integer &le; <var>n</var>: the number of
+          objects taken at a time</dd>
+      </dl>
+    </section>
+    <section>
+      <h1 class="H--Del"><code>Util.combine(<var>n</var>, <var>r</var>)</code></h1>
+      <dl class="Map Horiz">
+        <dt class="Term">Description</dt>
+        <dd class="Desc">Calculates the number of <a class="Link">combinations</a> of
+          <var>n</var> objects taken <var>r</var> at a time.</dd>
+        <dt class="Term">Param <var>n</var></dt>
+        <dd class="Desc">a positive integer &ge; 1: the number of total objects</dd>
+        <dt class="Term">Param <var>r</var></dt>
+        <dd class="Desc">a positive integer &le; <var>n</var>: the number of
+          objects taken at a time</dd>
       </dl>
     </section>
   </section>
