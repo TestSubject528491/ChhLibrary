@@ -19,11 +19,9 @@ Util.TAU = 2 * Math.PI;
   * @return      the closest number to `x` within the interval [lower, upper]
   */
 Util.bound = function (x, lower, upper) {
-  if (lower <= upper) {
-    if      (x < lower) return lower;
-    else if (x > upper) return upper;
-    else                return x;
-  } else return NaN;
+  if      (x < lower) return lower;
+  else if (x > upper) return upper;
+  else                return x;
 }
 
 /**
@@ -36,7 +34,7 @@ Util.isPrime = function (integer) {
   var returned = true;
   if (integer <= 1) returned = false;
   else {
-    for (var i = 2; i < Math.sqrt(integer); i++) {
+    for (var i = 2; i <= Math.sqrt(integer); i++) {
       if (integer % i == 0) returned = returned && false;
     }
   }
@@ -238,9 +236,9 @@ Util.randBoolean = function (p) {
   * - the output will be within (-3s + m, 3s + m) or (-3, 3): about 99.73%
   * This method uses
   * [the polar form of the Box-Muller Transformation](http://en.wikipedia.org/wiki/Box-Muller_transform).
-  * @param `mean` the statistical average of all the outputs
-  * @param `stdev` the variation in all the outputs
-  * @return a normally-distributed decimal.
+  * @param `mean`  the statistical center of all the outputs
+  * @param `stdev` the statistical spread of all the outputs
+  * @return        a normally-distributed decimal.
   */
 Util.randGaussian = function(mean, stdev) {
   mean  = (mean  === undefined) ? 0 : mean;
