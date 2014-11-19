@@ -27,12 +27,8 @@
 /*##############*\
     index.less
 \*##############*/
-main {
-  width: 90%;
-  margin: 0 5%;
-}
-.MethodHeading code {
-  font-style: normal;
+.H--Bet code {
+  font-size: inherit;
 }
 .FuncTabl {
   display: block;
@@ -83,4 +79,7 @@ main {
 }
 .FuncTabl > .Desc + .Term {
   margin-top: 0;
+}
+.MethodHeading {
+  font-weight: bold;
 }
