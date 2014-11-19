@@ -65,6 +65,17 @@ NormalDistribution.prototype.getMean = function () { return this.mean; }
 /** Returns the standard deviation (statistical spread) of this distribution. */
 NormalDistribution.prototype.getStdev = function () { return this.stdev; }
 
+/**
+  * Selects a Gaussian-distributed random variable of this distribution.
+  * Note that the range of this function's output is technically (-infinity, infinity), however
+  * the following probabilities hold (where m = mean and s = stdev):
+  * - the output will be within (-1s + m, 1s + m) or (-1, 1): about 68.27%
+  * - the output will be within (-2s + m, 2s + m) or (-2, 2): about 95.45%
+  * - the output will be within (-3s + m, 3s + m) or (-3, 3): about 99.73%
+  * This method uses
+  * [the polar form of the Box-Muller Transformation](http://en.wikipedia.org/wiki/Box-Muller_transform).
+  * @return a normally-distributed decimal
+  */
 NormalDistribution.prototype.rand = function () {
   var self = this;
 
