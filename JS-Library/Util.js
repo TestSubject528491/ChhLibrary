@@ -243,24 +243,7 @@ Util.randBoolean = function (p) {
 Util.randGaussian = function(mean, stdev) {
   mean  = (mean  === undefined) ? 0 : mean;
   stdev = (stdev === undefined) ? 1 : stdev;
-  var x, y;
-  var s = 0;
-  do {
-    x = Util.randBetween(-1, 1);
-    y = Util.randBetween(-1, 1);
-    s = x*x + y*y;
-  } while (s <= 0 || 1 <= s); // s must be in the open interval (0,1).
-  /*
-  m = sqrt( ln( 1/s^2 ) / s )
-    = sqrt( -ln(s^2)    / s )
-    = sqrt( -2ln(s)     / s )
-  */
-  // var m = Math.sqrt(Math.log(1/(s * s)) / s);
-  var m = Math.sqrt(-2 * Math.log(s) / s);
-  x *= m;
-  y *= m;
-  var stnormal = (Util.randBoolean()) ? x : y; // returns either x or y, chosen randomly
-  return stnormal * stdev + mean; // transforms from standard normal to adjusted mean and stdev
+  return new NormalDistribution(mean, stdev).rand();
 }
 
 function uniformTest(times, min, max) {
