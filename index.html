@@ -202,120 +202,68 @@
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns <code>Math.random()</code></dd>
-            <dd class="Desc">Returns a uniformly-distributed random non-negative decimal within the
-              half-open interval <span class="M">[0, 1)</span>.</dd>
+            <dd class="Desc">Returns a uniformly-distributed random number within the half-open
+              interval <span class="M">[0, 1)</span>.</dd>
           </dl>
         </dd>
         <dt class="Term MethodHeading"><code>Util.randTo(<var>x</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
-            <dd class="Desc">Returns a uniformly-distributed random non-negative decimal within the
-              half-open interval <span class="M">[0, x)</span>.</dd>
+            <dd class="Desc">Returns a uniformly-distributed random number within the half-open
+              interval <span class="M">[0, x)</span>.</dd>
             <dt class="Term">Param <var>x</var></dt>
-            <dd class="Desc">a non-negative decimal least upper bound</dd>
+            <dd class="Desc">required number <span class="M">x \gt 0</span>; the least upper bound</dd>
           </dl>
         </dd>
         <dt class="Term MethodHeading"><code>Util.randToInt(<var>n</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
-            <dd class="Desc">Returns a uniformly-distributed random non-negative integer within the
-              closed interval <span class="M">[0, n-1]</span>.</dd>
+            <dd class="Desc">Returns a uniformly-distributed random integer within the closed
+              interval <span class="M">[0, n-1]</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
-            <dd class="Desc">a non-negative integer least upper bound</dd>
+            <dd class="Desc">required integer <span class="M">n \gt 0</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.randBetween(<var>a</var>, b)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.randBetween(<var>a</var>, <var>b</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.factorial(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
+            <dd class="Desc">Returns a uniformly-distributed random number within the half-open
+              interval <span class="M">[a, b)</span>.</dd>
+            <dt class="Term">Param <var>a</var></dt>
+            <dd class="Desc">required number; the minimum of the interval</dd>
+            <dt class="Term">Param <var>b</var></dt>
+            <dd class="Desc">required number <span class="M">b \gt a</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.doubleFactorial(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.randBoolean(<var>p</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
-            <dd class="Desc">Computes the <a class="Link">double-factorial</a> of <var>n</var>.</dd>
-            <dt class="Term">Param <var>n</var></dt>
-            <dd class="Desc">a non-negative integer</dd>
+            <dd class="Desc">Returns a Boolean value with the probability <span class="M">p</span>
+              of being <code>true</code>.</dd>
+            <dt class="Term">Param <var>p</var></dt>
+            <dd class="Desc">optional number <span class="M">0 \lt p \lt 1</span> defaults to 0.5;
+              the probability that this method will return <code>true</code></dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.doubleFactorialRecursive(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.randGaussian(<var>m</var>, <var>s</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.doubleFactorial(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd>
-        <dt class="Term MethodHeading"><code>Util.triangular(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Computes the <a class="Link">triangular</a> of <var>n</var>.</dd>
-            <dt class="Term">Param <var>n</var></dt>
-            <dd class="Desc">a non-negative integer</dd>
-          </dl>
-        </dd>
-        <dt class="Term MethodHeading"><code>Util.triangularRecursive(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.triangular(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd>
-        <dt class="Term MethodHeading"><code>Util.fibonacci(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Returns the <var>n</var>th term of the <a class="Link">smallest fibonacci
-              sequence</a>.</dd>
-            <dt class="Term">Param <var>n</var></dt>
-            <dd class="Desc">a non-negative integer</dd>
-          </dl>
-        </dd>
-        <dt class="Term MethodHeading"><code>Util.fibonacciRecursive(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.fibonacci(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd>
-        <dt class="Term MethodHeading"><code>Util.permute(<var>n</var>, <var>r</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Calculates the number of <a class="Link">permutations</a> of
-              <var>n</var> objects taken <var>r</var> at a time.</dd>
-            <dt class="Term">Param <var>n</var></dt>
-            <dd class="Desc">a positive integer &ge; 1: the number of total objects</dd>
-            <dt class="Term">Param <var>r</var></dt>
-            <dd class="Desc">a positive integer &le; <var>n</var>: the number of
-              objects taken at a time</dd>
-          </dl>
-        </dd>
-        <dt class="Term MethodHeading"><code>Util.combine(<var>n</var>, <var>r</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Calculates the number of <a class="Link">combinations</a> of
-              <var>n</var> objects taken <var>r</var> at a time.</dd>
-            <dt class="Term">Param <var>n</var></dt>
-            <dd class="Desc">a positive integer &ge; 1: the number of total objects</dd>
-            <dt class="Term">Param <var>r</var></dt>
-            <dd class="Desc">a positive integer &le; <var>n</var>: the number of
-              objects taken at a time</dd>
+            <dd class="Desc">Returns a <a class="Link">normally-distributed</a> random number
+              with specified mean and standard deviation.</dd>
+            <dt class="Term">Param <var>m</var></dt>
+            <dd class="Desc">optional number defaults to 0;
+              the statistical center of all the outputs</dd>
+            <dt class="Term">Param <var>s</var></dt>
+            <dd class="Desc">optional number defaults to 1;
+              the stastical spread of all the outputs</dd>
           </dl>
         </dd>
       </dl>
-    </section>
-    <section>
-      <h1 class="H--Del">Random Number Generators</h1>
     </section>
   </section>
 </section>
