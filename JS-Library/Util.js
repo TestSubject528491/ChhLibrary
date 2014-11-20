@@ -228,43 +228,10 @@ Util.randBoolean = function (p) {
   return (Math.random() < p);
 }
 
-/**
-  * Selects a Gaussian-distributed random decimal with given mean and standard deviation
-  * (a normal distribution).
-  * If parameters are not specified, mean = 0 and standard deviation = 1
-  * (the standard normal distribution).
-  * Note that the range of the output is technically (-infinity, infinity), however
-  * the following probabilities hold (where m = mean and s = stdev):
-  * - the output will be within (-1s + m, 1s + m) or (-1, 1): about 68.27%
-  * - the output will be within (-2s + m, 2s + m) or (-2, 2): about 95.45%
-  * - the output will be within (-3s + m, 3s + m) or (-3, 3): about 99.73%
-  * This method uses
-  * [the polar form of the Box-Muller Transformation](http://en.wikipedia.org/wiki/Box-Muller_transform).
-  * @param `mean`  the statistical center of all the outputs
-  * @param `stdev` the statistical spread of all the outputs
-  * @return        a normally-distributed decimal.
-  */
 Util.randGaussian = function(mean, stdev) {
   mean  = (mean  === undefined) ? 0 : mean;
   stdev = (stdev === undefined) ? 1 : stdev;
-  var x, y;
-  var s = 0;
-  do {
-    x = Util.randBetween(-1, 1);
-    y = Util.randBetween(-1, 1);
-    s = x*x + y*y;
-  } while (s <= 0 || 1 <= s); // s must be in the open interval (0,1).
-  /*
-  m = sqrt( ln( 1/s^2 ) / s )
-    = sqrt( -ln(s^2)    / s )
-    = sqrt( -2ln(s)     / s )
-  */
-  // var m = Math.sqrt(Math.log(1/(s * s)) / s);
-  var m = Math.sqrt(-2 * Math.log(s) / s);
-  x *= m;
-  y *= m;
-  var stnormal = (Util.randBoolean()) ? x : y; // returns either x or y, chosen randomly
-  return stnormal * stdev + mean; // transforms from standard normal to adjusted mean and stdev
+  return new NormalDistribution(mean, stdev).rand();
 }
 
 function uniformTest(times, min, max) {
