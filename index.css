@@ -27,8 +27,13 @@
 /*##############*\
     index.less
 \*##############*/
-.H--Bet code {
+h1 code {
   font-size: inherit;
+}
+.Alist > .Item code {
+  border: 0;
+  color: inherit;
+  background-color: transparent;
 }
 .FuncTabl {
   display: block;
