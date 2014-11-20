@@ -48,23 +48,24 @@ Util.isPrime = function (integer) {
   * The factorial of 0 is defined to be 1. The factorial of a negative number is undefined
   * (in that case this method will return NaN).
   * The recursive form of this function defines `n! { return n * (n-1)! }`
-  * @param `integer` a non-negative integer
-  * @return          the product of all the positive integers less than or equal to the parameter
+  * @param `integer`   a non-negative integer
+  * @param `recursive` optional: whether to use the recursive form of this function
+  * @return            the product of all the positive integers less than or equal to the parameter
   */
-Util.factorial = function (integer) {
+Util.factorial = function (integer, recursive) {
+  if (recursive) {
+    var product = 1;
+    if (integer > 0) product = integer * Util.factorial(integer - 1, true);
+    else if (integer === 0) product = 1;
+    else product = NaN;
+    return product;
+  }
   var product = 1;
   if (integer > 0) {
     for (var i = integer; i > 0; i--) {
       product *= i;
     }
   }
-  else if (integer === 0) product = 1;
-  else product = NaN;
-  return product;
-}
-Util.factorialRecursive = function (integer) {
-  var product = 1;
-  if (integer > 0) product = integer * Util.factorialRecursive(integer - 1);
   else if (integer === 0) product = 1;
   else product = NaN;
   return product;
@@ -78,10 +79,18 @@ Util.factorialRecursive = function (integer) {
   * The double-factorial of 0 is defined to be 1. The double-factorial of a negative number is
   * undefined (in that case this method will return NaN).
   * The recursive form of this function defines `n!! { return n! / (n-1)!! }`
-  * @param `integer` a positive integer
-  * @return          the product of every other positive integer less than or equal to the parameter
+  * @param `integer`   a positive integer
+  * @param `recursive` optional: whether to use the recursive form of this function
+  * @return            the product of every other positive integer less than or equal to the parameter
   */
-Util.doubleFactorial = function (integer) {
+Util.doubleFactorial = function (integer, recursive) {
+  if (recursive) {
+    var product = 1;
+    if (integer > 0) product = Util.factorial(integer) / Util.doubleFactorial(integer - 1, true);
+    else if (integer === 0) product = 1;
+    else product = NaN;
+    return product;
+  }
   var product = 1;
   if (integer > 0) {
     for (var i = integer; i > 0; i--) {
@@ -93,22 +102,23 @@ Util.doubleFactorial = function (integer) {
   else product = NaN;
   return product;
 }
-Util.doubleFactorialRecursive = function (integer) {
-  var product = 1;
-  if (integer > 0) product = Util.factorial(integer) / Util.doubleFactorialRecursive(integer - 1);
-  else if (integer === 0) product = 1;
-  else product = NaN;
-  return product;
-}
 
 /**
   * Computes the triangular number of the given non-negative integer parameter.
   * The triangular of a non-negative integer is the sum of all the non-negative integers less than
   * or equal to that integer. The triangular of a negative number is undefined (this method will return NaN).
-  * @param `integer` a positive integer
-  * @return          the sum of all the non-negative integers less than or equal to the parameter
+  * @param `integer`   a positive integer
+  * @param `recursive` optional: whether to use the recursive form of this function
+  * @return            the sum of all the non-negative integers less than or equal to the parameter
   */
-Util.triangular = function (integer) {
+Util.triangular = function (integer, recursive) {
+  if (recursive) {
+    var sum = 0;
+    if (integer > 0) sum = integer + Util.triangular(integer - 1, true);
+    else if (integer == 0) sum += 0;
+    else sum = NaN;
+    return sum;
+  }
   var sum = 0;
   if (integer > 0) {
     for (var i = 1; i <= integer; i++) {
@@ -119,30 +129,24 @@ Util.triangular = function (integer) {
   else sum = NaN;
   return sum;
 }
-Util.triangularRecursive = function (integer) {
-  var sum = 0;
-  if (integer > 0) sum = integer + Util.triangular(integer - 1);
-  else if (integer == 0) sum += 0;
-  else sum = NaN;
-  return sum;
-}
 
 /**
   * Returns the `n`th term of the Fibonacci sequence, where `n` is a parameter.
   * A Fibonacci sequence is constructed with the first two terms specified, and each subsequent
   * term in the sequence is the sum of the previous two terms. The "smallest" Fibonacci sequence
   * starts with 1, 1, 2, 3, 5, 8, ... and this function returns a term in that sequence.
-  * @param `n` the position of the term returned. must be an integer
-  * @return    the `n`th term of the sequence
+  * @param `n`         the position of the term returned. must be an integer
+  * @param `recursive` optional: whether to use the recursive form of this function
+  * @return            the `n`th term of the sequence
   */
-Util.fibonacci = function (n) {
+Util.fibonacci = function (n, recursive) {
+  if (recursive) {
+    if (n === 0 || n === 1) return 1;
+    else if (n > 1)         return (Util.fibonacci(n-1, true) + Util.fibonacci(n-2, true));
+    else return NaN;
+  }
   n++;
   return (1 / Math.sqrt(5)) * (Math.pow(Util.PHI, n) - Math.pow(Util.PSI, n));
-}
-Util.fibonacciRecursive = function (n) {
-  if (n === 0 || n === 1) return 1;
-  else if (n > 1)         return (Util.fibonacci(n-1) + Util.fibonacci(n-2));
-  else return NaN;
 }
 
 /**

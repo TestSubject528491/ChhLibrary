@@ -63,58 +63,40 @@
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the integer to be tested</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.factorial(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.factorial(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
             <dd class="Desc">Computes the <a class="Link">factorial</a> of <span class="M">n</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the integer of which to compute the factorial</dd>
+            <dt class="Term">Param <var>recursive</var></dt>
+            <dd class="Desc">optional boolean defaults to <code>false</code>; whether to use the recursive form of this function</dd>
           </dl>
         </dd>
-        <!-- <dt class="Term MethodHeading"><code>Util.factorialRecursive(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.factorial(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd> -->
-        <dt class="Term MethodHeading"><code>Util.doubleFactorial(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.doubleFactorial(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
             <dd class="Desc">Computes the <a class="Link">double-factorial</a> of <span class="M">n</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the integer of which to compute the double-factorial</dd>
+            <dt class="Term">Param <var>recursive</var></dt>
+            <dd class="Desc">optional boolean defaults to <code>false</code>; whether to use the recursive form of this function</dd>
           </dl>
         </dd>
-        <!-- <dt class="Term MethodHeading"><code>Util.doubleFactorialRecursive(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.doubleFactorial(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd> -->
-        <dt class="Term MethodHeading"><code>Util.triangular(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.triangular(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
             <dd class="Desc">Computes the <a class="Link">triangular</a> of <span class="M">n</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the integer of which to compute the triangular</dd>
+            <dt class="Term">Param <var>recursive</var></dt>
+            <dd class="Desc">optional boolean defaults to <code>false</code>; whether to use the recursive form of this function</dd>
           </dl>
         </dd>
-        <!-- <dt class="Term MethodHeading"><code>Util.triangularRecursive(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.triangular(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd> -->
-        <dt class="Term MethodHeading"><code>Util.fibonacci(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading"><code>Util.fibonacci(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
@@ -122,16 +104,10 @@
               sequence</a>.</dd>
             <dt class="Term">Param <var>n</var></dt>
             <dd class="Desc">required integer <span class="M">n \ge 0</span>; the index of the returned term in the Fibonacci sequence</dd>
+            <dt class="Term">Param <var>recursive</var></dt>
+            <dd class="Desc">optional boolean defaults to <code>false</code>; whether to use the recursive form of this function</dd>
           </dl>
         </dd>
-        <!-- <dt class="Term MethodHeading"><code>Util.fibonacciRecursive(<var>n</var>)</code></dt>
-        <dd class="Desc">
-          <dl class="Map Horiz Sml">
-            <dt class="Term">Description</dt>
-            <dd class="Desc">Gives the same result as <code>Util.fibonacci(<var>n</var>)</code>,
-              but is implemented in a recursive manner. (It calls itself in its definition.)</dd>
-          </dl>
-        </dd> -->
         <dt class="Term MethodHeading"><code>Util.permute(<var>n</var>, <var>r</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
