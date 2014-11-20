@@ -139,7 +139,7 @@
     <section>
       <h1 class="H--Del">Random Number Generators</h1>
       <dl class="FuncTabl">
-        <dt class="Term MethodHeading"><code>Util.rand()</code></dt>
+        <dt class="Term MethodHeading" id="rand"><code>Util.rand()</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
@@ -148,7 +148,7 @@
               interval <span class="M">[0, 1)</span>.</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.randTo(<var>x</var>)</code></dt>
+        <dt class="Term MethodHeading" id="randTo"><code>Util.randTo(<var>x</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
@@ -158,7 +158,7 @@
             <dd class="Desc">required number <span class="M">x \gt 0</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.randToInt(<var>n</var>)</code></dt>
+        <dt class="Term MethodHeading" id="randToInt"><code>Util.randToInt(<var>n</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
@@ -168,7 +168,7 @@
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.randBetween(<var>a</var>, <var>b</var>)</code></dt>
+        <dt class="Term MethodHeading" id="randBetween"><code>Util.randBetween(<var>a</var>, <var>b</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
@@ -180,7 +180,7 @@
             <dd class="Desc">required number <span class="M">b \gt a</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.randBoolean(<var>p</var>)</code></dt>
+        <dt class="Term MethodHeading" id="randBoolean"><code>Util.randBoolean(<var>p</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
@@ -191,14 +191,17 @@
               the probability that this method will return <code>true</code></dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.randGaussian(<var>m</var>, <var>s</var>)</code></dt>
+        <dt class="Term MethodHeading" id="randGaussian"><code>Util.randGaussian(<var>m</var>, <var>s</var>)</code></dt>
         <dd class="Desc">
           <dl class="Map Horiz Sml">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns <code>new <a class="Link"
               href="NormalDistribution.html#rand">NormalDistribution(<var>m</var>,
               <var>s</var>).rand()</a></code>.</dd>
-          </dl>
+            <dd class="Desc">Returns a normally-distributed random number within the open
+              interval <span class="M">(-\infty, \infty)</span> and with
+              mean <span class="M">m</span> and standard deviation <span class="M">s</span>.</dd>
+            </dl>
         </dd>
       </dl>
     </section>

@@ -21,7 +21,7 @@
 <section>
   <h1 class="H--Bet">Constructor</h1>
   <dl class="FuncTabl">
-    <dt class="Term MethodHeading"><code>new NormalDistribution(<var>m</var>, <var>s</var>)</code></dt>
+    <dt class="Term MethodHeading" id="NormalDistribution"><code>new NormalDistribution(<var>m</var>, <var>s</var>)</code></dt>
     <dd class="Desc">
       <dl class="Map Horiz Sml">
         <dt class="Term">Param <var>m</var></dt>
@@ -37,9 +37,9 @@
   <section>
     <h1 class="H--Gam">Instance Variables</h1>
     <dl class="FuncTabl">
-      <dt class="Term MethodHeading"><code>this.mean</code></dt>
+      <dt class="Term MethodHeading" id="mean"><code>this.mean</code></dt>
       <dd class="Desc">the statistical center of the random variable</dd>
-      <dt class="Term MethodHeading"><code>this.stdev</code></dt>
+      <dt class="Term MethodHeading" id="stdev"><code>this.stdev</code></dt>
       <dd class="Desc">the statistical spread of the random variable</dd>
     </dl>
   </section>
@@ -49,7 +49,7 @@
   <section>
     <h1 class="H--Gam">Instance Methods</h1>
     <dl class="FuncTabl">
-      <dt class="Term MethodHeading"><code>this.evalPDF(<var>x</var>)</code></dt>
+      <dt class="Term MethodHeading" id="evalPDF"><code>this.evalPDF(<var>x</var>)</code></dt>
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
@@ -58,7 +58,7 @@
           <dd class="Desc">required number; the input of the PDF to evaluate</dd>
         </dl>
       </dd>
-      <dt class="Term MethodHeading"><code>this.evalCDF(<var>x</var>, <var>n</var>)</code></dt>
+      <dt class="Term MethodHeading" id="evalCDF"><code>this.evalCDF(<var>x</var>, <var>n</var>)</code></dt>
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
@@ -72,7 +72,7 @@
           <dd class="Desc">optional integer defaults to 100; the accuracy of this method</dd>
         </dl>
       </dd>
-      <dt class="Term MethodHeading"><code>this.area(<var>a</var>, <var>b</var>)</code></dt>
+      <dt class="Term MethodHeading" id="area"><code>this.area(<var>a</var>, <var>b</var>)</code></dt>
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
@@ -91,14 +91,14 @@
           <dd class="Desc">required number; the maximum of the interval</dd>
         </dl>
       </dd>
-      <dt class="Term MethodHeading"><code>this.getMean()</code></dt>
+      <dt class="Term MethodHeading" id="getMean"><code>this.getMean()</code></dt>
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
           <dd class="Desc">Returns the mean of this distribution.</dd>
         </dl>
       </dd>
-      <dt class="Term MethodHeading"><code>this.getStdev()</code></dt>
+      <dt class="Term MethodHeading" id="getStdev"><code>this.getStdev()</code></dt>
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
@@ -109,9 +109,10 @@
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
-          <dd class="Desc">Selects a random variable from this distribution.
-            While the range of this method&rsquo;s output is technically <span class="M">(-\infty, \infty)</span>,
-            the following probabilities hold:
+          <dd class="Desc">Returns a random number within the open interval
+            <span class="M">(-\infty, \infty)</span> and with this distribution&rsquo;s mean and
+            standard deviation. Note: while the range of this method&rsquo;s output is technically
+            all of <span class="M">\RR</span>, the following probabilities hold:
             <ul class="Olist">
               <li class="Item">the output will be in <span class="M">(-1s + m, 1s + m)</span>: about 68.27%</li>
               <li class="Item">the output will be in <span class="M">(-2s + m, 2s + m)</span>: about 95.45%</li>
