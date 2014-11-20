@@ -105,6 +105,21 @@
           <dd class="Desc">Returns the standard deviation of this distribution.</dd>
         </dl>
       </dd>
+      <dt class="Term MethodHeading" id="rand"><code>this.rand()</code></dt>
+      <dd class="Desc">
+        <dl class="Map Horiz Sml">
+          <dt class="Term">Description</dt>
+          <dd class="Desc">Selects a random variable from this distribution.
+            While the range of this method&rsquo;s output is technically <span class="M">(-\infty, \infty)</span>,
+            the following probabilities hold:
+            <ul class="Olist">
+              <li class="Item">the output will be in <span class="M">(-1s + m, 1s + m)</span>: about 68.27%</li>
+              <li class="Item">the output will be in <span class="M">(-2s + m, 2s + m)</span>: about 95.45%</li>
+              <li class="Item">the output will be in <span class="M">(-3s + m, 3s + m)</span>: about 99.73%</li>
+            </ul>
+          </dd>
+        </dl>
+      </dd>
     </dl>
   </section>
 </section>
