@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Chris Harvey&rsquo;s Library</title>
+<title>Class Util &in; Chris Harvey&rsquo;s Library</title>
 <meta charset="UTF-8"/>
 <meta name="author" content="Christopher H. Harvey"/>
 <link rel="stylesheet" href="http://chharvey.github.io/core/styles/all.css"/>
@@ -9,60 +9,34 @@
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://chharvey.github.io/chhlib/mathjax-localconfig.js"></script>
 <script src="http://chharvey.github.io/core/scripts/global.js"></script>
+<script src="Util.js"></script>
 </head>
 <body>
 <main>
-<h1 class="H--Alp">Chris Harvey&rsquo;s Library</h1>
-<section>
-  <h1 class="H--Bet">Class <code>Util</code></h1>
+<header>
+  <h1 class="H--Alp">Class <code>Util</code></h1>
   <p class="P Intro">A utility class for commonly used constants and functions. Non-instantiable.</p>
+</header>
+<section>
+  <h1 class="H--Bet">Fields</h1>
   <section>
-    <h1 class="H--Gam">Constants</h1>
+    <h1 class="H--Gam">Static Constants</h1>
     <dl class="FuncTabl">
       <dt class="Term MethodHeading"><code>Util.PHI</code></dt>
-      <dd class="Desc">
-        <dl class="Map Horiz Sml">
-          <dt class="Term">Definition</dt>
-          <dd class="Desc"><code>(1 + Math.sqrt(5)) / 2</code></dd>
-          <dt class="Term">Value</dt>
-          <dd class="Desc"><span class="M">\frac{1 + \sqrt{5}}{2} \approx 1.618034</span></dd>
-        </dl>
-      </dd>
+      <dd class="Desc"><span class="M B">\frac{1 + \sqrt{5}}{2} \approx 1.618034</span></dd>
       <dt class="Term MethodHeading"><code>Util.PSI</code></dt>
-      <dd class="Desc">
-        <dl class="Map Horiz Sml">
-          <dt class="Term">Definition</dt>
-          <dd class="Desc"><code>(1 - Math.sqrt(5)) / 2</code></dd>
-          <dt class="Term">Value</dt>
-          <dd class="Desc"><span class="M">\frac{1 - \sqrt{5}}{2} \approx -0.618034</span></dd>
-        </dl>
-      </dd>
+      <dd class="Desc"><span class="M B">\frac{1 - \sqrt{5}}{2} \approx -0.618034</span></dd>
       <dt class="Term MethodHeading"><code>Util.PHI_INV</code></dt>
-      <dd class="Desc">
-        <dl class="Map Horiz Sml">
-          <dt class="Term">Definition</dt>
-          <dd class="Desc"><code>1 / Util.PHI</code></dd>
-          <dt class="Term">Value</dt>
-          <dd class="Desc"><span class="M">\frac{-1 + \sqrt{5}}{2} \approx 0.618034</span></dd>
-          <dt class="Term">Relations</dt>
-          <dd class="Desc">Multiplicative inverse of <code>Util.PHI</code></dd>
-          <dd class="Desc"><code>Util.PHI - 1</code></dd>
-          <dd class="Desc">Additive inverse of <code>Util.PSI</code></dd>
-        </dl>
-      </dd>
+      <dd class="Desc"><span class="M B">\frac{-1 + \sqrt{5}}{2} \approx 0.618034</span></dd>
       <dt class="Term MethodHeading"><code>Util.TAU</code></dt>
-      <dd class="Desc">
-        <dl class="Map Horiz Sml">
-          <dt class="Term">Definition</dt>
-          <dd class="Desc"><code>2 * Math.PI</code></dd>
-          <dt class="Term">Value</dt>
-          <dd class="Desc"><span class="M">2\pi \approx 6.283185</span></dd>
-        </dl>
-      </dd>
+      <dd class="Desc"><span class="M B">2\pi \approx 6.283185</span></dd>
     </dl>
   </section>
+</section>
+<section>
+  <h1 class="H--Bet">Methods</h1>
   <section>
-    <h1 class="H--Gam">Functions</h1>
+    <h1 class="H--Gam">Static Methods</h1>
     <section>
       <h1 class="H--Del">Basic Number Theory and Probability</h1>
       <dl class="FuncTabl">
