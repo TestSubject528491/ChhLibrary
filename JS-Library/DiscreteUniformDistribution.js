@@ -1,10 +1,12 @@
 /**
   * Creates a discrete uniform (constant) distribution with a given number of outcomes.
+  * @extends          DiscreteDistribution
   * @param `outcomes` the number of total outcomes; defaults to 1
   */
 function DiscreteUniformDistribution(outcomes) {
-  this.outcomes = (outcomes > 0) ? outcomes : 1;
+  DiscreteDistribution.call(this, outcomes);
 }
+Util.extend(DiscreteUniformDistribution, DiscreteDistribution);
 
 /**
   * Returns the output of the probability density function of this distribution.
@@ -13,7 +15,7 @@ function DiscreteUniformDistribution(outcomes) {
   * @return    the y-value of the PDF evaluated at `x`
   */
 DiscreteUniformDistribution.prototype.evalPDF = function (x) {
-  return (0 <= x && x < this.outcomes) ? 1 / this.outcomes : 0;
+  return (0 <= x && x < this.outcomes) ? 1/this.outcomes : 0;
 }
 
 /**
