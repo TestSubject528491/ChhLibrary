@@ -1,0 +1,31 @@
+// out: index.css
+@import (reference) url('http://chharvey.github.io/core/styles/all.less');
+
+/*##############*\
+    index.less
+\*##############*/
+
+main {
+  width: 90%;
+  margin: 0 5% 5%;
+}
+h1 code {font-size: inherit;}
+
+.Alist > .Item code {
+  border: 0;
+  color: inherit;
+  background-color: transparent;
+}
+
+.FuncTabl {
+  .Map;
+  .Map.Horiz;
+  .Map.Horiz.Sml;
+}
+
+.FuncTabl > .Desc + .Term {margin-top: 0;} // remove on next push of chharvey.github.io:master (v3.6.1 or later)
+
+.MethodHeading {
+  font-weight: bold;
+  text-align: right;
+}
