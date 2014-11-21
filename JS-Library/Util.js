@@ -247,21 +247,6 @@ function uniformTest(times, min, max) {
   console.log('random sample: ' + x);
 }
 
-function normalTest(times, min, max, mean, stdev) {
-  mean  = (mean  === undefined) ? 0 : mean;
-  stdev = (stdev === undefined) ? 1 : stdev;
-  var successes = 0;
-  var  failures = 0;
-  for (var i = 0; i < times && times <= 10000; i++) {
-    var x = Util.randGaussian(mean, stdev);
-    if      (min <= x && x <= max) successes++;
-    else if (x < min  ||  max < x)  failures++;
-  }
-  console.log('successes: ' + successes);
-  console.log('failures:  ' +  failures);
-  console.log('random sample: ' + x);
-}
-
 function factorialtest(times) {
   for (i = 0; i <= times; i++) {
     console.log(i + '! = ' + Util.factorial(i) + ' or ' + Util.factorialRecursive(i));

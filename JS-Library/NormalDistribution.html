@@ -10,6 +10,7 @@
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://chharvey.github.io/chhlib/mathjax-localconfig.js"></script>
 <script src="http://chharvey.github.io/core/scripts/global.js"></script>
 <script src="Util.js"></script>
+<script src="NormalDistribution.js"></script>
 </head>
 <body>
 <main>
@@ -120,6 +121,21 @@
             </ul>
           </dd>
         </dl>
+      </dd>
+      <dt class="Term MethodHeading" id="rand"><code>this.test(<var>n</var>, <var>a</var>, <var>b</var>)</code></dt>
+      <dd class="Desc">
+        <dl class="Map Horiz Sml">
+          <dt class="Term">Description</dt>
+          <dd class="Desc">Tests this normal distribution. Selects a number of outputs and checks
+            whether each one is inside the closed interval <span class="M">[a, b]</span>.
+            Prints the number of <i>successes</i> and <i>failures</i>, and also a random sample.</dd>
+          <dt class="Term">Param <var>n</var></dt>
+          <dd class="Desc">required integer <span class="M">n \le 10000</span>; the number of tests to run</dd>
+          <dt class="Term">Param <var>a</var></dt>
+          <dd class="Desc">required number; the minimum of the interval</dd>
+          <dt class="Term">Param <var>b</var></dt>
+          <dd class="Desc">required number; the maximum of the interval</dd>
+          </dl>
       </dd>
     </dl>
   </section>

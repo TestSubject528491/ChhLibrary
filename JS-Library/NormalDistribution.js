@@ -77,8 +77,6 @@ NormalDistribution.prototype.getStdev = function () { return this.stdev; }
   * @return a normally-distributed decimal
   */
 NormalDistribution.prototype.rand = function () {
-  var self = this;
-
   var x, y;
   var s = 0;
   do {
@@ -95,5 +93,27 @@ NormalDistribution.prototype.rand = function () {
   x *= m;
   y *= m;
   var stnormal = (Util.randBoolean()) ? x : y; // returns either x or y, chosen randomly
-  return stnormal * self.stdev + self.mean; // transforms from standard normal to adjusted mean and stdev
+  return stnormal * this.stdev + this.mean; // transforms from standard normal to adjusted mean and stdev
+}
+
+/**
+  * Tests this normal distribution. Selects a number of normally-distributed random outputs and counts
+  * the number of times the output is in the closed interval `[min, max]`. If true, it counts as
+  * a 'success'; if false, it is a 'failure'.
+  * This method prints the number of successes and number of failures, and also prints the last output.
+  * @param times the number of outputs to test; maximum of 10000
+  * @param min   the minimum of the interval of successes
+  * @param max   the maximum of the interval of successes
+  */
+NormalDistribution.prototype.test = function (times, min, max) {
+  var successes = 0;
+  var  failures = 0;
+  for (var i = 0; i < times && times <= 10000; i++) {
+    var x = this.rand();
+    if      (min <= x && x <= max) successes++;
+    else if (x < min  ||  max < x)  failures++;
+  }
+  console.log('successes: ' + successes);
+  console.log('failures:  ' +  failures);
+  console.log('random sample: ' + x);
 }
