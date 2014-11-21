@@ -251,3 +251,23 @@ function doublefactorialtest(times) {
     console.log(i + '!! = ' + Util.doubleFactorial(i) + ' or ' + Util.doubleFactorialRecursive(i));
   }
 }
+
+/**
+  * Extends a class from a parent class. Call this method immediately after the child constructor.
+  * @param child  the subclass, which is a special case of the parent class
+  * @param parent the super class
+  */
+// Util.extend = (function () {
+//   var F = function () {};
+//   return function (Child, Parent) {
+//     F.prototype = Parent.prototype;
+//     Child.prototype = new F();
+//     Child.__super__ = Parent.prototype;
+//     Child.prototype.constructor = Child;
+//   };
+// }());
+Util.extend = function (child, parent) {
+  Child.prototype = Object.create(Parent.prototype);
+  child.__super__ = parent.prototype; // Chrome uses this to get the right `typeof`
+  child.prototype.constructor = child;
+}

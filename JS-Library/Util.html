@@ -6,6 +6,14 @@
 <meta name="author" content="Christopher H. Harvey"/>
 <link rel="stylesheet" href="http://chharvey.github.io/core/styles/all.css"/>
 <link rel="stylesheet" href="../index.css"/>
+<style>
+  .JS .Ctl {color: #dc322f;} /* red */
+  .JS .Opr {color: #cb4b16;} /* orange */
+  .JS .Kwd {color: #859900;} /* green */
+  .JS .Cmd {color: #268bd2;} /* blue */
+  .JS .Arg {color: #6c71c4;} /* violet */
+  .JS .Obj {color: #b58900;} /* yellow */
+</style>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://chharvey.github.io/chhlib/mathjax-localconfig.js"></script>
 <script src="http://chharvey.github.io/core/scripts/global.js"></script>
@@ -197,6 +205,33 @@
             <dt class="Term">Param <var>p</var></dt>
             <dd class="Desc">optional number <span class="M">0 \lt p \lt 1</span> defaults to 0.5;
               the probability that this method will return <code>true</code></dd>
+          </dl>
+        </dd>
+      </dl>
+    </section>
+    <section>
+      <h1 class="H--Del">JavaScript Utility Functions</h1>
+      <dl class="FuncTabl">
+        <dt class="Term MethodHeading" id="rand"><code>Util.extend(<var>child</var>, <var>parent</var>)</code></dt>
+        <dd class="Desc">
+          <dl class="Map Horiz Sml">
+            <dt class="Term">Description</dt>
+            <dd class="Desc">
+              Extends a subclass from a superclass. Call this method
+              immediately after the child class&rsquo;s constructor.
+              <code class="Codeblock JS"><span class="Kwd">function</span> <span class="Cmd">Person(<span class="Arg">name</span>)</span> { <span class="Comm I">// constructor for class `Person`</span>
+  ...
+}
+<span class="Kwd">function</span> <span class="Cmd">Student(<span class="Arg">name, major</span>)</span> { <span class="Comm I">// constructor for class `Student`</span>
+  <span class="Obj">Person</span>.<span class="Cmd">call(<span class="Arg"><span class="Opr">this</span>, name, major</span>)</span>; <span class="Comm I">// calls the parent constructor</span>
+  ...
+}
+<span class="Obj">Util</span>.<span class="Cmd">extend(<span class="Arg"><span class="Obj">Student</span>, <span class="Obj">Person</span></span>)</span>; <span class="Comm I">// extends `Student` from `Person`</span></code>
+            </dd>
+            <dt class="Term">Param <var>child</var></dt>
+            <dd class="Desc">required object; the subclass</dd>
+            <dt class="Term">Param <var>parent</var></dt>
+            <dd class="Desc">required object; the superclass</dd>
           </dl>
         </dd>
       </dl>
