@@ -3,7 +3,7 @@
   * @param `low`  the minimum of the domain [low, high]; defatults to 0
   * @param `high` the maximum of the domain [low, high]; defatults to 1
   */
-function DiscreteUniformDistribution(low, high) {
+function ContinuousUniformDistribution(low, high) {
   this.low  = (typeof low  === 'number') ? low  : 0;
   this.high = (typeof high === 'number') ? high : 1;
 }
@@ -14,7 +14,7 @@ function DiscreteUniformDistribution(low, high) {
   * @param `x` the input of the PDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
-DiscreteUniformDistribution.prototype.evalPDF = function (x) {
+ContinuousUniformDistribution.prototype.evalPDF = function (x) {
   return (this.low <= x && x <= this.high) ? 1 / (this.high - this.low) : 0;
 }
 
@@ -25,7 +25,7 @@ DiscreteUniformDistribution.prototype.evalPDF = function (x) {
   * @param `x` the input of the CDF to evaluate
   * @return    the y-value of the PDF evaluated at `x`
   */
-DiscreteUniformDistribution.prototype.evalCDF = function (x) {
+ContinuousUniformDistribution.prototype.evalCDF = function (x) {
   if (x < this.low)                         return 0;
   else if (this.low <= x && x <= this.high) return (x - this.low) * this.evalPDF(x);
   else if (this.high < x)                   return 1;
@@ -40,16 +40,16 @@ DiscreteUniformDistribution.prototype.evalCDF = function (x) {
   * @param `max` the upper bound of the input
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
-DiscreteUniformDistribution.prototype.area = function (min, max) {
+ContinuousUniformDistribution.prototype.area = function (min, max) {
   return this.evalCDF(max) - this.evalCDF(min);
 }
 
 /** Returns the mean (statistical average) of this distribution. */
-DiscreteUniformDistribution.prototype.getMean = function () {
+ContinuousUniformDistribution.prototype.getMean = function () {
   return (this.low + this.high) / 2;
 }
 
 /** Returns the standard deviation (statistical spread) of this distribution. */
-DiscreteUniformDistribution.prototype.getStdev = function () {
+ContinuousUniformDistribution.prototype.getStdev = function () {
   return Math.pow(this.high - this.low, 2) / 12;
 }
