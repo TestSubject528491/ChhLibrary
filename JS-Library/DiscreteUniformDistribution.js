@@ -5,9 +5,8 @@
   */
 function DiscreteUniformDistribution(outcomes) {
   DiscreteDistribution.call(this, outcomes);
-  this.outcomes = (outcomes > 0) ? outcomes : 1;
 }
-DiscreteUniformDistribution.prototype = Object.create(DiscreteDistribution.prototype);
+Util.extend(DiscreteUniformDistribution, DiscreteDistribution);
 
 /**
   * Returns the output of the probability density function of this distribution.

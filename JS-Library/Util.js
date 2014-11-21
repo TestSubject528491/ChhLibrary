@@ -267,7 +267,7 @@ function doublefactorialtest(times) {
 //   };
 // }());
 Util.extend = function (child, parent) {
-  Child.prototype = Object.create(Parent.prototype);
+  child.prototype = Object.create(parent.prototype);
   child.__super__ = parent.prototype; // Chrome uses this to get the right `typeof`
   child.prototype.constructor = child;
 }
