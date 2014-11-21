@@ -228,11 +228,11 @@ Util.randBoolean = function (p) {
   return (Math.random() < p);
 }
 
-Util.randGaussian = function(mean, stdev) {
-  mean  = (mean  === undefined) ? 0 : mean;
-  stdev = (stdev === undefined) ? 1 : stdev;
-  return new NormalDistribution(mean, stdev).rand();
-}
+// Util.randGaussian = function(mean, stdev) {
+//   mean  = (mean  === undefined) ? 0 : mean;
+//   stdev = (stdev === undefined) ? 1 : stdev;
+//   return new NormalDistribution(mean, stdev).rand();
+// }
 
 function uniformTest(times, min, max) {
   var successes = 0;
