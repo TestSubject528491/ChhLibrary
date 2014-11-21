@@ -1,5 +1,4 @@
-function Util() {
-}
+var Util = {}
 
 Util.PHI = (1 + Math.sqrt(5)) / 2;
 Util.PSI = (1 - Math.sqrt(5)) / 2;
@@ -227,12 +226,6 @@ Util.randBoolean = function (p) {
   p = (p === undefined) ? 0.5 : p;
   return (Math.random() < p);
 }
-
-// Util.randGaussian = function(mean, stdev) {
-//   mean  = (mean  === undefined) ? 0 : mean;
-//   stdev = (stdev === undefined) ? 1 : stdev;
-//   return new NormalDistribution(mean, stdev).rand();
-// }
 
 function uniformTest(times, min, max) {
   var successes = 0;
