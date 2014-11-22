@@ -43,13 +43,15 @@
       <polygon class="tier2" points=" 50, 87    250, 87    150,260"/>
       <polygon class="tier3" points="100,173    200,173    150,260"/>
     </g>
-    <line class="tier1" x1="150" y1="50"  x2="600" y2="50"/>
-    <line class="tier2" x1="150" y1="135" x2="600" y2="135"/>
-    <line class="tier3" x1="150" y1="220" x2="600" y2="220"/>
     <g class="categories" transform="translate(150,20)">
       <text x="0" y="0">Structural</text>
       <text x="0" y="85">Textual</text>
       <text x="0" y="170">Schematic</text>
+    </g>
+    <g class="lines" transform="translate(150) scale(450,1)">
+      <line class="tier1" x1="0" y1="50"  x2="1" y2="50"/>
+      <line class="tier2" x1="0" y1="135" x2="1" y2="135"/>
+      <line class="tier3" x1="0" y1="220" x2="1" y2="220"/>
     </g>
     <g class="examples" transform="translate(300)">
       <text class="tier1" x="0" y="45" >sizing, box model, positioning, transform</text>
