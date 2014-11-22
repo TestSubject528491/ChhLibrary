@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="260">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="320">
   <style>
     line {
       stroke-width: 2px;
@@ -6,6 +6,10 @@
     text {
       font-size: 14px;
       font-family: sans-serif;
+    }
+    text.heading {
+      font-size: 42px;
+      font-weight: bold;
     }
     .tier1 {
       fill:   #0270bb;
@@ -19,25 +23,36 @@
       fill:   #54e0ff;
       stroke: #54e0ff;
     }
-    .category {
+    .categories text {
       font-weight: bold;
       fill: #fff;
     }
+    .examples text {
+      stroke-width: 0px;
+      fill: #000;
+    }
   </style>
 
-  <polygon class="tier1" points="  0,  0    300,  0    150,260"/>
-  <polygon class="tier2" points=" 50, 87    250, 87    150,260"/>
-  <polygon class="tier3" points="100,173    200,173    150,260"/>
+  <text class="heading" x="150" y="50">CSS Properties</text>
 
-  <line class="tier1" x1="150" y1="50"  x2="600" y2="50"/>
-  <line class="tier2" x1="150" y1="135" x2="600" y2="135"/>
-  <line class="tier3" x1="150" y1="220" x2="600" y2="220"/>
-
-  <text class="category" x="110" y="20">Structural</text>
-  <text class="category" x="120" y="105">Textual</text>
-  <text class="category" x="112" y="190">Schematic</text>
-
-  <text x="300" y="45">sizing, box model, positioning, transform</text>
-  <text x="300" y="130">content, font, text, decoration</text>
-  <text x="300" y="215">color, background, visibility, misc.</text>
+  <g transform="translate(0, 60)">
+    <g class="triangle" transform="scale(1, 1)">
+      <polygon class="tier1" points="  0,  0    300,  0    150,260"/>
+      <polygon class="tier2" points=" 50, 87    250, 87    150,260"/>
+      <polygon class="tier3" points="100,173    200,173    150,260"/>
+    </g>
+    <line class="tier1" x1="150" y1="50"  x2="600" y2="50"/>
+    <line class="tier2" x1="150" y1="135" x2="600" y2="135"/>
+    <line class="tier3" x1="150" y1="220" x2="600" y2="220"/>
+    <g class="categories" transform="translate()">
+      <text x="110" y="20">Structural</text>
+      <text x="120" y="105">Textual</text>
+      <text x="112" y="190">Schematic</text>
+    </g>
+    <g class="examples" transform="translate(300)">
+      <text class="tier1" x="0" y="45" >sizing, box model, positioning, transform</text>
+      <text class="tier2" x="0" y="130">content, font, text, decoration</text>
+      <text class="tier3" x="0" y="215">color, background, visibility, transitions</text>
+    </g>
+  </g>
 </svg>
