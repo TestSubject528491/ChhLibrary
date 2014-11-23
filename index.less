@@ -6,8 +6,9 @@
 \*##############*/
 
 main {
-  width: 90%;
-  margin: 0 5% 5%;
+  width: auto;
+  margin-left:  @spacer;
+  margin-right: @spacer;
 }
 h1 code {font-size: inherit;}
 
@@ -21,9 +22,11 @@ h1 code {font-size: inherit;}
   .Map;
   .Map.Horiz;
   .Map.Horiz.Sml;
+  > .Term:nth-child(4n+1),
+  > .Desc:nth-child(4n+2) {background-color: @color_table_bg_md;}
+  > .Term:nth-child(4n+3),
+  > .Desc:nth-child(4n)   {background-color: @color_table_bg_lo;}
 }
-
-.FuncTabl > .Desc + .Term {margin-top: 0;} // remove on next push of chharvey.github.io:master (v3.6.1 or later)
 
 .MethodHeading {
   font-weight: bold;

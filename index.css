@@ -28,8 +28,9 @@
     index.less
 \*##############*/
 main {
-  width: 90%;
-  margin: 0 5% 5%;
+  width: auto;
+  margin-left: 24px;
+  margin-right: 24px;
 }
 h1 code {
   font-size: inherit;
@@ -48,10 +49,6 @@ h1 code {
   margin-top: 24px;
   margin-top: 1.5rem;
 }
-.FuncTabl > .Desc + .Term {
-  margin-top: 24px;
-  margin-top: 1.5rem;
-}
 .FuncTabl::after {
   display: table;
   content: ' ';
@@ -59,11 +56,13 @@ h1 code {
 }
 .FuncTabl > .Term {
   padding-right: 1.31556175%;
-  margin-top: 0;
   float: left;
   clear: both;
   overflow: auto;
   white-space: nowrap;
+}
+.FuncTabl > .Desc + .Term {
+  margin-top: 0;
 }
 .FuncTabl > .Desc {
   float: left;
@@ -86,8 +85,13 @@ h1 code {
 .FuncTabl > .Desc + .Desc {
   margin-left: 23.60679775%;
 }
-.FuncTabl > .Desc + .Term {
-  margin-top: 0;
+.FuncTabl > .Term:nth-child(4n+1),
+.FuncTabl > .Desc:nth-child(4n+2) {
+  background-color: #cfe0e2;
+}
+.FuncTabl > .Term:nth-child(4n+3),
+.FuncTabl > .Desc:nth-child(4n) {
+  background-color: #b6d0d3;
 }
 .MethodHeading {
   font-weight: bold;
