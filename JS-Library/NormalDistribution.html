@@ -66,14 +66,14 @@
           <dd class="Desc">Returns an <em>approximation</em> of the cumulative distribution function
             of this distribution.</dd>
           <dt class="Term">Param <var>x</var></dt>
-          <dd class="Desc">required number; the input of the CDF to evaluate. for large values
+          <dd class="Desc">required number; the input of the CDF to evaluate. For large values
             (larger than &pm;10), this method will return an inaccurate result. Specify a larger
             argument for accuracy to compensate</dd>
           <dt class="Term">Param <var>n</var></dt>
-          <dd class="Desc">optional integer defaults to 100; the accuracy of this method</dd>
+          <dd class="Desc">optional integer <span class="M">0 \lt n \le 150</span> defaults to 100; the accuracy of this method</dd>
         </dl>
       </dd>
-      <dt class="Term MethodHeading" id="area"><code>this.area(<var>a</var>, <var>b</var>)</code></dt>
+      <dt class="Term MethodHeading" id="area"><code>this.area(<var>a</var>, <var>b</var>, <var>n</var>)</code></dt>
       <dd class="Desc">
         <dl class="Map Horiz Sml">
           <dt class="Term">Description</dt>
@@ -85,11 +85,16 @@
               <li class="Item"><span class="M">[-2s + m, 2s + m]</span>: about 0.9545</li>
               <li class="Item"><span class="M">[-3s + m, 3s + m]</span>: about 0.9973</li>
             </ul>
+            For large values of <span class="M">a</span> or <span class="M">b</span>
+            (larger than &pm;10), this method will return an inaccurate result.
+            Specify a larger value of <span class="M">n</span> to compensate.
           </dd>
           <dt class="Term">Param <var>a</var></dt>
           <dd class="Desc">required number; the minimum of the interval</dd>
           <dt class="Term">Param <var>b</var></dt>
           <dd class="Desc">required number; the maximum of the interval</dd>
+          <dt class="Term">Param <var>n</var></dt>
+          <dd class="Desc">optional integer <span class="M">0 \lt n \le 150</span> defaults to 100; the accuracy of this method</dd>
         </dl>
       </dd>
       <dt class="Term MethodHeading" id="getMean"><code>this.getMean()</code></dt>

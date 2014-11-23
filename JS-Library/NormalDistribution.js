@@ -51,12 +51,13 @@ NormalDistribution.prototype.evalCDF = function (x, accuracy) {
   * - the probability of obtaining a value within [-1s + m, 1s + m] or [-1, 1]: about 68.27%
   * - the probability of obtaining a value within [-2s + m, 2s + m] or [-2, 2]: about 95.45%
   * - the probability of obtaining a value within [-3s + m, 3s + m] or [-3, 3]: about 99.73%
-  * @param `min` the lower bound of the input
-  * @param `max` the upper bound of the input
+  * @param `min`      the lower bound of the input
+  * @param `max`      the upper bound of the input
+  * @param `accuracy` the number of terms in the series in the calculation of this function; defaults to 100
   * @return this.evalCDF(max) - this.evalCDF(min)
   */
-NormalDistribution.prototype.area = function (min, max) {
-  return this.evalCDF(max) - this.evalCDF(min);
+NormalDistribution.prototype.area = function (min, max, accuracy) {
+  return this.evalCDF(max, accuracy) - this.evalCDF(min, accuracy);
 }
 
 /** Returns the mean (statistical average) of this distribution. */
