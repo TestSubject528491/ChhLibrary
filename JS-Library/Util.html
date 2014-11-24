@@ -30,13 +30,13 @@
   <section>
     <h1 class="H--Gam">Static Constants</h1>
     <dl class="FuncTabl">
-      <dt class="Term MethodHeading"><code>Util.PHI</code></dt>
+      <dt class="Term FuncHeading"><code>Util.PHI</code></dt>
       <dd class="Desc"><span class="M B">\frac{1 + \sqrt{5}}{2} \approx 1.618034</span></dd>
-      <dt class="Term MethodHeading"><code>Util.PSI</code></dt>
+      <dt class="Term FuncHeading"><code>Util.PSI</code></dt>
       <dd class="Desc"><span class="M B">\frac{1 - \sqrt{5}}{2} \approx -0.618034</span></dd>
-      <dt class="Term MethodHeading"><code>Util.PHI_INV</code></dt>
+      <dt class="Term FuncHeading"><code>Util.PHI_INV</code></dt>
       <dd class="Desc"><span class="M B">\frac{-1 + \sqrt{5}}{2} \approx 0.618034</span></dd>
-      <dt class="Term MethodHeading"><code>Util.TAU</code></dt>
+      <dt class="Term FuncHeading"><code>Util.TAU</code></dt>
       <dd class="Desc"><span class="M B">2\pi \approx 6.283185</span></dd>
     </dl>
   </section>
@@ -48,9 +48,9 @@
     <section>
       <h1 class="H--Del">Basic Number Theory and Probability</h1>
       <dl class="FuncTabl">
-        <dt class="Term MethodHeading"><code>Util.bound(<var>x</var>, <var>a</var>, <var>b</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.bound(<var>x</var>, <var>a</var>, <var>b</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns the number closest to <span class="M">x</span> within the
               closed interval <span class="M">[a, b]</span>.</dd>
@@ -62,18 +62,18 @@
             <dd class="Desc">required number <span class="M">a \lt b</span>; the maximum of the interval</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.isPrime(<var>n</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.isPrime(<var>n</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Determines whether <span class="M">n</span> is prime.</dd>
             <dt class="Term">Param <var>n</var></dt>
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the integer to be tested</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.factorial(<var>n</var>, <var>recursive</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.factorial(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Computes the <a class="Link">factorial</a> of <span class="M">n</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
@@ -84,9 +84,9 @@
               recursive form of this function</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.doubleFactorial(<var>n</var>, <var>recursive</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.doubleFactorial(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Computes the <a class="Link">double-factorial</a> of <span class="M">n</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
@@ -97,9 +97,9 @@
               recursive form of this function</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.triangular(<var>n</var>, <var>recursive</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.triangular(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Computes the <a class="Link">triangular</a> of <span class="M">n</span>.</dd>
             <dt class="Term">Param <var>n</var></dt>
@@ -110,9 +110,9 @@
               recursive form of this function</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.fibonacci(<var>n</var>, <var>recursive</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.fibonacci(<var>n</var>, <var>recursive</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns the <span class="M">n\text{th}</span> term of the
               <a class="Link">smallest Fibonacci sequence</a>.</dd>
@@ -124,9 +124,9 @@
               recursive form of this function</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.permute(<var>n</var>, <var>r</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.permute(<var>n</var>, <var>r</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Calculates the number of <a class="Link">permutations</a> of
               <span class="M">n</span> objects taken <span class="M">r</span> at a time.</dd>
@@ -137,9 +137,9 @@
               objects taken at a time</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading"><code>Util.combine(<var>n</var>, <var>r</var>)</code></dt>
+        <dt class="Term FuncHeading"><code>Util.combine(<var>n</var>, <var>r</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Calculates the number of <a class="Link">combinations</a> of
               <var>n</var> objects taken <var>r</var> at a time.</dd>
@@ -155,18 +155,18 @@
     <section>
       <h1 class="H--Del">Random Number Generators</h1>
       <dl class="FuncTabl">
-        <dt class="Term MethodHeading" id="rand"><code>Util.rand()</code></dt>
+        <dt class="Term FuncHeading" id="rand"><code>Util.rand()</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns <code>Math.random()</code></dd>
             <dd class="Desc">Returns a uniformly-distributed random number within the half-open
               interval <span class="M">[0, 1)</span>.</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading" id="randTo"><code>Util.randTo(<var>x</var>)</code></dt>
+        <dt class="Term FuncHeading" id="randTo"><code>Util.randTo(<var>x</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns a uniformly-distributed random number within the half-open
               interval <span class="M">[0, x)</span>.</dd>
@@ -174,9 +174,9 @@
             <dd class="Desc">required number <span class="M">x \gt 0</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading" id="randToInt"><code>Util.randToInt(<var>n</var>)</code></dt>
+        <dt class="Term FuncHeading" id="randToInt"><code>Util.randToInt(<var>n</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns a uniformly-distributed random integer within the closed
               interval <span class="M">[0, n-1]</span>.</dd>
@@ -184,9 +184,9 @@
             <dd class="Desc">required integer <span class="M">n \gt 0</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading" id="randBetween"><code>Util.randBetween(<var>a</var>, <var>b</var>)</code></dt>
+        <dt class="Term FuncHeading" id="randBetween"><code>Util.randBetween(<var>a</var>, <var>b</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns a uniformly-distributed random number within the half-open
               interval <span class="M">[a, b)</span>.</dd>
@@ -196,9 +196,9 @@
             <dd class="Desc">required number <span class="M">b \gt a</span>; the least upper bound</dd>
           </dl>
         </dd>
-        <dt class="Term MethodHeading" id="randBoolean"><code>Util.randBoolean(<var>p</var>)</code></dt>
+        <dt class="Term FuncHeading" id="randBoolean"><code>Util.randBoolean(<var>p</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">Returns a Boolean value with the probability <span class="M">p</span>
               of being <code>true</code>.</dd>
@@ -212,9 +212,9 @@
     <section>
       <h1 class="H--Del">JavaScript Utility Functions</h1>
       <dl class="FuncTabl">
-        <dt class="Term MethodHeading" id="rand"><code>Util.extend(<var>child</var>, <var>parent</var>)</code></dt>
+        <dt class="Term FuncHeading" id="rand"><code>Util.extend(<var>child</var>, <var>parent</var>)</code></dt>
         <dd class="Desc">
-          <dl class="Map Horiz Sml">
+          <dl class="FuncDescMap">
             <dt class="Term">Description</dt>
             <dd class="Desc">
               Extends a subclass from a superclass. Call this method immediately after the

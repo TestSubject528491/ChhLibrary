@@ -1,5 +1,6 @@
 // out: index.css
 @import (reference) url('http://chharvey.github.io/core/styles/all.less');
+// @import (reference) url('../chharvey.github.io/core/styles/all.less');
 
 /*##############*\
     index.less
@@ -22,13 +23,14 @@ h1 code {font-size: inherit;}
   .Map;
   .Map.Horiz;
   .Map.Horiz.Sml;
-  > .Term:nth-child(4n+1),
-  > .Desc:nth-child(4n+2) {background-color: @color_table_bg_md;}
-  > .Term:nth-child(4n+3),
-  > .Desc:nth-child(4n)   {background-color: @color_table_bg_lo;}
+  // .Map.Horiz.Tbl; // add back in on v3.7.0 of chharvey.github.io
+  > .Term {
+    text-align: right;
+  }
 }
 
-.MethodHeading {
-  font-weight: bold;
-  text-align: right;
+.FuncDescMap {
+  .Map;
+  .Map.Horiz;
+  .Map.Horiz.Sml;
 }
