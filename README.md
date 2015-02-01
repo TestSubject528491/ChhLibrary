@@ -1,4 +1,3 @@
-ChhLib
-======
+# chhlib
 
-A Library used for hosting things that can be used in other projects.
+A library used only for hosting.
